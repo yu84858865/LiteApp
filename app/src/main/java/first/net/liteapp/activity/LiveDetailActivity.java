@@ -58,7 +58,6 @@ public class LiveDetailActivity extends BaseActivity implements View.OnClickList
     private TextView tv_catagory;
     private String mUrl = "rtmp://live.hkstv.hk.lxdns.com/live/hks";
     private TXLivePlayConfig mPlayConfig;
-
     private int mPlayType;
 
 

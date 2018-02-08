@@ -60,6 +60,7 @@ public class LiveDetailActivity extends BaseActivity implements View.OnClickList
     private TXLivePlayConfig mPlayConfig;
     private int mPlayType;
 
+
     @Override
     public int getContentView() {
         return R.layout.activity_live_detail;

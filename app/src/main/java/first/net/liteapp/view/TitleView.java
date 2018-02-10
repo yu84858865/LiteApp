@@ -2,6 +2,7 @@ package first.net.liteapp.view;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.View;
@@ -11,6 +12,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import first.net.liteapp.R;
+import first.net.liteapp.activity.LivePublishActivity;
 
 /**
  * Created by yuqiubo on 2018/2/2.
@@ -44,6 +46,10 @@ public class TitleView extends RelativeLayout {
                 ((Activity) mContext).finish();
             }
         });
+    }
+
+    public void setBackground(int color){
+        findViewById(R.id.rlyt_root).setBackgroundColor(color);
     }
 
     public TitleView setTitle(String title){

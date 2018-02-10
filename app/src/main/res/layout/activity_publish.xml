@@ -1,0 +1,122 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <FrameLayout
+        android:id="@+id/flyt_video"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.tencent.rtmp.ui.TXCloudVideoView
+            android:id="@+id/video_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="top|right"
+            android:layout_marginBottom="0dp"
+            android:visibility="gone" />
+
+        <TextView
+            android:id="@+id/netbusy_tv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#ff3333"
+            android:gravity="center"
+            android:paddingBottom="3dp"
+            android:paddingTop="3dp"
+            android:text="当前网络质量很糟糕，建议您拉近离路由器的距离，避免WiFi穿墙！"
+            android:textColor="#ffffff"
+            android:textSize="10dp"
+            android:visibility="gone" />
+
+    </FrameLayout>
+
+    <first.net.liteapp.view.TitleView
+        android:id="@+id/cus_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="10dp"
+        android:layout_below="@id/cus_title"
+        android:id="@+id/rlyt_room">
+
+        <Button
+            android:id="@+id/btn_new"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:padding="5dp"
+            android:background="@mipmap/new_address"
+            android:layout_alignParentRight="true"
+            android:layout_marginLeft="10dp" />
+
+        <EditText
+            android:id="@+id/et_roomid"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:singleLine="true"
+            android:background="@mipmap/input_box"
+            android:layout_marginRight="5dp"
+            android:paddingLeft="2dp"
+            android:paddingRight="2dp"
+            android:textColorHint="#3f000000"
+            android:layout_toLeftOf="@+id/btn_new"/>
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/llyt_fun"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_alignParentBottom="true"
+        android:orientation="horizontal">
+
+        <FrameLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
+            <Button
+                android:id="@+id/btn_play"
+                android:padding="8dp"
+                android:layout_width="34dp"
+                android:layout_height="34dp"
+                android:layout_gravity="center"
+                android:background="@mipmap/play_start" />
+
+        </FrameLayout>
+
+
+        <FrameLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
+            <Button
+                android:id="@+id/btn_camera"
+                android:padding="8dp"
+                android:layout_width="34dp"
+                android:layout_height="34dp"
+                android:layout_gravity="center"
+                android:background="@mipmap/camera_change_front" />
+
+        </FrameLayout>
+
+        <FrameLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
+            <Button
+                android:id="@+id/btn_orientation"
+                android:padding="8dp"
+                android:layout_width="34dp"
+                android:layout_height="34dp"
+                android:layout_gravity="center"
+                android:background="@mipmap/landscape" />
+
+        </FrameLayout>
+    </LinearLayout>
+</RelativeLayout>

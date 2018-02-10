@@ -1,6 +1,7 @@
 package first.net.liteapp.activity;
 
-
+import android.content.Context;
+import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Build;
 import android.support.v4.app.Fragment;
@@ -22,6 +23,7 @@ import com.tencent.rtmp.ITXLivePlayListener;
 import com.tencent.rtmp.TXLiveConstants;
 import com.tencent.rtmp.TXLivePlayConfig;
 import com.tencent.rtmp.TXLivePlayer;
+import com.tencent.rtmp.TXLivePushConfig;
 import com.tencent.rtmp.ui.TXCloudVideoView;
 
 import java.io.UnsupportedEncodingException;
@@ -42,7 +44,6 @@ import first.net.liteapp.view.TitleView;
  */
 
 public class LiveDetailActivity extends BaseActivity implements View.OnClickListener {
-
     private TXCloudVideoView video_tx;
     private TXLivePlayer mTxLivePlayer;
     private ImageView iv_fullscreen;
@@ -56,11 +57,29 @@ public class LiveDetailActivity extends BaseActivity implements View.OnClickList
     private EditText et_reply;
     private ImageView iv_videoback;
     private TextView tv_catagory;
-    private String mUrl = "rtmp://live.hkstv.hk.lxdns.com/live/hks";
+    private String mAddress = null;
     private TXLivePlayConfig mPlayConfig;
-
     private int mPlayType;
 
+
+    public static void startActivity(Context context, String address) {
+        Intent intent = new Intent(context, LiveDetailActivity.class);
+        intent.putExtra("address", address);
+        context.startActivity(intent);
+    }
+
+    @Override
+    protected void initFeature() {
+        super.initFeature();
+        mAddress = getIntent().getStringExtra("address");
+        if (mAddress == null) {
+            mAddress = "rtmp://live.hkstv.hk.lxdns.com/live/hks";
+        } else {
+            if (!checkPlayUrl(mAddress)) {
+                finish();
+            }
+        }
+    }
 
     @Override
     public int getContentView() {
@@ -143,8 +162,8 @@ public class LiveDetailActivity extends BaseActivity implements View.OnClickList
             }
         });
 
-        if (checkPlayUrl(mUrl)) {
-            mTxLivePlayer.startPlay(mUrl, mPlayType);
+        if (checkPlayUrl(mAddress)) {
+            mTxLivePlayer.startPlay(mAddress, mPlayType);
 
             iv_fullscreen.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -155,11 +174,8 @@ public class LiveDetailActivity extends BaseActivity implements View.OnClickList
                 }
             });
         }
-        //一定要设置设置滚动模式
-        //tabLayout.setTabMode(TabLayout.MODE_SCROLLABLE);
 
     }
-
 
     private void initViewPager() {
         mFragmentList.add(new ChatFragment());
@@ -317,7 +333,9 @@ public class LiveDetailActivity extends BaseActivity implements View.OnClickList
         }
 
         if (playUrl.startsWith("rtmp://")) {
-            mPlayType = TXLivePlayer.PLAY_TYPE_LIVE_RTMP;
+            if (playUrl.contains("&txSecret") && playUrl.contains("&txTime")) {
+                mPlayType = TXLivePlayer.PLAY_TYPE_LIVE_RTMP_ACC;
+            } else mPlayType = TXLivePlayer.PLAY_TYPE_LIVE_RTMP;
         } else if ((playUrl.startsWith("http://") || playUrl.startsWith("https://")) && playUrl.contains(".flv")) {
             mPlayType = TXLivePlayer.PLAY_TYPE_LIVE_FLV;
         } else {

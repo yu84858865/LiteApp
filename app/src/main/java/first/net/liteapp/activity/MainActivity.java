@@ -1,9 +1,14 @@
 package first.net.liteapp.activity;
 
+import android.content.Intent;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
+import android.text.TextUtils;
 import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import first.net.liteapp.R;
 import first.net.liteapp.activity.BaseActivity;
@@ -15,9 +20,12 @@ import first.net.liteapp.view.TitleView;
  */
 
 public class MainActivity extends BaseActivity {
+    private Button btn_start;
     private TitleView cus_title;
     private TabLayout tlyt_tab;
     private ViewPager vp_container;
+    private EditText et_roomid;
+    private Button btn_watch;
     private TabPageAdapter mAdapter;
     private String[] mTabNames = {"金融", "医疗", "留学", "养生", "大师"};
 
@@ -28,13 +36,35 @@ public class MainActivity extends BaseActivity {
 
     @Override
     protected void initView() {
+        btn_start = findViewById(R.id.btn_start);
+        btn_watch = findViewById(R.id.btn_watch);
+        et_roomid = findViewById(R.id.et_roomid);
         cus_title = findViewById(R.id.cus_title);
         tlyt_tab = findViewById(R.id.tlyt_tab);
         vp_container = findViewById(R.id.vp_container);
+
     }
 
     @Override
     protected void setListener() {
+        btn_start.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                MainActivity.this.startActivity(new Intent(MainActivity.this, LivePublishActivity.class));
+            }
+        });
+
+        btn_watch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String address = et_roomid.getText().toString().trim();
+                if (TextUtils.isEmpty(address)){
+                    Toast.makeText(MainActivity.this,"地址不能为空！",Toast.LENGTH_SHORT).show();
+                }else {
+                    LiveDetailActivity.startActivity(MainActivity.this,address);
+                }
+            }
+        });
     }
 
     @Override

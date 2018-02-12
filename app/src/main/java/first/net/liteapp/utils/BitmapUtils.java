@@ -22,7 +22,6 @@ import first.net.liteapp.LiteApplication;
 public class BitmapUtils {
 
     private static Bitmap bitmap;
-
     public static Bitmap urlConvertToBitmap(String url){
         Glide.with(LiteApplication.getContext()).load(url).asBitmap().into(new SimpleTarget<Bitmap>() {
             @Override

@@ -24,6 +24,7 @@ public class BitmapUtils {
     private static Bitmap bitmap;
 
     public static Bitmap urlConvertToBitmap(String url){
+
         Glide.with(LiteApplication.getContext()).load(url).asBitmap().into(new SimpleTarget<Bitmap>() {
             @Override
             public void onResourceReady(Bitmap resource, GlideAnimation<? super Bitmap> glideAnimation) {

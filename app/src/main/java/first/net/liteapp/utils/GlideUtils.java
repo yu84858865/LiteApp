@@ -23,7 +23,7 @@ public class GlideUtils {
     public static void displayNormalImgByOther(Context context, String imgUrl, ImageView iv){
         DrawableRequestBuilder<Integer> thumbnailRequest = Glide
                 .with(context)
-                .load(R.mipmap.ic_launcher);
+                .load(R.mipmap.home_page_recipe_banner);
         Glide.with(context)
                 .load(imgUrl)
                 .thumbnail(thumbnailRequest)
@@ -36,7 +36,7 @@ public class GlideUtils {
     public static void displayNormalImgByOneself(Context context, String imgUrl, ImageView iv){
         DrawableRequestBuilder<Integer> thumbnailRequest = Glide
                 .with(context)
-                .load(R.mipmap.ic_launcher);
+                .load(R.mipmap.home_page_recipe_banner);
         Glide.with(context)
                 .load(imgUrl)
                 .thumbnail(0.1f)

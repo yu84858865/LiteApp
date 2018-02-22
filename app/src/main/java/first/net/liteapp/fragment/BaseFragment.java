@@ -13,10 +13,18 @@ import android.support.v4.app.FragmentActivity;
 
 public class BaseFragment extends Fragment {
     protected Context mContext;
+    protected boolean isAttach;//定义一个flag，用于判定当前fragment是否绑定了父Activity
 
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
         mContext = context;
+        isAttach = true;
+    }
+
+    @Override
+    public void onDetach() {
+        super.onDetach();
+        isAttach = false;
     }
 }

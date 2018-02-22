@@ -11,7 +11,7 @@ import android.os.Looper;
  */
 
 public class LiteApplication extends Application {
-    private static Context mContext;
+    public static Context mContext;
     private static Handler mMainHandler;
 
     @Override

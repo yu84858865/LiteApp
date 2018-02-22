@@ -5,6 +5,8 @@ import android.content.Context;
 import android.os.Handler;
 import android.os.Looper;
 
+import com.twitter.sdk.android.core.Twitter;
+
 
 /**
  * Created by yuqiubo on 2018/2/9.
@@ -19,6 +21,7 @@ public class LiteApplication extends Application {
         super.onCreate();
         mContext = getApplicationContext();
         mMainHandler = new Handler(Looper.getMainLooper());
+        Twitter.initialize(this);
     }
 
     public static Context getContext() {

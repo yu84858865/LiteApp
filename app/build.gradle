@@ -46,4 +46,7 @@ dependencies {
     compile 'com.squareup.okhttp3:logging-interceptor:3.8.1'
     compile 'jp.wasabeef:glide-transformations:2.0.0'
     implementation files('libs/open_sdk_r4547.jar')
+    compile 'com.facebook.android:facebook-android-sdk:[4,5)'
+    compile 'com.twitter.sdk.android:twitter:3.0.0'
+    compile 'com.twitter.sdk.android:tweet-composer:3.0.0'
 }

@@ -4,30 +4,10 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <RelativeLayout
+    <first.net.liteapp.view.TitleView
+        android:id="@+id/cus_title"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/py140"
-        android:orientation="vertical">
-
-        <TextView
-            android:id="@+id/tv_name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:text="@string/header_home"
-            android:textColor="@color/color_3a3a3a"
-            android:textSize="21sp" />
-
-        <ImageView
-            android:id="@+id/iv_search"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:layout_centerVertical="true"
-            android:layout_marginRight="@dimen/px30"
-            android:src="@mipmap/search" />
-
-    </RelativeLayout>
+        android:layout_height="wrap_content" />
 
     <FrameLayout
         android:id="@+id/fl_cycleViewPager"

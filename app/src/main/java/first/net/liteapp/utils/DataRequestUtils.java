@@ -24,22 +24,25 @@ import okhttp3.logging.HttpLoggingInterceptor;
 
 public class DataRequestUtils {
 
-    private static final String TAG="http_";
+    private static final String TAG="DataRequestUtils";
     private static Handler mHandler = new Handler();
-    public static OkHttpClient mOkHttpClient;
+    private static OkHttpClient mOkHttpClient;
 
-    public static void getInstance(){
-        mOkHttpClient= new OkHttpClient.Builder().addInterceptor(new HttpLoggingInterceptor(new HttpLoggingInterceptor.Logger(){
-            @Override
-            public void log(String message) {
-                Log.i(TAG,"message = "+message);
-            }
-        }).setLevel(HttpLoggingInterceptor.Level.BODY))
-                .build();
+    public static synchronized OkHttpClient getInstance(){
+        if (mOkHttpClient ==null){
+            mOkHttpClient= new OkHttpClient.Builder().addInterceptor(new HttpLoggingInterceptor(new HttpLoggingInterceptor.Logger(){
+                @Override
+                public void log(String message) {
+                    Log.i(TAG,"message = "+message);
+                }
+            }).setLevel(HttpLoggingInterceptor.Level.BODY))
+                    .build();
+        }
+        return mOkHttpClient;
     }
 
 
-    public static void getAsynHttp(final Context context, String reqUrl, final DataRequestResult dataRequestResult) {
+    public static void get(final Context context, String reqUrl, final DataRequestResult dataRequestResult) {
 //        final OkHttpClient mOkHttpClient=new OkHttpClient();
         Request.Builder requestBuilder = new Request.Builder().url(reqUrl).get()
                 .addHeader("Accept","application/json")
@@ -76,7 +79,7 @@ public class DataRequestUtils {
         });
     }
 
-    public static void postAsynHttp(final Context context, String reqUrl, String params, final DataRequestResult dataRequestResult) {
+    public static void post(final Context context, String reqUrl, String params, final DataRequestResult dataRequestResult) {
 //        OkHttpClient mOkHttpClient=new OkHttpClient();
         MediaType type = MediaType.parse("application/json; charset=utf-8");
         RequestBody formBody = RequestBody.create(type,params);

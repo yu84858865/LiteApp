@@ -3,16 +3,16 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    android:paddingTop="10dp">
+    android:paddingTop="@dimen/px30">
 
     <RelativeLayout
         android:layout_width="wrap_content"
-        android:layout_height="100dp">
+        android:layout_height="wrap_content">
 
         <ImageView
             android:id="@+id/iv_bg"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="@dimen/px201" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -21,24 +21,26 @@
             android:layout_alignParentRight="true"
             android:background="#55eeeeee"
             android:textColor="#f2f7f8"
-            android:padding="2dp"/>
+            android:padding="@dimen/px6"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
             android:id="@+id/tv_name"
-            android:padding="2dp"
-            android:textColor="#f2f7f8"/>
+            android:drawablePadding="@dimen/px18"
+            android:drawableLeft="@mipmap/college_person"
+            android:textColor="#f2f7f8"
+            android:padding="@dimen/px6"/>
 
     </RelativeLayout>
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="3dp"
+        android:padding="@dimen/px9"
         android:id="@+id/tv_info"
-        android:textColor="#3a3a3a"
+        android:textColor="@color/color_3a3a3a"
         android:maxLines="1"
         android:ellipsize="end"
         android:textSize="17sp"/>

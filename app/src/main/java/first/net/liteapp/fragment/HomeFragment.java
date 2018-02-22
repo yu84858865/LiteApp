@@ -28,6 +28,7 @@ import first.net.liteapp.utils.DataRequestUtils;
 import first.net.liteapp.utils.GlideUtils;
 import first.net.liteapp.utils.ToastUtil;
 import first.net.liteapp.view.CycleViewPager;
+import first.net.liteapp.view.TitleView;
 
 
 /**
@@ -36,6 +37,7 @@ import first.net.liteapp.view.CycleViewPager;
 
 public class HomeFragment extends BaseFragment {
 
+    private TitleView cus_title;
     private CycleViewPager cycleViewPager;
     private List<View> views;
     private List<String> imgList = new ArrayList<>();
@@ -46,6 +48,9 @@ public class HomeFragment extends BaseFragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_home,container,false);
         fl_cycleViewPager = (FrameLayout)view.findViewById(R.id.fl_cycleViewPager);
+        cus_title = (TitleView) view.findViewById(R.id.cus_title);
+        cus_title.findViewById(R.id.iv_search).setVisibility(View.VISIBLE);
+        cus_title.setTitle(getString(R.string.header_home));
         imgList.add("http://testimg.ibaking.com.cn/ad/699a8b70c98741a8b00b59d92f03f4ed.jpg");
         imgList.add("http://testimg.ibaking.com.cn/ad/5c2e9fac47734420bad2f423ca63a66b.jpg");
         imgList.add("http://testimg.ibaking.com.cn/ad/4d1c5d9fea1b49c5bddd98add0d0884a.jpg");
@@ -90,7 +95,7 @@ public class HomeFragment extends BaseFragment {
         Map<String,String> map = new WeakHashMap<>();
         map.put("page","1");
         map.put("pageSize","3");
-        DataRequestUtils.postAsynHttp(mContext, requestUrl, new Gson().toJson(map), new DataRequestResult() {
+        DataRequestUtils.post(mContext, requestUrl, new Gson().toJson(map), new DataRequestResult() {
             @Override
             public void onSuccess(String result) {
 

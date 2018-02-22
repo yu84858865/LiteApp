@@ -18,7 +18,7 @@ import first.net.liteapp.R;
  */
 @SuppressLint("InflateParams")
 public class ToastUtil {
-    public static void toastShort(final String msg){
+    public static void show(final String msg){
         if("main".equals(Thread.currentThread().getName())){
             showToast(msg,LiteApplication.getContext());
         }else{
@@ -34,7 +34,7 @@ public class ToastUtil {
 
     static Toast toast;
 
-    public static void showToast(String text, Context cxt) {
+    private static void showToast(String text, Context cxt) {
         LayoutInflater mInflater = LayoutInflater.from(cxt);
         View v = mInflater.inflate(R.layout.district_include_toast, null);
         TextView tv = (TextView) v.findViewById(R.id.toast_tv_content);

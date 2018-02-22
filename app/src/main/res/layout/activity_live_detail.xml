@@ -40,7 +40,7 @@
             android:paddingBottom="2dp"
             android:layout_alignTop="@+id/video_tx"
             android:layout_alignParentLeft="true"
-            android:src="@mipmap/back_title"
+            android:src="@mipmap/back"
             android:id="@+id/iv_videoback"
             android:visibility="gone"/>
 

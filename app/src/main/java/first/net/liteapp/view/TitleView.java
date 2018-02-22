@@ -22,6 +22,7 @@ public class TitleView extends RelativeLayout {
     private Context mContext;
     private ImageView iv_back;
     private TextView tv_title;
+    private ImageView iv_search;
     public TitleView(Context context) {
         this(context,null);
     }
@@ -40,6 +41,7 @@ public class TitleView extends RelativeLayout {
         View view = View.inflate(mContext, R.layout.item_titleview,this);
         iv_back = view.findViewById(R.id.iv_back);
         tv_title = view.findViewById(R.id.tv_title);
+        iv_search = findViewById(R.id.iv_search);
         iv_back.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {

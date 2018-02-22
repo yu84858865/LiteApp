@@ -1,17 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="55dp"
+    android:layout_height="@dimen/py120"
     android:id="@+id/rlyt_root"
-    android:background="#f2f7f8">
+    android:background="@color/color_ffffff">
 
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="8dp"
-        android:paddingLeft="2dp"
-        android:paddingRight="2dp"
-        android:src="@mipmap/back_title"
+        android:layout_marginLeft="@dimen/px25"
+        android:paddingLeft="@dimen/px5"
+        android:paddingRight="@dimen/px5"
+        android:src="@mipmap/back"
+        android:visibility="gone"
         android:layout_centerVertical="true"
         android:id="@+id/iv_back"/>
 
@@ -22,6 +23,18 @@
         android:gravity="center"
         android:layout_centerInParent="true"
         android:textColor="#3a3a3a"
-        android:textSize="21dp" />
+        android:textSize="21sp" />
+
+    <ImageView
+        android:id="@+id/iv_search"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="@dimen/px25"
+        android:paddingLeft="@dimen/px5"
+        android:paddingRight="@dimen/px5"
+        android:visibility="gone"
+        android:src="@mipmap/search" />
 
 </RelativeLayout>

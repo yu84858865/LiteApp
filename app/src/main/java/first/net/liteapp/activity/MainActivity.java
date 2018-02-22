@@ -1,6 +1,5 @@
 package first.net.liteapp.activity;
 
-import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
@@ -13,7 +12,7 @@ import java.util.List;
 
 import first.net.liteapp.R;
 import first.net.liteapp.fragment.BaseFragment;
-import first.net.liteapp.fragment.CollogeFragment;
+import first.net.liteapp.fragment.CollegeFragment;
 import first.net.liteapp.fragment.HomeFragment;
 
 /**
@@ -47,7 +46,7 @@ public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedCh
     protected void setData() {
         mFragmentList = new ArrayList<>();
         mFragmentList.add(new HomeFragment());
-        mFragmentList.add(new CollogeFragment());
+        mFragmentList.add(new CollegeFragment());
         mFragmentManager = getSupportFragmentManager();
         mFragmentManager.beginTransaction().replace(R.id.flyt_content, new HomeFragment(), HomeFragment.class.getSimpleName()).commit();
     }

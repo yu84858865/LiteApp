@@ -1,32 +1,196 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/color_ffffff"
+    android:orientation="vertical">
 
-    <RelativeLayout
+    <first.net.liteapp.view.TitleView
+        android:id="@+id/cus_title"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/py140"
-        android:orientation="vertical">
+        android:layout_height="wrap_content" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/py180"
+        android:background="@color/color_f1f1f1">
 
         <TextView
-            android:id="@+id/tv_name"
-            android:layout_width="wrap_content"
+            android:id="@+id/tv_new"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:text="@string/header_college"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="1"
+            android:drawablePadding="@dimen/py15"
+            android:drawableTop="@mipmap/college_new"
+            android:gravity="center_horizontal"
+            android:text="@string/college_new"
             android:textColor="@color/color_3a3a3a"
-            android:textSize="21sp" />
+            android:textSize="18sp" />
 
-        <ImageView
-            android:id="@+id/iv_search"
-            android:layout_width="wrap_content"
+        <TextView
+            android:id="@+id/tv_lite"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:layout_centerVertical="true"
-            android:layout_marginRight="@dimen/px30"
-            android:src="@mipmap/search" />
+            android:layout_gravity="center_vertical"
+            android:layout_weight="1"
+            android:drawablePadding="@dimen/py15"
+            android:drawableTop="@mipmap/college_lite"
+            android:gravity="center_horizontal"
+            android:text="@string/college_lite"
+            android:textColor="@color/color_3a3a3a"
+            android:textSize="18sp" />
 
-    </RelativeLayout>
+        <TextView
+            android:id="@+id/tv_data"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="1"
+            android:drawablePadding="@dimen/py15"
+            android:drawableTop="@mipmap/college_data"
+            android:gravity="center_horizontal"
+            android:text="@string/college_data"
+            android:textColor="@color/color_3a3a3a"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/tv_law"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="1"
+            android:drawablePadding="@dimen/py15"
+            android:drawableTop="@mipmap/college_law"
+            android:gravity="center_horizontal"
+            android:text="@string/college_law"
+            android:textColor="@color/color_3a3a3a"
+            android:textSize="18sp" />
+
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/px1"
+                android:background="@color/color_d3d3d3" />
+            
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/py120"
+                android:gravity="center_vertical">
+                
+                <View
+                    android:layout_width="@dimen/px10"
+                    android:layout_height="@dimen/px30"
+                    android:background="@color/color_d34041"
+                    android:layout_marginLeft="@dimen/px40"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:layout_marginLeft="@dimen/px15"
+                    android:text="@string/college_onlite"
+                    android:textColor="@color/color_3a3a3a"
+                    android:textSize="24sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/px1"
+                android:background="@color/color_d3d3d3" />
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/rv_onlite"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/px1"
+                android:background="@color/color_d3d3d3" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/py120"
+                android:gravity="center_vertical">
+
+                <View
+                    android:layout_width="@dimen/px10"
+                    android:layout_height="@dimen/px30"
+                    android:background="@color/color_d34041"
+                    android:layout_marginLeft="@dimen/px40"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:layout_marginLeft="@dimen/px15"
+                    android:text="@string/college_prelite"
+                    android:textColor="@color/color_3a3a3a"
+                    android:textSize="24sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/px1"
+                android:background="@color/color_d3d3d3" />
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/rv_prelite"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/px1"
+                android:background="@color/color_d3d3d3" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/py120"
+                android:gravity="center_vertical">
+
+                <View
+                    android:layout_width="@dimen/px10"
+                    android:layout_height="@dimen/px30"
+                    android:background="@color/color_d34041"
+                    android:layout_marginLeft="@dimen/px40"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:layout_marginLeft="@dimen/px15"
+                    android:text="@string/college_beflite"
+                    android:textColor="@color/color_3a3a3a"
+                    android:textSize="24sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/px1"
+                android:background="@color/color_d3d3d3" />
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/rv_beflite"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+    </ScrollView>
 
 
 </LinearLayout>

@@ -5,4 +5,11 @@
     <string name="header_home">卓越尊尚会</string>
     <string name="bottom_college">卓越学院</string>
     <string name="header_college">卓越学院</string>
+    <string name="college_new">新人学院</string>
+    <string name="college_lite">直播课堂</string>
+    <string name="college_data">资料库</string>
+    <string name="college_law">法律专区</string>
+    <string name="college_onlite">正在直播</string>
+    <string name="college_prelite">直播预告</string>
+    <string name="college_beflite">往期推荐</string>
 </resources>

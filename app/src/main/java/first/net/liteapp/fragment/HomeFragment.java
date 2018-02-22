@@ -17,8 +17,7 @@ public class HomeFragment extends BaseFragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        TextView textView=new TextView(mContext);
-        textView.setText(mContext.getString(R.string.bottom_home));
-        return textView;
+        View view = inflater.inflate(R.layout.fragment_home,container,false);
+        return view;
     }
 }

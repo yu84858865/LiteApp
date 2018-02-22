@@ -17,8 +17,7 @@ public class CollogeFragment extends BaseFragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        TextView textView=new TextView(mContext);
-        textView.setText(getString(R.string.bottom_college));
-        return textView;
+        View view = inflater.inflate(R.layout.fragment_college,container,false);
+        return view;
     }
 }

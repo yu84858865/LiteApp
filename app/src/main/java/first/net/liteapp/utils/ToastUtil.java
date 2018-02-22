@@ -18,6 +18,20 @@ import first.net.liteapp.R;
  */
 @SuppressLint("InflateParams")
 public class ToastUtil {
+    public static void toastShort(final String msg){
+        if("main".equals(Thread.currentThread().getName())){
+            showToast(msg,LiteApplication.getContext());
+        }else{
+            // 子线程
+            LiteApplication.getMainHandler().post(new Runnable() {
+                @Override
+                public void run() {
+                    showToast(msg,LiteApplication.getContext());
+                }
+            });
+        }
+    }
+
     static Toast toast;
 
     public static void showToast(String text, Context cxt) {

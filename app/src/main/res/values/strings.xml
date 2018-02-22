@@ -2,5 +2,7 @@
     <string name="app_name">LiteApp</string>
 
     <string name="bottom_home">首页</string>
+    <string name="header_home">卓越尊尚会</string>
     <string name="bottom_college">卓越学院</string>
+    <string name="header_college">卓越学院</string>
 </resources>

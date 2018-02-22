@@ -16,6 +16,7 @@ import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.RequestBody;
 import okhttp3.Response;
+import okhttp3.logging.HttpLoggingInterceptor;
 
 /**
  * Created by 10960 on 2018/2/22.
@@ -25,15 +26,25 @@ public class DataRequestUtils {
 
     private static final String TAG="http_";
     private static Handler mHandler = new Handler();
+    public static OkHttpClient mOkHttpClient;
+
+    public static void getInstance(){
+        mOkHttpClient= new OkHttpClient.Builder().addInterceptor(new HttpLoggingInterceptor(new HttpLoggingInterceptor.Logger(){
+            @Override
+            public void log(String message) {
+                Log.i(TAG,"message = "+message);
+            }
+        }).setLevel(HttpLoggingInterceptor.Level.BODY))
+                .build();
+    }
+
 
     public static void getAsynHttp(final Context context, String reqUrl, final DataRequestResult dataRequestResult) {
-        final OkHttpClient mOkHttpClient=new OkHttpClient();
+//        final OkHttpClient mOkHttpClient=new OkHttpClient();
         Request.Builder requestBuilder = new Request.Builder().url(reqUrl).get()
                 .addHeader("Accept","application/json")
                 .addHeader("Content-Type","application/json")
                 .addHeader("Connection", "close");
-//        //可以省略，默认是GET请求
-//        requestBuilder.method("GET",null);
         Request request = requestBuilder.build();
         Call mcall= mOkHttpClient.newCall(request);
         mcall.enqueue(new Callback() {
@@ -66,10 +77,7 @@ public class DataRequestUtils {
     }
 
     public static void postAsynHttp(final Context context, String reqUrl, String params, final DataRequestResult dataRequestResult) {
-        OkHttpClient mOkHttpClient=new OkHttpClient();
-//        RequestBody formBody = new FormBody.Builder()
-//                .add("size", "10")
-//                .build();
+//        OkHttpClient mOkHttpClient=new OkHttpClient();
         MediaType type = MediaType.parse("application/json; charset=utf-8");
         RequestBody formBody = RequestBody.create(type,params);
         Request request = new Request.Builder()

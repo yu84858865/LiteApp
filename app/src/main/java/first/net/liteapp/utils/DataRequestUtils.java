@@ -11,6 +11,7 @@ import first.net.liteapp.constant.DataRequestResult;
 import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.FormBody;
+import okhttp3.MediaType;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.RequestBody;
@@ -27,7 +28,10 @@ public class DataRequestUtils {
 
     public static void getAsynHttp(final Context context, String reqUrl, final DataRequestResult dataRequestResult) {
         final OkHttpClient mOkHttpClient=new OkHttpClient();
-        Request.Builder requestBuilder = new Request.Builder().url(reqUrl).get();
+        Request.Builder requestBuilder = new Request.Builder().url(reqUrl).get()
+                .addHeader("Accept","application/json")
+                .addHeader("Content-Type","application/json")
+                .addHeader("Connection", "close");
 //        //可以省略，默认是GET请求
 //        requestBuilder.method("GET",null);
         Request request = requestBuilder.build();
@@ -57,24 +61,23 @@ public class DataRequestUtils {
                     });
                 }
 
-//                runOnUiThread(new Runnable() {
-//                    @Override
-//                    public void run() {
-//                        Toast.makeText(getApplicationContext(), "请求成功", Toast.LENGTH_SHORT).show();
-//                    }
-//                });
             }
         });
     }
 
-    private static void postAsynHttp(final Context context, String reqUrl, RequestBody formBody, final DataRequestResult dataRequestResult) {
+    public static void postAsynHttp(final Context context, String reqUrl, String params, final DataRequestResult dataRequestResult) {
         OkHttpClient mOkHttpClient=new OkHttpClient();
 //        RequestBody formBody = new FormBody.Builder()
 //                .add("size", "10")
 //                .build();
+        MediaType type = MediaType.parse("application/json; charset=utf-8");
+        RequestBody formBody = RequestBody.create(type,params);
         Request request = new Request.Builder()
                 .url(reqUrl)
                 .post(formBody)
+                .addHeader("Accept","application/json")
+                .addHeader("Content-Type","application/json")
+                .addHeader("Connection", "close")
                 .build();
         Call call = mOkHttpClient.newCall(request);
         call.enqueue(new Callback() {
@@ -93,15 +96,7 @@ public class DataRequestUtils {
                         dataRequestResult.onSuccess(result);
                     }
                 });
-
-//                runOnUiThread(new Runnable() {
-//                    @Override
-//                    public void run() {
-//                        Toast.makeText(getApplicationContext(), "请求成功", Toast.LENGTH_SHORT).show();
-//                    }
-//                });
             }
-
         });
     }
 

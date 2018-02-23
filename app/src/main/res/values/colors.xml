@@ -5,10 +5,10 @@
     <color name="colorAccent">#FF4081</color>
 
 
-    <color name="color_333333">#333333</color>
     <color name="color_ffffff">#ffffff</color>
     <color name="color_f1f1f1">#f1f1f1</color>
     <color name="real_transparent">#00000000</color>
+    <color name="color_333333">#333333</color>
     <color name="color_b3db5d">#b3db5d</color>
     <color name="color_999999">#999999</color>
     <color name="color_f58585">#f58585</color>

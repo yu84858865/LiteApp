@@ -16,6 +16,7 @@ import java.util.List;
 import java.util.Random;
 
 import first.net.liteapp.R;
+import first.net.liteapp.activity.DataCollegeActivity;
 import first.net.liteapp.activity.LiteCollegeActivity;
 import first.net.liteapp.activity.NewCollegeActivity;
 import first.net.liteapp.adapter.TabRvAdapter;
@@ -89,6 +90,7 @@ public class CollegeFragment extends BaseFragment implements View.OnClickListene
             }
         });
         rv_onlite.setLayoutManager(manager);
+        rv_onlite.setNestedScrollingEnabled(false);
         rv_onlite.setAdapter(mOnliteAdapter= new TabRvAdapter(mContext));
 
         List<TabLiveBean> list = new ArrayList<>();
@@ -119,6 +121,7 @@ public class CollegeFragment extends BaseFragment implements View.OnClickListene
             }
         });
         rv_prelite.setLayoutManager(manager);
+        rv_prelite.setNestedScrollingEnabled(false);
         rv_prelite.setAdapter(mPreliteAdapter= new TabRvAdapter(mContext));
 
         List<TabLiveBean> list = new ArrayList<>();
@@ -149,6 +152,7 @@ public class CollegeFragment extends BaseFragment implements View.OnClickListene
             }
         });
         rv_beflite.setLayoutManager(manager);
+        rv_beflite.setNestedScrollingEnabled(false);
         rv_beflite.setAdapter(mBefliteAdapter= new TabRvAdapter(mContext));
 
         List<TabLiveBean> list = new ArrayList<>();
@@ -173,6 +177,7 @@ public class CollegeFragment extends BaseFragment implements View.OnClickListene
                 startActivity(new Intent(mContext, LiteCollegeActivity.class));
                 break;
             case R.id.tv_data:
+                startActivity(new Intent(mContext, DataCollegeActivity.class));
                 break;
             case R.id.tv_law:
                 break;

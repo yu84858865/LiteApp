@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/py202"
+    android:gravity="center_vertical"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/py201"
+        android:gravity="center_vertical">
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/px30"
+            android:layout_weight="1">
+
+            <TextView
+                android:id="@+id/tv_info"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/py10"
+                android:maxLines="1"
+                android:ellipsize="end"
+                android:textColor="@color/color_333333"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/tv_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_info"
+                android:drawableLeft="@mipmap/college_time"
+                android:drawablePadding="@dimen/px20"
+                android:textColor="@color/color_999999"
+                android:layout_marginRight="@dimen/px80"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/tv_size"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_info"
+                android:layout_toRightOf="@id/tv_time"
+                android:drawableLeft="@mipmap/college_file"
+                android:drawablePadding="@dimen/px10"
+                android:textColor="@color/color_999999"
+                android:textSize="12sp" />
+
+        </RelativeLayout>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/px30"
+            android:layout_marginRight="@dimen/px30"
+            android:background="@mipmap/college_data_play"
+            android:id="@+id/iv_control"
+            android:padding="@dimen/px20" />
+
+    </LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/py1"
+        android:background="@color/color_999999"/>
+</LinearLayout>

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="@dimen/py321"
+    android:paddingLeft="@dimen/px30"
+    android:paddingRight="@dimen/px30"
+    android:paddingTop="@dimen/px30">
+    
+    <ImageView
+        android:layout_width="@dimen/px381"
+        android:layout_height="match_parent"
+        android:id="@+id/iv_img"
+        android:background="@mipmap/tab_bg"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:maxLines="2"
+        android:id="@+id/tv_info"
+        android:layout_toRightOf="@id/iv_img"
+        android:layout_marginLeft="@dimen/px30"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/iv_img"
+        android:layout_marginLeft="@dimen/px30"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="@dimen/py30"
+        android:gravity="center_vertical">
+
+        <TextView
+            android:id="@+id/tv_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableLeft="@mipmap/college_time"
+            android:drawablePadding="@dimen/px20"
+            android:textColor="@color/color_999999"
+            android:layout_marginRight="@dimen/px80"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/tv_count"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableLeft="@mipmap/college_person"
+            android:drawablePadding="@dimen/px10"
+            android:textColor="@color/color_999999"
+            android:textSize="12sp" />
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/py1"
+        android:background="@color/color_999999"
+        android:layout_below="@id/iv_img"
+        android:paddingTop="@dimen/px30"/>
+
+</RelativeLayout>

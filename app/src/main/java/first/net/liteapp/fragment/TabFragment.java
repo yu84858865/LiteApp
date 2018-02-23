@@ -25,7 +25,7 @@ import first.net.liteapp.bean.TabLiveBean;
  * Created by yuqiubo on 2018/2/2.
  */
 
-public class TabFragment extends Fragment {
+public class TabFragment extends BaseFragment {
     private Context mContext;
     private RecyclerView rv_content;
     private TabRvAdapter mAdapter;

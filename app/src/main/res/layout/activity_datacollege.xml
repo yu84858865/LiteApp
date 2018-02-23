@@ -10,9 +10,19 @@
         app:title="@string/college_data"
         app:isShowBack="true"/>
 
-    <android.support.v7.widget.RecyclerView
+    <android.support.design.widget.TabLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/py120"
+        android:id="@+id/tlyt_data"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/py1"
+        android:background="@color/color_999999"/>
+
+    <android.support.v4.view.ViewPager
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/rv_data"/>
+        android:id="@+id/vp_container"/>
 
 </LinearLayout>

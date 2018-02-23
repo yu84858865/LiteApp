@@ -6,14 +6,18 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.view.ViewGroup;
 
+import first.net.liteapp.fragment.BaseFragment;
+import first.net.liteapp.fragment.DataCollegeFragment;
 import first.net.liteapp.fragment.TabFragment;
 
 public class TabPageAdapter extends FragmentPagerAdapter {
-    private int mCount ;
+    private int mCount;
+    public Class mClass;
 
-    public TabPageAdapter(FragmentManager fm, int count) {
+    public TabPageAdapter(FragmentManager fm, int count, Class c) {
         super(fm);
         mCount = count;
+        mClass = c;
     }
 
     @Override
@@ -25,9 +29,14 @@ public class TabPageAdapter extends FragmentPagerAdapter {
     public Fragment getItem(int position) {
         Bundle bundle = new Bundle();
         bundle.putInt("position", position);
-        TabFragment tabFragment = new TabFragment();
-        tabFragment.setArguments(bundle);
-        return tabFragment;
+        BaseFragment fragment = null;
+        if (mClass.getSimpleName().equals(TabFragment.class.getSimpleName())){
+            fragment = new TabFragment();
+        }else if (mClass.getSimpleName().equals(DataCollegeFragment.class.getSimpleName())){
+            fragment = new DataCollegeFragment();
+        }
+        fragment.setArguments(bundle);
+        return fragment;
     }
 
     @Override

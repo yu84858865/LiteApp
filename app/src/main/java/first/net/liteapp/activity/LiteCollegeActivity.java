@@ -7,6 +7,8 @@ import android.widget.TextView;
 
 import first.net.liteapp.R;
 import first.net.liteapp.adapter.TabPageAdapter;
+import first.net.liteapp.fragment.DataCollegeFragment;
+import first.net.liteapp.fragment.TabFragment;
 
 /**
  * Created by yuqiubo on 2018/2/2.
@@ -36,7 +38,7 @@ public class LiteCollegeActivity extends BaseActivity {
 
     @Override
     protected void setData() {
-        mAdapter = new TabPageAdapter(getSupportFragmentManager(), mTabNames.length);
+        mAdapter = new TabPageAdapter(getSupportFragmentManager(), mTabNames.length, TabFragment.class);
         tlyt_tab.setTabMode(TabLayout.MODE_FIXED);
         vp_container.setAdapter(mAdapter);
         tlyt_tab.setupWithViewPager(vp_container, false);//第二个参数autoRefresh：是否自动刷新(切换的时候是否刷PagerAdapter选中的Fragment)

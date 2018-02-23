@@ -3,6 +3,7 @@ package first.net.liteapp.view;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.TypedArray;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.View;
@@ -23,6 +24,9 @@ public class TitleView extends RelativeLayout {
     private ImageView iv_back;
     private TextView tv_title;
     private ImageView iv_search;
+    private String mTitle;
+    private boolean mIsShowback;
+    private boolean mIsShowSearch;
     public TitleView(Context context) {
         this(context,null);
     }
@@ -33,6 +37,11 @@ public class TitleView extends RelativeLayout {
 
     public TitleView(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
+        TypedArray ta = getContext().obtainStyledAttributes(attrs, R.styleable.TitleView);
+        mIsShowback = ta.getBoolean(R.styleable.TitleView_isShowBack,false);
+        mIsShowSearch = ta.getBoolean(R.styleable.TitleView_isShowSearch,false);
+        mTitle = ta.getString(R.styleable.TitleView_title);
+        ta.recycle();
         mContext = context;
         init();
     }
@@ -48,15 +57,13 @@ public class TitleView extends RelativeLayout {
                 ((Activity) mContext).finish();
             }
         });
+
+        tv_title.setText(mTitle);
+        iv_back.setVisibility(mIsShowback?VISIBLE:GONE);
+        iv_search.setVisibility(mIsShowSearch?VISIBLE:GONE);
     }
 
     public void setBackground(int color){
         findViewById(R.id.rlyt_root).setBackgroundColor(color);
     }
-
-    public TitleView setTitle(String title){
-        tv_title.setText(title);
-        return this;
-    }
-
 }

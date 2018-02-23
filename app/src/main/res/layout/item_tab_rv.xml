@@ -12,15 +12,17 @@
         <ImageView
             android:id="@+id/iv_bg"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/px201" />
+            android:layout_height="@dimen/px281" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/tv_count"
             android:layout_alignParentRight="true"
-            android:background="#55eeeeee"
+            android:background="#77666666"
             android:textColor="#f2f7f8"
+            android:drawablePadding="@dimen/px18"
+            android:drawableLeft="@mipmap/college_watch"
             android:padding="@dimen/px6"/>
 
         <TextView
@@ -38,11 +40,13 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="@dimen/px9"
+        android:paddingLeft="@dimen/px9"
+        android:paddingTop="@dimen/px9"
+        android:paddingBottom="@dimen/px9"
         android:id="@+id/tv_info"
-        android:textColor="@color/color_3a3a3a"
+        android:textColor="@color/color_333333"
         android:maxLines="1"
         android:ellipsize="end"
-        android:textSize="17sp"/>
+        android:textSize="16sp"/>
 
 </LinearLayout>

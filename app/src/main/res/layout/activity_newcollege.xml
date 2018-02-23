@@ -1,24 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
+    android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:background="@color/color_ffffff"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <first.net.liteapp.view.TitleView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:title="@string/header_home"
-        app:isShowSearch="true"/>
+        app:isShowBack="true"
+        app:title="@string/college_new"/>
 
-    <FrameLayout
-        android:id="@+id/fl_cycleViewPager"
+    <android.support.v7.widget.RecyclerView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-
-
-
-
+        android:layout_height="match_parent"
+        android:id="@+id/rv_new"/>
 
 </LinearLayout>

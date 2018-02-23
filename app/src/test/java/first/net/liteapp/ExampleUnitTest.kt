@@ -1,5 +1,8 @@
 package first.net.liteapp
 
+import first.net.liteapp.constant.DataRequestResult
+import first.net.liteapp.utils.DataRequestUtils
+import first.net.liteapp.utils.DataRequestUtils.get
 import org.junit.Test
 
 import org.junit.Assert.*
@@ -14,4 +17,5 @@ class ExampleUnitTest {
     fun addition_isCorrect() {
         assertEquals(4, 2 + 2)
     }
+
 }

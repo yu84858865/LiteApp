@@ -41,15 +41,19 @@ public class TabFragment extends Fragment {
     }
 
     private void init() {
+        final int center = (int) getResources().getDimension(R.dimen.px6);
+        final int left = (int) getResources().getDimension(R.dimen.px27);
         GridLayoutManager manager=new GridLayoutManager(mContext,2);
         rv_content.addItemDecoration(new RecyclerView.ItemDecoration() {
             @Override
             public void getItemOffsets(Rect outRect, View view, RecyclerView parent, RecyclerView.State state) {
                 if (parent.getChildLayoutPosition(view)%2==1){
-                    outRect.left = 12;
+                    outRect.left = center;
+                    outRect.right = left;
                 }
                 if (parent.getChildLayoutPosition(view)%2==0){
-                    outRect.right = 12;
+                    outRect.right = center;
+                    outRect.left = left;
                 }
             }
         });

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="@dimen/py120"
+    android:layout_height="@dimen/py140"
     android:id="@+id/rlyt_root"
     android:background="@color/color_ffffff">
 
@@ -22,8 +22,8 @@
         android:layout_height="match_parent"
         android:gravity="center"
         android:layout_centerInParent="true"
-        android:textColor="#3a3a3a"
-        android:textSize="21sp" />
+        android:textColor="@color/color_333333"
+        android:textSize="18sp" />
 
     <ImageView
         android:id="@+id/iv_search"

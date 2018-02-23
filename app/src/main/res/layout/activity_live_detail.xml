@@ -9,7 +9,9 @@
     <first.net.liteapp.view.TitleView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/cus_title"/>
+        android:id="@+id/cus_title"
+        app:title="直播详情"
+        app:isShowBack="true"/>
 
     <RelativeLayout
         android:id="@+id/rlyt_player"

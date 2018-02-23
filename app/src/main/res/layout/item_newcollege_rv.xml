@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/py432"
+        android:id="@+id/iv_img"
+        android:background="@mipmap/tab_bg"/>
+
+    <TextView
+        android:id="@+id/tv_info"
+        android:textColor="@color/color_333333"
+        android:textSize="15sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/py30"
+        android:layout_marginLeft="@dimen/px30"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/py30"
+        android:layout_marginLeft="@dimen/px30">
+
+        <TextView
+            android:id="@+id/tv_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="12sp"
+            android:drawableLeft="@mipmap/college_time"
+            android:drawablePadding="@dimen/px20"
+            android:textColor="@color/color_999999"
+            android:text="@string/header_home"/>
+
+        <TextView
+            android:id="@+id/tv_area"
+            android:layout_toRightOf="@id/tv_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/header_home"
+            android:textSize="12sp"
+            android:drawableLeft="@mipmap/college_area"
+            android:drawablePadding="@dimen/px10"
+            android:textColor="@color/color_999999"
+            android:layout_marginLeft="@dimen/px80"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="详情"
+            android:layout_marginRight="@dimen/px51"
+            android:textSize="12sp"
+            android:textColor="@color/color_b3db5d"
+            android:layout_alignParentRight="true"/>
+
+    </RelativeLayout>
+
+</LinearLayout>

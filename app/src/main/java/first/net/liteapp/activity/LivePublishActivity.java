@@ -262,7 +262,6 @@ public class LivePublishActivity extends BaseActivity implements ITXLivePushList
 
     @Override
     protected void setData() {
-        cus_title.setTitle("直播间");
         cus_title.setBackground(Color.parseColor("#00ffffff"));
         if (isActivityCanRotation()) {
             btn_orientation.setVisibility(View.GONE);

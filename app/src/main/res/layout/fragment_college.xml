@@ -1,18 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/color_ffffff"
     android:orientation="vertical">
 
     <first.net.liteapp.view.TitleView
-        android:id="@+id/cus_title"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        app:isShowSearch="true"
+        app:title="@string/header_college"/>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="@dimen/py180"
+        android:layout_height="@dimen/py198"
         android:background="@color/color_f1f1f1">
 
         <TextView
@@ -21,12 +23,12 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
             android:layout_weight="1"
-            android:drawablePadding="@dimen/py15"
+            android:drawablePadding="@dimen/py10"
             android:drawableTop="@mipmap/college_new"
             android:gravity="center_horizontal"
             android:text="@string/college_new"
-            android:textColor="@color/color_3a3a3a"
-            android:textSize="18sp" />
+            android:textColor="@color/color_333333"
+            android:textSize="14sp" />
 
         <TextView
             android:id="@+id/tv_lite"
@@ -34,12 +36,12 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
             android:layout_weight="1"
-            android:drawablePadding="@dimen/py15"
+            android:drawablePadding="@dimen/py10"
             android:drawableTop="@mipmap/college_lite"
             android:gravity="center_horizontal"
             android:text="@string/college_lite"
-            android:textColor="@color/color_3a3a3a"
-            android:textSize="18sp" />
+            android:textColor="@color/color_333333"
+            android:textSize="14sp" />
 
         <TextView
             android:id="@+id/tv_data"
@@ -47,12 +49,12 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
             android:layout_weight="1"
-            android:drawablePadding="@dimen/py15"
+            android:drawablePadding="@dimen/py10"
             android:drawableTop="@mipmap/college_data"
             android:gravity="center_horizontal"
             android:text="@string/college_data"
-            android:textColor="@color/color_3a3a3a"
-            android:textSize="18sp" />
+            android:textColor="@color/color_333333"
+            android:textSize="14sp" />
 
         <TextView
             android:id="@+id/tv_law"
@@ -60,12 +62,12 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
             android:layout_weight="1"
-            android:drawablePadding="@dimen/py15"
+            android:drawablePadding="@dimen/py10"
             android:drawableTop="@mipmap/college_law"
             android:gravity="center_horizontal"
             android:text="@string/college_law"
-            android:textColor="@color/color_3a3a3a"
-            android:textSize="18sp" />
+            android:textColor="@color/color_333333"
+            android:textSize="14sp" />
 
     </LinearLayout>
 
@@ -81,17 +83,17 @@
             <View
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/px1"
-                android:background="@color/color_d3d3d3" />
+                android:background="@color/color_b3db5d" />
             
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/py120"
+                android:layout_height="@dimen/py132"
                 android:gravity="center_vertical">
                 
                 <View
                     android:layout_width="@dimen/px10"
-                    android:layout_height="@dimen/px30"
-                    android:background="@color/color_d34041"
+                    android:layout_height="@dimen/px40"
+                    android:background="@color/color_f58585"
                     android:layout_marginLeft="@dimen/px40"/>
 
                 <TextView
@@ -100,15 +102,15 @@
                     android:gravity="center_vertical"
                     android:layout_marginLeft="@dimen/px15"
                     android:text="@string/college_onlite"
-                    android:textColor="@color/color_3a3a3a"
-                    android:textSize="24sp"
+                    android:textColor="@color/color_333333"
+                    android:textSize="17sp"
                     android:textStyle="bold" />
             </LinearLayout>
 
             <View
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/px1"
-                android:background="@color/color_d3d3d3" />
+                android:background="@color/color_999999" />
 
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/rv_onlite"
@@ -118,17 +120,17 @@
             <View
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/px1"
-                android:background="@color/color_d3d3d3" />
+                android:background="@color/color_999999" />
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/py120"
+                android:layout_height="@dimen/py132"
                 android:gravity="center_vertical">
 
                 <View
                     android:layout_width="@dimen/px10"
-                    android:layout_height="@dimen/px30"
-                    android:background="@color/color_d34041"
+                    android:layout_height="@dimen/px40"
+                    android:background="@color/color_f58585"
                     android:layout_marginLeft="@dimen/px40"/>
 
                 <TextView
@@ -137,15 +139,15 @@
                     android:gravity="center_vertical"
                     android:layout_marginLeft="@dimen/px15"
                     android:text="@string/college_prelite"
-                    android:textColor="@color/color_3a3a3a"
-                    android:textSize="24sp"
+                    android:textColor="@color/color_333333"
+                    android:textSize="17sp"
                     android:textStyle="bold" />
             </LinearLayout>
 
             <View
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/px1"
-                android:background="@color/color_d3d3d3" />
+                android:background="@color/color_999999" />
 
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/rv_prelite"
@@ -155,17 +157,17 @@
             <View
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/px1"
-                android:background="@color/color_d3d3d3" />
+                android:background="@color/color_999999" />
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/py120"
+                android:layout_height="@dimen/py132"
                 android:gravity="center_vertical">
 
                 <View
                     android:layout_width="@dimen/px10"
-                    android:layout_height="@dimen/px30"
-                    android:background="@color/color_d34041"
+                    android:layout_height="@dimen/px40"
+                    android:background="@color/color_f58585"
                     android:layout_marginLeft="@dimen/px40"/>
 
                 <TextView
@@ -174,15 +176,15 @@
                     android:gravity="center_vertical"
                     android:layout_marginLeft="@dimen/px15"
                     android:text="@string/college_beflite"
-                    android:textColor="@color/color_3a3a3a"
-                    android:textSize="24sp"
+                    android:textColor="@color/color_333333"
+                    android:textSize="17sp"
                     android:textStyle="bold" />
             </LinearLayout>
 
             <View
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/px1"
-                android:background="@color/color_d3d3d3" />
+                android:background="@color/color_999999" />
 
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/rv_beflite"

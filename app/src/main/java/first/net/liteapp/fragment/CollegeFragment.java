@@ -1,5 +1,6 @@
 package first.net.liteapp.fragment;
 
+import android.content.Intent;
 import android.graphics.Rect;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -8,7 +9,6 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -16,16 +16,16 @@ import java.util.List;
 import java.util.Random;
 
 import first.net.liteapp.R;
+import first.net.liteapp.activity.LiteCollegeActivity;
+import first.net.liteapp.activity.NewCollegeActivity;
 import first.net.liteapp.adapter.TabRvAdapter;
 import first.net.liteapp.bean.TabLiveBean;
-import first.net.liteapp.view.TitleView;
 
 /**
  * Created by yuqiubo on 2018/2/22.
  */
 
 public class CollegeFragment extends BaseFragment implements View.OnClickListener {
-    private TitleView cus_title;
     private TextView tv_new;
     private TextView tv_lite;
     private TextView tv_data;
@@ -48,7 +48,6 @@ public class CollegeFragment extends BaseFragment implements View.OnClickListene
     }
 
     private void initView(View view) {
-        cus_title = view.findViewById(R.id.cus_title);
         tv_new = view.findViewById(R.id.tv_new);
         tv_lite = view.findViewById(R.id.tv_lite);
         tv_data = view.findViewById(R.id.tv_data);
@@ -67,10 +66,8 @@ public class CollegeFragment extends BaseFragment implements View.OnClickListene
     }
 
     private void initData(){
-        cus_title.findViewById(R.id.iv_search).setVisibility(View.VISIBLE);
-        cus_title.setTitle(getString(R.string.header_college));
-        int center = (int) getResources().getDimension(R.dimen.px5);
-        int left = (int) getResources().getDimension(R.dimen.px20);
+        int center = (int) getResources().getDimension(R.dimen.px6);
+        int left = (int) getResources().getDimension(R.dimen.px27);
         initOnLite(center,left);
         initPreLite(center,left);
         initBefLite(center,left);
@@ -170,8 +167,10 @@ public class CollegeFragment extends BaseFragment implements View.OnClickListene
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.tv_new:
+                startActivity(new Intent(mContext, NewCollegeActivity.class));
                 break;
             case R.id.tv_lite:
+                startActivity(new Intent(mContext, LiteCollegeActivity.class));
                 break;
             case R.id.tv_data:
                 break;

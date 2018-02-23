@@ -4,8 +4,8 @@ import android.app.Application;
 import android.content.Context;
 import android.os.Handler;
 import android.os.Looper;
-
 import com.twitter.sdk.android.core.Twitter;
+import first.net.liteapp.utils.DataRequestUtils;
 
 
 /**
@@ -22,6 +22,7 @@ public class LiteApplication extends Application {
         mContext = getApplicationContext();
         mMainHandler = new Handler(Looper.getMainLooper());
         Twitter.initialize(this);
+        DataRequestUtils.getInstance();
     }
 
     public static Context getContext() {

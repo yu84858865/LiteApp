@@ -2,6 +2,7 @@ package first.net.liteapp.adapter;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,22 +13,22 @@ import java.util.ArrayList;
 import java.util.List;
 import first.net.liteapp.R;
 import first.net.liteapp.activity.LiveDetailActivity;
-import first.net.liteapp.bean.TabLiveBean;
+import first.net.liteapp.bean.NewCollegeBean;
 
 /**
  * Created by yuqiubo on 2018/2/2.
  */
 
-public class TabRvAdapter extends RecyclerView.Adapter<TabRvAdapter.ViewHolder> {
+public class NewCollegeAdapter extends RecyclerView.Adapter<NewCollegeAdapter.ViewHolder> {
     private Context mContext;
-    private List<TabLiveBean> mList;
+    private List<NewCollegeBean> mList;
 
-    public TabRvAdapter(Context context){
+    public NewCollegeAdapter(Context context){
         this.mContext = context;
         this.mList = new ArrayList<>();
     }
 
-    public void addData(List<TabLiveBean> list){
+    public void addData(List<NewCollegeBean> list){
         if (list!=null){
             this.mList.addAll(list);
             notifyDataSetChanged();
@@ -35,18 +36,18 @@ public class TabRvAdapter extends RecyclerView.Adapter<TabRvAdapter.ViewHolder> 
     }
 
     @Override
-    public TabRvAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(mContext).inflate(R.layout.item_tab_rv,parent,false);
+    public NewCollegeAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        View view = LayoutInflater.from(mContext).inflate(R.layout.item_newcollege_rv,parent,false);
         ViewHolder viewHolder = new ViewHolder(view);
         return viewHolder;
     }
 
     @Override
-    public void onBindViewHolder(TabRvAdapter.ViewHolder holder, int position) {
-        TabLiveBean bean = mList.get(position);
-        holder.tv_count.setText(bean.getCount()+"");
-        holder.tv_name.setText(bean.getName());
+    public void onBindViewHolder(NewCollegeAdapter.ViewHolder holder, int position) {
+        NewCollegeBean bean = mList.get(position);
         holder.tv_info.setText(bean.getInfo());
+        holder.tv_area.setText(bean.getArea());
+        holder.tv_time.setText(bean.getTime());
     }
 
     @Override
@@ -55,24 +56,24 @@ public class TabRvAdapter extends RecyclerView.Adapter<TabRvAdapter.ViewHolder> 
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
-        private ImageView iv_bg;
-        private TextView tv_name;
+        private ImageView iv_img;
         private TextView tv_info;
-        private TextView tv_count;
+        private TextView tv_time;
+        private TextView tv_area;
 
         public ViewHolder(View itemView) {
             super(itemView);
-            iv_bg = itemView.findViewById(R.id.iv_bg);
-            iv_bg .setBackgroundResource(R.mipmap.tab_bg);
-            tv_name = itemView.findViewById(R.id.tv_name);
+            iv_img = itemView.findViewById(R.id.iv_img);
             tv_info = itemView.findViewById(R.id.tv_info);
-            tv_count = itemView.findViewById(R.id.tv_count);
+            tv_time = itemView.findViewById(R.id.tv_time);
+            tv_area = itemView.findViewById(R.id.tv_area);
             itemView.setOnClickListener(this);
         }
 
         @Override
         public void onClick(View view) {
             LiveDetailActivity.startActivity(mContext,"");
+
         }
     }
 }

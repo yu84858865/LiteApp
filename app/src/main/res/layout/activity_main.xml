@@ -27,7 +27,6 @@
             android:drawableTop="@drawable/selector_tab_main_home"
             android:gravity="center_horizontal"
             android:layout_marginBottom="@dimen/py8"
-            android:drawablePadding="@dimen/py5"
             android:textColor="@drawable/selector_tab_main_color" />
 
         <RadioButton
@@ -38,7 +37,6 @@
             android:id="@+id/rb_colloge"
             android:text="@string/bottom_college"
             android:drawableTop="@drawable/selector_tab_main_college"
-            android:drawablePadding="@dimen/py5"
             android:gravity="center_horizontal"
             android:layout_marginBottom="@dimen/py8"
             android:textColor="@drawable/selector_tab_main_color"/>

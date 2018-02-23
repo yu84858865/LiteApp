@@ -114,7 +114,6 @@ public class LiveDetailActivity extends BaseActivity implements View.OnClickList
     }
 
     private void initData() {
-        cus_title.setTitle("直播详情");
         mCurrentRenderRotation = TXLiveConstants.RENDER_ROTATION_PORTRAIT;
         ViewGroup.LayoutParams lp = rlyt_player.getLayoutParams();
         lp.width = DataTools.getScreenWith(this);

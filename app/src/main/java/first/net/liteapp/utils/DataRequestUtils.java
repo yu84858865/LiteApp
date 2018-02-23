@@ -42,7 +42,7 @@ public class DataRequestUtils {
     }
 
 
-    public static void get(final Context context, String reqUrl, final DataRequestResult dataRequestResult) {
+    public static void get(String reqUrl, final DataRequestResult dataRequestResult) {
 //        final OkHttpClient mOkHttpClient=new OkHttpClient();
         Request.Builder requestBuilder = new Request.Builder().url(reqUrl).get()
                 .addHeader("Accept","application/json")
@@ -79,7 +79,7 @@ public class DataRequestUtils {
         });
     }
 
-    public static void post(final Context context, String reqUrl, String params, final DataRequestResult dataRequestResult) {
+    public static void post(String reqUrl, String params, final DataRequestResult dataRequestResult) {
 //        OkHttpClient mOkHttpClient=new OkHttpClient();
         MediaType type = MediaType.parse("application/json; charset=utf-8");
         RequestBody formBody = RequestBody.create(type,params);

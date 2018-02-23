@@ -2,6 +2,8 @@ package first.net.liteapp.activity;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
@@ -13,6 +15,15 @@ import com.facebook.FacebookException;
 import com.facebook.share.Sharer;
 import com.facebook.share.model.ShareLinkContent;
 import com.facebook.share.widget.ShareDialog;
+import com.sina.weibo.sdk.WbSdk;
+import com.sina.weibo.sdk.api.ImageObject;
+import com.sina.weibo.sdk.api.TextObject;
+import com.sina.weibo.sdk.api.WebpageObject;
+import com.sina.weibo.sdk.api.WeiboMultiMessage;
+import com.sina.weibo.sdk.auth.AuthInfo;
+import com.sina.weibo.sdk.share.WbShareCallback;
+import com.sina.weibo.sdk.share.WbShareHandler;
+import com.sina.weibo.sdk.utils.Utility;
 import com.tencent.connect.share.QQShare;
 import com.tencent.connect.share.QzoneShare;
 import com.tencent.mm.opensdk.modelmsg.SendMessageToWX;
@@ -40,7 +51,7 @@ import first.net.liteapp.utils.ToastUtil;
  * Created by 10960 on 2018/2/13.
  */
 
-public class ShareActivity extends BaseActivity implements View.OnClickListener {
+public class ShareActivity extends BaseActivity implements View.OnClickListener, WbShareCallback {
 
     private IWXAPI api;
     private Tencent mTencent;
@@ -50,6 +61,8 @@ public class ShareActivity extends BaseActivity implements View.OnClickListener 
     private LoadingDialog mLoadingDialog;
     private CallbackManager mCallbackManager;
     private ShareDialog mShareDialog;
+    private WbShareHandler shareHandler;
+    private BitmapDrawable bitmapDrawable;
     /**
      * 第三方登录AppID
      */
@@ -61,12 +74,15 @@ public class ShareActivity extends BaseActivity implements View.OnClickListener 
         api = WXAPIFactory.createWXAPI(this, Constant.WECHAT_APP_ID, true);
         api.registerApp(Constant.WECHAT_APP_ID);
         mTencent = Tencent.createInstance(APP_ID_QQ, this.getApplicationContext());
+        WbSdk.install(this,new AuthInfo(this, Constant.WB_APP_KEY, Constant.WB_REDIRECT_URL, Constant.WB_SCOPE));
         Intent intent = getIntent();
         mTitle = intent.getStringExtra("title");
         mContent = intent.getStringExtra("content");
         mImgUrl = intent.getStringExtra("imgUrl");
         mTargetUrl = intent.getStringExtra("mTargetUrl");
         isPortrait = intent.getBooleanExtra("isPortrait", true);
+        Bitmap bitmap = ImageUtil.decodeSampledBitmapFromResource(mImgUrl, 768);
+        bitmapDrawable = new BitmapDrawable(null, bitmap);
     }
 
     @Override
@@ -76,6 +92,8 @@ public class ShareActivity extends BaseActivity implements View.OnClickListener 
 
     @Override
     protected void initView() {
+        shareHandler = new WbShareHandler(this);
+        shareHandler.registerApp();
         iv_wechatfriend = findViewById(R.id.iv_wechatfriend);
         iv_wechatcircle = findViewById(R.id.iv_wechatcircle);
         iv_qqzone = findViewById(R.id.iv_qqzone);
@@ -149,21 +167,6 @@ public class ShareActivity extends BaseActivity implements View.OnClickListener 
     private void qqzoneShare(String title, String content) {
         final Bundle params = new Bundle();
         Tencent mTencent = Tencent.createInstance(APP_ID_QQ, this.getApplicationContext());
-//        if (isImg) {
-//            params.putInt(QzoneShare.SHARE_TO_QZONE_KEY_TYPE, QzoneShare.SHARE_TO_QZONE_TYPE_IMAGE);
-//            params.putString(QzoneShare.SHARE_TO_QQ_TITLE, title);
-//            params.putString(QzoneShare.SHARE_TO_QQ_SUMMARY, mShareContent);
-//            params.putString(QzoneShare.SHARE_TO_QQ_APP_NAME, "烤圈");
-//            if (imgUrl.contains("file://")) {//"file:///storage/emulated/0/CooQuan//oven_photo/2017-10-09/CooQuan_P1009115023-4137_1507521023360.jpg";
-//                String imgUrls = imgUrl.replace("file://", "");
-//                MyLog.e(TAG, "imgUrls = " + imgUrls);
-//                params.putString(QzoneShare.SHARE_TO_QQ_IMAGE_LOCAL_URL, imgUrls);
-//            } else {//"/storage/emulated/0/CooQuan//oven_photo/2017-10-09/CooQuan_P1009115023-4137_1507521023360.jpg";
-//                params.putString(QzoneShare.SHARE_TO_QQ_IMAGE_LOCAL_URL, imgUrl);
-//            }
-//            params.putInt(QzoneShare.SHARE_TO_QQ_EXT_INT, QQShare.SHARE_TO_QQ_FLAG_QZONE_AUTO_OPEN);
-//            mTencent.shareToQQ(this, params, new BaseUiListener());
-//        } else {
         params.putInt(QzoneShare.SHARE_TO_QZONE_KEY_TYPE, QzoneShare.SHARE_TO_QZONE_TYPE_IMAGE_TEXT);
         params.putString(QzoneShare.SHARE_TO_QQ_TITLE, title);
         params.putString(QzoneShare.SHARE_TO_QQ_SUMMARY, content);
@@ -171,12 +174,18 @@ public class ShareActivity extends BaseActivity implements View.OnClickListener 
         params.putString(QzoneShare.SHARE_TO_QQ_IMAGE_LOCAL_URL, mImgUrl);
         params.putInt(QzoneShare.SHARE_TO_QQ_EXT_INT, QQShare.SHARE_TO_QQ_FLAG_QZONE_AUTO_OPEN);
         mTencent.shareToQQ(this, params, new BaseUiListener());
-//        }
         closeSharePage();
     }
 
     private void sinaShare(String title, String content) {
-
+        try {
+            WeiboMultiMessage weiboMessage = new WeiboMultiMessage();
+            weiboMessage.textObject = getTextObj();
+            weiboMessage.imageObject = getImageObj();
+            weiboMessage.mediaObject = getWebpageObj();
+            shareHandler.shareMessage(weiboMessage, false);
+        } catch (Exception e) {
+        }
     }
 
     private void facebookShare(String title, String content) {
@@ -202,6 +211,68 @@ public class ShareActivity extends BaseActivity implements View.OnClickListener 
 
     private void linkedinShare(String title, String content) {
 
+    }
+
+
+    /**
+     * 创建文本消息对象。
+     *
+     * @return 文本消息对象。
+     */
+    private TextObject getTextObj() {
+        TextObject textObject = new TextObject();
+        String textString = String.format("%s\n", mTitle);
+        String contentString = String.format("%s\n", mContent);
+        textObject.text = textString + mTargetUrl;
+        return textObject;
+    }
+
+    /**
+     * 创建图片消息对象。
+     *
+     * @return 图片消息对象。
+     */
+    private ImageObject getImageObj() {
+        ImageObject imageObject = new ImageObject();
+        Bitmap bitmap = bitmapDrawable.getBitmap();
+        imageObject.setImageObject(bitmap);
+        return imageObject;
+    }
+
+    /**
+     * 创建多媒体（网页）消息对象。
+     *
+     * @return 多媒体（网页）消息对象。
+     */
+    private WebpageObject getWebpageObj() {
+        WebpageObject mediaObject = new WebpageObject();
+        mediaObject.identify = Utility.generateGUID();
+        mediaObject.title = mContent;
+        mediaObject.description = mTargetUrl;
+        byte[] bytes = BitmapUtils.bmpToByteArray(bitmapDrawable.getBitmap(), false);
+        byte[] byteBitmap = BitmapUtils.resizeBitmap(bytes, 64, 64);
+        mediaObject.setThumbImage(BitmapUtils.fromByteArray(byteBitmap));
+        mediaObject.defaultText = mContent;
+        return mediaObject;
+    }
+
+
+    @Override
+    public void onWbShareSuccess() {
+        closeSharePage();
+        ToastUtil.showToastOnFinish("分享成功");
+    }
+
+    @Override
+    public void onWbShareCancel() {
+        closeSharePage();
+        ToastUtil.showToastOnFinish("分享取消");
+    }
+
+    @Override
+    public void onWbShareFail() {
+        closeSharePage();
+        ToastUtil.showToastOnFinish("分享失败");
     }
 
 
@@ -262,6 +333,12 @@ public class ShareActivity extends BaseActivity implements View.OnClickListener 
             }
         }
         finish();
+    }
+
+    @Override
+    protected void onNewIntent(Intent intent) {
+        super.onNewIntent(intent);
+        shareHandler.doResultIntent(intent,this);
     }
 
     @Override

@@ -79,4 +79,12 @@ public class BitmapUtils {
         }
     }
 
+    public static Bitmap fromByteArray(byte[] pic) {
+        if (pic == null || pic.length == 0) {
+            return null;
+        }
+        Bitmap bm = BitmapFactory.decodeByteArray(pic, 0, pic.length);
+        return bm;
+    }
+
 }

@@ -90,6 +90,14 @@
             </intent-filter>
         </receiver>
 
+        <!--微博分享-->
+        <meta-data
+            android:name="WEIBO_APPKEY"
+            android:value="2045436852" />
+        <meta-data
+            android:name="WEIBO_CHANNEL"
+            android:value="weibo" />
+
     </application>
 
 </manifest>

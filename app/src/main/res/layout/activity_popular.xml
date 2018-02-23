@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <first.net.liteapp.view.TitleView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/cus_title"
+        app:title="活动"
+        app:isShowBack="true"/>
+
+    <ImageView
+        android:id="@+id/iv_bg"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/py500"
+        android:scaleType="centerCrop"/>
+
+    <android.support.design.widget.TabLayout
+        android:id="@+id/popular_tab"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/py140"
+        app:tabIndicatorColor="@color/color_f58585"
+        app:tabSelectedTextColor="@color/color_f58585"
+        app:tabIndicatorHeight="@dimen/py6"
+        app:tabTextColor="@color/color_333333" />
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/popular_vp"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"/>
+
+
+</LinearLayout>

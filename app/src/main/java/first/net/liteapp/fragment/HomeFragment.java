@@ -31,6 +31,8 @@ import java.util.Random;
 import java.util.WeakHashMap;
 
 import first.net.liteapp.R;
+import first.net.liteapp.activity.InfoActivity;
+import first.net.liteapp.activity.PopularActActivity;
 import first.net.liteapp.adapter.CourseLiveAdapter;
 import first.net.liteapp.adapter.IntroduceAdapter;
 import first.net.liteapp.adapter.NewInfoAdapter;
@@ -270,8 +272,10 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener{
     public void onClick(View view) {
         switch (view.getId()){
             case R.id.iv_popular:
+                PopularActActivity.startActivity(mContext,"");
                 break;
             case R.id.iv_information:
+                InfoActivity.startActivity(mContext,"");
                 break;
             case R.id.iv_shop_mall:
                 break;

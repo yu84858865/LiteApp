@@ -17,6 +17,7 @@ import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -229,7 +230,7 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener{
         info_listview.setAdapter(newInfoAdapter = new NewInfoAdapter(mContext));
         for(int i=0; i<3; i++){
             NewInfoBean bean = new NewInfoBean();
-            bean.setImg("http://testimg.ibaking.com.cn/ad/4d1c5d9fea1b49c5bddd98add0d0884a.jpg");
+            bean.setImg("http://testimg.ibaking.com.cn/ad/5c2e9fac47734420bad2f423ca63a66b.jpg");
             bean.setId(i);
             Random random = new Random();
             int count = random.nextInt();
@@ -238,6 +239,31 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener{
             beanList.add(bean);
         }
         newInfoAdapter.setData(beanList);
+        setListViewHeightBasedOnChildren(info_listview);
+    }
+
+    public void setListViewHeightBasedOnChildren(ListView listView) {
+        // 获取ListView对应的Adapter
+        ListAdapter listAdapter = listView.getAdapter();
+        if (listAdapter == null) {
+            return;
+        }
+
+        int totalHeight = 0;
+        for (int i = 0, len = listAdapter.getCount(); i < len; i++) {
+            // listAdapter.getCount()返回数据项的数目
+            View listItem = listAdapter.getView(i, null, listView);
+            // 计算子项View 的宽高
+            listItem.measure(0, 0);
+            // 统计所有子项的总高度
+            totalHeight += listItem.getMeasuredHeight();
+        }
+
+        ViewGroup.LayoutParams params = listView.getLayoutParams();
+        params.height = totalHeight+ (listView.getDividerHeight() * (listAdapter.getCount() - 1));
+        // listView.getDividerHeight()获取子项间分隔符占用的高度
+        // params.height最后得到整个ListView完整显示需要的高度
+        listView.setLayoutParams(params);
     }
 
     @Override

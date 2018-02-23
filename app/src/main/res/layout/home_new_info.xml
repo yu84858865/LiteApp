@@ -12,14 +12,15 @@
     <ImageView
         android:id="@+id/iv_img"
         android:layout_width="@dimen/py175"
-        android:layout_height="@dimen/py38"
-        android:background="@mipmap/tab_bg"
-        android:layout_gravity="center_vertical"/>
+        android:layout_height="@dimen/py175"
+        android:layout_gravity="center_vertical"
+        android:scaleType="centerCrop"/>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:layout_marginLeft="@dimen/py40">
 
         <TextView
             android:id="@+id/tv_title"

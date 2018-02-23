@@ -15,5 +15,9 @@
     <string name="facebook_app_id">1964233977152758</string>
     <string name="com.twitter.sdk.android.CONSUMER_KEY">jFRczHoA7jym7X9DYOG6IMQab</string>
     <string name="com.twitter.sdk.android.CONSUMER_SECRET">X3hYoUjklg5c3QpLi6MPx487nmGSGjlMm77kTAWMeRJPt9Xmlu</string>
-
+    <string name="home_page_recomment">推荐</string>
+    <string name="course_live">课程直播</string>
+    <string name="more">更多</string>
+    <string name="new_info">最新资讯</string>
+    <string name="introduce">介绍</string>
 </resources>

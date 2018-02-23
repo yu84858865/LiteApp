@@ -12,13 +12,15 @@
     <ImageView
         android:id="@+id/iv_img"
         android:layout_width="@dimen/py175"
-        android:layout_height="@dimen/py175"
+        android:layout_height="@dimen/py170"
         android:layout_gravity="center_vertical"
         android:scaleType="centerCrop"/>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:gravity="center_vertical"
         android:orientation="vertical"
         android:layout_marginLeft="@dimen/py40">
 
@@ -34,6 +36,7 @@
             android:id="@+id/tv_count"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/py5"
             android:drawableLeft="@mipmap/college_watch"
             android:drawablePadding="@dimen/px18"
             android:textSize="14sp"

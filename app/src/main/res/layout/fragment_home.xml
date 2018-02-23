@@ -56,7 +56,7 @@
             <View
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/py1"
-                android:background="@color/color_999999" />
+                android:background="@color/color_50999999" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -165,7 +165,7 @@
             <View
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/py20"
-                android:background="@color/color_999999" />
+                android:background="@color/color_50999999" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -211,7 +211,7 @@
                             android:layout_height="wrap_content"
                             android:text="@string/more"
                             android:textSize="15sp"
-                            android:textColor="@color/color_333333"/>
+                            android:textColor="@color/color_999999"/>
 
                         <ImageView
                             android:layout_width="wrap_content"
@@ -220,6 +220,11 @@
 
                     </LinearLayout>
                 </RelativeLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/py1"
+                    android:background="@color/color_50999999" />
 
                 <android.support.v7.widget.RecyclerView
                     android:id="@+id/rv_course_live"
@@ -272,7 +277,7 @@
                             android:layout_height="wrap_content"
                             android:text="@string/more"
                             android:textSize="15sp"
-                            android:textColor="@color/color_333333"/>
+                            android:textColor="@color/color_999999"/>
 
                         <ImageView
                             android:layout_width="wrap_content"
@@ -285,14 +290,14 @@
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/py1"
-                    android:background="@color/color_999999" />
+                    android:background="@color/color_50999999" />
 
                 <ListView
                     android:id="@+id/info_listview"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:scrollbars="none"
-                    android:divider="@color/color_999999"
+                    android:divider="@color/color_50999999"
                     android:dividerHeight="@dimen/py1"/>
 
             </LinearLayout>
@@ -300,7 +305,7 @@
             <View
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/py20"
-                android:background="@color/color_999999"/>
+                android:background="@color/color_50999999"/>
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -337,7 +342,7 @@
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/py1"
-                    android:background="@color/color_999999" />
+                    android:background="@color/color_50999999" />
 
                 <android.support.v7.widget.RecyclerView
                     android:id="@+id/rv_introduce"

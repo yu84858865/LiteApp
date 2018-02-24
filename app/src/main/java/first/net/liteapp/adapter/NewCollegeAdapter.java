@@ -9,9 +9,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+
 import java.util.ArrayList;
 import java.util.List;
+
 import first.net.liteapp.R;
+import first.net.liteapp.activity.CourseDetailActivity;
 import first.net.liteapp.activity.LiveDetailActivity;
 import first.net.liteapp.bean.NewCollegeBean;
 
@@ -23,13 +26,13 @@ public class NewCollegeAdapter extends RecyclerView.Adapter<NewCollegeAdapter.Vi
     private Context mContext;
     private List<NewCollegeBean> mList;
 
-    public NewCollegeAdapter(Context context){
+    public NewCollegeAdapter(Context context) {
         this.mContext = context;
         this.mList = new ArrayList<>();
     }
 
-    public void addData(List<NewCollegeBean> list){
-        if (list!=null){
+    public void addData(List<NewCollegeBean> list) {
+        if (list != null) {
             this.mList.addAll(list);
             notifyDataSetChanged();
         }
@@ -37,7 +40,7 @@ public class NewCollegeAdapter extends RecyclerView.Adapter<NewCollegeAdapter.Vi
 
     @Override
     public NewCollegeAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(mContext).inflate(R.layout.item_newcollege_rv,parent,false);
+        View view = LayoutInflater.from(mContext).inflate(R.layout.item_newcollege_rv, parent, false);
         ViewHolder viewHolder = new ViewHolder(view);
         return viewHolder;
     }
@@ -52,14 +55,14 @@ public class NewCollegeAdapter extends RecyclerView.Adapter<NewCollegeAdapter.Vi
 
     @Override
     public int getItemCount() {
-        return mList==null?0:mList.size();
+        return mList == null ? 0 : mList.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
+    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         private ImageView iv_img;
         private TextView tv_info;
         private TextView tv_time;
-        private TextView tv_area;
+        private TextView tv_area, tv_course_detail;
 
         public ViewHolder(View itemView) {
             super(itemView);
@@ -67,12 +70,22 @@ public class NewCollegeAdapter extends RecyclerView.Adapter<NewCollegeAdapter.Vi
             tv_info = itemView.findViewById(R.id.tv_info);
             tv_time = itemView.findViewById(R.id.tv_time);
             tv_area = itemView.findViewById(R.id.tv_area);
+            tv_course_detail = itemView.findViewById(R.id.tv_course_detail);
             itemView.setOnClickListener(this);
+            tv_course_detail.setOnClickListener(this);
         }
 
         @Override
         public void onClick(View view) {
-            LiveDetailActivity.startActivity(mContext,"");
+            switch (view.getId()) {
+                case R.id.tv_course_detail:
+                    CourseDetailActivity.startActivity(mContext,"",true);
+                    break;
+                default:
+                    LiveDetailActivity.startActivity(mContext, "");
+                    break;
+            }
+
 
         }
     }

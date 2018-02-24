@@ -12,6 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import first.net.liteapp.R;
+import first.net.liteapp.activity.CourseDetailActivity;
 import first.net.liteapp.bean.ActiveInfoBean;
 import first.net.liteapp.utils.GlideUtils;
 
@@ -75,7 +76,7 @@ public class LifeCodeAdapter extends BaseAdapter {
         view.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
-
+                CourseDetailActivity.startActivity(mContext,"",false);
             }
         });
         return view;

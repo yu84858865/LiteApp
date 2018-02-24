@@ -107,6 +107,9 @@
         <activity android:name=".activity.InfoActivity"
             android:launchMode="singleTask"
             android:configChanges="orientation|screenSize|smallestScreenSize|keyboard|keyboardHidden|navigation"/>
+        <activity android:name=".activity.CourseDetailActivity"
+            android:launchMode="singleTask"
+            android:configChanges="orientation|screenSize|smallestScreenSize|keyboard|keyboardHidden|navigation"/>
 
     </application>
 

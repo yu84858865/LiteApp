@@ -32,9 +32,10 @@
         <activity android:name=".activity.LiteCollegeActivity"/>
         <activity android:name=".activity.NewCollegeActivity"/>
         <activity android:name=".activity.DataCollegeActivity"/>
+        <activity android:name=".activity.LawCollegeActivity"/>
         <activity android:name=".activity.LiveDetailActivity"
             android:launchMode="singleTask"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar.FullScreen"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
             android:configChanges="orientation|screenSize|smallestScreenSize|keyboard|keyboardHidden|navigation"/>
         <activity android:name=".activity.LivePublishActivity"
             android:launchMode="singleTask"

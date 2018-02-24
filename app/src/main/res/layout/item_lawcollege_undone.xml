@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="@dimen/py150"
+    android:gravity="center_vertical">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="@dimen/px30"
+        android:textSize="14sp"
+        android:id="@+id/tv_reply"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:paddingLeft="@dimen/px30"
+        android:paddingRight="@dimen/px30"
+        android:paddingTop="@dimen/py15"
+        android:paddingBottom="@dimen/py15"
+        android:background="@drawable/shape_law_reply"
+        android:text="@string/college_law_replyto"
+        android:textColor="@color/color_b3db5d"/>
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/color_333333"
+        android:textSize="14sp"
+        android:id="@+id/tv_question"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="@dimen/px60"
+        android:layout_marginRight="@dimen/px198"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/py1"
+        android:background="@color/color_999999"
+        android:layout_alignParentBottom="true"/>
+    
+
+</RelativeLayout>

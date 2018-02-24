@@ -12,6 +12,14 @@
     <string name="college_onlite">正在直播</string>
     <string name="college_prelite">直播预告</string>
     <string name="college_beflite">往期推荐</string>
+    <string name="college_law_done">已解答</string>
+    <string name="college_law_undone">未解答</string>
+    <string name="college_law_reply">回复区</string>
+    <string name="college_law_replyto">回答</string>
+    <string name="college_law_ask">我要提问</string>
+    <string name="live_detail">直播详情</string>
+    <string name="live_give">送礼</string>
+    <string name="live_reply">说点什么互动一下...</string>
     <string name="facebook_app_id">1964233977152758</string>
     <string name="com.twitter.sdk.android.CONSUMER_KEY">jFRczHoA7jym7X9DYOG6IMQab</string>
     <string name="com.twitter.sdk.android.CONSUMER_SECRET">X3hYoUjklg5c3QpLi6MPx487nmGSGjlMm77kTAWMeRJPt9Xmlu</string>

@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
+
+    <first.net.liteapp.view.TitleView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:title="@string/college_law"
+        app:isShowBack="true"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/py1"
+        android:background="@color/color_999999" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/py120">
+
+        <LinearLayout
+            android:id="@+id/llyt_done"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center_horizontal|bottom"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/college_law_done"
+                android:textColor="@color/color_333333"
+                android:textSize="14sp" />
+
+            <View
+                android:layout_width="@dimen/px210"
+                android:layout_height="@dimen/px6"
+                android:layout_marginTop="@dimen/py10"
+                android:background="@color/color_b3db5d" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/llyt_undone"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center_horizontal|bottom"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/college_law_undone"
+                android:textColor="@color/color_333333"
+                android:textSize="14sp" />
+
+            <View
+                android:layout_width="@dimen/px210"
+                android:layout_height="@dimen/px6"
+                android:layout_marginTop="@dimen/py10"
+                android:background="@color/color_b3db5d"
+                android:visibility="invisible" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/py1"
+        android:background="@color/color_999999" />
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rv_law"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
+
+
+    <TextView
+        android:id="@+id/tv_ask"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/py120"
+        android:background="@color/color_b3db5d"
+        android:gravity="center"
+        android:text="@string/college_law_ask"
+        android:textColor="@color/color_ffffff"
+        android:textSize="17sp"
+        android:layout_marginBottom="@dimen/py20"/>
+
+</LinearLayout>

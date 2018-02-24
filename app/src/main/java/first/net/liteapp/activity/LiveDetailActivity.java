@@ -9,8 +9,10 @@ import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -37,6 +39,8 @@ import first.net.liteapp.fragment.ChatFragment;
 import first.net.liteapp.fragment.GetGiftFragment;
 import first.net.liteapp.fragment.RankingFragment;
 import first.net.liteapp.utils.DataTools;
+import first.net.liteapp.utils.ScreenUtils;
+import first.net.liteapp.utils.ToastUtil;
 import first.net.liteapp.view.TitleView;
 
 /**
@@ -53,13 +57,16 @@ public class LiveDetailActivity extends BaseActivity implements View.OnClickList
     private TitleView cus_title;
     private TabLayout tlyt_tab;
     private ViewPager vp_tab;
+    private ImageView iv_flower;
+    private TextView tv_reply;
+    private TextView tv_give;
     private List<Fragment> mFragmentList = new ArrayList<>();
-    private EditText et_reply;
     private ImageView iv_videoback;
     private TextView tv_catagory;
     private String mAddress = null;
     private TXLivePlayConfig mPlayConfig;
     private int mPlayType;
+    private String mTabNames[] = {"聊天", "主播", "排行榜", "获得礼物"};
 
 
     public static void startActivity(Context context, String address) {
@@ -72,7 +79,7 @@ public class LiveDetailActivity extends BaseActivity implements View.OnClickList
     protected void initFeature() {
         super.initFeature();
         mAddress = getIntent().getStringExtra("address");
-        if (mAddress == null) {
+        if (null == mAddress || "".equals(mAddress)) {
             mAddress = "rtmp://live.hkstv.hk.lxdns.com/live/hks";
         } else {
             if (!checkPlayUrl(mAddress)) {
@@ -94,7 +101,9 @@ public class LiveDetailActivity extends BaseActivity implements View.OnClickList
         rlyt_player = findViewById(R.id.rlyt_player);
         tlyt_tab = findViewById(R.id.tlyt_tab);
         vp_tab = findViewById(R.id.vp_tab);
-        et_reply = findViewById(R.id.et_reply);
+        iv_flower = findViewById(R.id.iv_flower);
+        tv_reply = findViewById(R.id.tv_reply);
+        tv_give = findViewById(R.id.tv_give);
         tv_catagory = findViewById(R.id.tv_catagory);
         iv_videoback = findViewById(R.id.iv_videoback);
         llyt_bottom = findViewById(R.id.llyt_bottom);
@@ -102,6 +111,9 @@ public class LiveDetailActivity extends BaseActivity implements View.OnClickList
 
     @Override
     protected void setListener() {
+        iv_flower.setOnClickListener(this);
+        tv_reply.setOnClickListener(this);
+        tv_give.setOnClickListener(this);
         tv_catagory.setOnClickListener(this);
         iv_videoback.setOnClickListener(this);
         video_tx.setOnClickListener(this);
@@ -126,9 +138,9 @@ public class LiveDetailActivity extends BaseActivity implements View.OnClickList
         mPlayConfig = new TXLivePlayConfig();
 
         //自动模式
-//        mPlayConfig.setAutoAdjustCacheTime(true);
-//        mPlayConfig.setMinAutoAdjustCacheTime(1);
-//        mPlayConfig.setMaxAutoAdjustCacheTime(5);
+        mPlayConfig.setAutoAdjustCacheTime(true);
+        mPlayConfig.setMinAutoAdjustCacheTime(1);
+        mPlayConfig.setMaxAutoAdjustCacheTime(5);
 
 //        //极速模式
 //        mPlayConfig.setAutoAdjustCacheTime(true);
@@ -136,23 +148,32 @@ public class LiveDetailActivity extends BaseActivity implements View.OnClickList
 //        mPlayConfig.setMaxAutoAdjustCacheTime(1);
 //
         //流畅模式
-        mPlayConfig.setAutoAdjustCacheTime(false);
-        mPlayConfig.setCacheTime(5);
+//        mPlayConfig.setAutoAdjustCacheTime(false);
+//        mPlayConfig.setCacheTime(5);
 
         mPlayConfig.setEnableMessage(true);
         mTxLivePlayer.setConfig(mPlayConfig);
         mTxLivePlayer.setPlayListener(new ITXLivePlayListener() {
             @Override
             public void onPlayEvent(int event, Bundle param) {
-                if (event == TXLiveConstants.PLAY_ERR_NET_DISCONNECT) {
-
-                } else if (event == TXLiveConstants.PLAY_EVT_GET_MESSAGE) {
-                    String msg = null;
-                    try {
-                        msg = new String(param.getByteArray(TXLiveConstants.EVT_GET_MSG), "UTF-8");
-                    } catch (UnsupportedEncodingException e) {
-                        e.printStackTrace();
+                try {
+                    Log.e(LiveDetailActivity.class.getSimpleName(), event + "");
+                    String msg1 = null;
+                    if (param != null) {
+                        byte[] b = param.getByteArray(TXLiveConstants.EVT_GET_MSG);
+                        if (b != null)
+                            msg1 = new String(b, "UTF-8");
                     }
+                    Log.e(LiveDetailActivity.class.getSimpleName(), msg1 == null ? "null" : msg1);
+                    if (event == TXLiveConstants.PLAY_ERR_NET_DISCONNECT) {
+
+                    } else if (event == TXLiveConstants.PLAY_EVT_GET_MESSAGE) {
+                        String msg = null;
+
+                        msg = new String(param.getByteArray(TXLiveConstants.EVT_GET_MSG), "UTF-8");
+                    }
+                } catch (UnsupportedEncodingException e) {
+                    e.printStackTrace();
                 }
             }
 
@@ -162,7 +183,7 @@ public class LiveDetailActivity extends BaseActivity implements View.OnClickList
         });
 
         if (checkPlayUrl(mAddress)) {
-            mTxLivePlayer.startPlay(mAddress, mPlayType);
+//            mTxLivePlayer.startPlay(mAddress, mPlayType);
 
             iv_fullscreen.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -184,22 +205,20 @@ public class LiveDetailActivity extends BaseActivity implements View.OnClickList
         LivePageAdapter adapter = new LivePageAdapter(getSupportFragmentManager(), mFragmentList);
         // 给ViewPager设置适配器
         vp_tab.setAdapter(adapter);
-        vp_tab.setCurrentItem(0);
-        // TabLayout 指示器 (记得自己手动创建4个Fragment,注意是 app包下的Fragment 还是 V4包下的 Fragment)
-        tlyt_tab.addTab(tlyt_tab.newTab());
-        tlyt_tab.addTab(tlyt_tab.newTab());
-        tlyt_tab.addTab(tlyt_tab.newTab());
-        tlyt_tab.addTab(tlyt_tab.newTab());
+        tlyt_tab.setTabMode(TabLayout.MODE_FIXED);
         // 使用 TabLayout 和 ViewPager 相关联
         tlyt_tab.setupWithViewPager(vp_tab);
-        // TabLayout指示器添加文本
-        tlyt_tab.getTabAt(0).setText("聊天");
-        tlyt_tab.getTabAt(1).setText("主播");
-        tlyt_tab.getTabAt(2).setText("排行榜");
-        tlyt_tab.getTabAt(3).setText("获得礼物");
-        tlyt_tab.setTabMode(TabLayout.MODE_FIXED);
+        int tabCount = tlyt_tab.getTabCount();//获取TabLayout的个数
+        for (int i = 0; i < tabCount; i++) {
+            View view = View.inflate(this, R.layout.item_tab, null);
+            TextView tv_tab = view.findViewById(R.id.tv_tab);
+            tv_tab.setText(mTabNames[i]);
+            TabLayout.Tab tab = tlyt_tab.getTabAt(i);////获取TabLayout的子元素Tab
+            tab.setCustomView(tv_tab);//设置TabLayout的子元素Tab的布局View
+        }
 
     }
+
 
     private void transformSize() {
         if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE) {
@@ -212,11 +231,7 @@ public class LiveDetailActivity extends BaseActivity implements View.OnClickList
     @Override
     public void onConfigurationChanged(Configuration newConfig) {
         super.onConfigurationChanged(newConfig);
-        if (newConfig.orientation == Configuration.ORIENTATION_PORTRAIT) {
-            switchScreen(Configuration.ORIENTATION_LANDSCAPE);
-        } else {
-            switchScreen(Configuration.ORIENTATION_PORTRAIT);
-        }
+        switchScreen(newConfig.orientation);
     }
 
     @Override
@@ -228,26 +243,28 @@ public class LiveDetailActivity extends BaseActivity implements View.OnClickList
         }
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if (checkPlayUrl(mAddress) && mTxLivePlayer != null && video_tx != null) {
+            mTxLivePlayer.startPlay(mAddress, mPlayType);
+        }
+    }
 
     /**
      * 切换屏幕
      */
 
-    private void switchScreen() {
-        switchScreen(-1);
-    }
-
     private void switchScreen(int orientation) {
         if (orientation == -1) {
             orientation = getResources().getConfiguration().orientation;
         }
-        if (orientation == Configuration.ORIENTATION_PORTRAIT) {
+        if (orientation == Configuration.ORIENTATION_LANDSCAPE) {
             cus_title.setVisibility(View.GONE);
             iv_fullscreen.setVisibility(View.GONE);
             iv_videoback.setVisibility(View.VISIBLE);
             tv_catagory.setVisibility(View.VISIBLE);
             llyt_bottom.setVisibility(View.GONE);
-            et_reply.setVisibility(View.GONE);
 
             ViewGroup.LayoutParams params = rlyt_player.getLayoutParams();
             params.width = ViewGroup.LayoutParams.MATCH_PARENT;
@@ -255,18 +272,19 @@ public class LiveDetailActivity extends BaseActivity implements View.OnClickList
             rlyt_player.setLayoutParams(params);
 //            mCurrentRenderRotation = TXLiveConstants.RENDER_ROTATION_LANDSCAPE;
 //            txLivePlayer.setRenderRotation(mCurrentRenderRotation);
+            ScreenUtils.setFullScreen(this);
         } else {
             cus_title.setVisibility(View.VISIBLE);
             iv_fullscreen.setVisibility(View.VISIBLE);
             iv_videoback.setVisibility(View.GONE);
             tv_catagory.setVisibility(View.GONE);
             llyt_bottom.setVisibility(View.VISIBLE);
-            et_reply.setVisibility(View.VISIBLE);
 
             ViewGroup.LayoutParams params = rlyt_player.getLayoutParams();
             params.width = ViewGroup.LayoutParams.MATCH_PARENT;
             params.height = DataTools.dip2px(this, 200);
             rlyt_player.setLayoutParams(params);
+            ScreenUtils.quitFullScreen(this);
         }
     }
 
@@ -327,7 +345,7 @@ public class LiveDetailActivity extends BaseActivity implements View.OnClickList
 
     private boolean checkPlayUrl(final String playUrl) {
         if (TextUtils.isEmpty(playUrl) || (!playUrl.startsWith("http://") && !playUrl.startsWith("https://") && !playUrl.startsWith("rtmp://") && !playUrl.startsWith("/"))) {
-            Toast.makeText(getApplicationContext(), "播放地址不合法，直播目前仅支持rtmp,flv播放方式!", Toast.LENGTH_SHORT).show();
+            ToastUtil.show("播放地址不合法，直播目前仅支持rtmp,flv播放方式!");
             return false;
         }
 
@@ -338,27 +356,10 @@ public class LiveDetailActivity extends BaseActivity implements View.OnClickList
         } else if ((playUrl.startsWith("http://") || playUrl.startsWith("https://")) && playUrl.contains(".flv")) {
             mPlayType = TXLivePlayer.PLAY_TYPE_LIVE_FLV;
         } else {
-            Toast.makeText(getApplicationContext(), "播放地址不合法，直播目前仅支持rtmp,flv播放方式!", Toast.LENGTH_SHORT).show();
+            ToastUtil.show("播放地址不合法，直播目前仅支持rtmp,flv播放方式!");
             return false;
         }
         return true;
-    }
-
-    @Override
-    public void onWindowFocusChanged(boolean hasFocus) {
-        super.onWindowFocusChanged(hasFocus);
-        if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE && Build.VERSION.SDK_INT >= 19) {
-            if (hasFocus) {
-                getWindow().getDecorView().setSystemUiVisibility(
-                        View.SYSTEM_UI_FLAG_LAYOUT_STABLE
-                                | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
-                                | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
-                                | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
-                                | View.SYSTEM_UI_FLAG_FULLSCREEN
-                                | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY);
-            }
-        }
-
     }
 
 

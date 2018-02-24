@@ -165,7 +165,7 @@
             <View
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/py20"
-                android:background="@color/color_50999999" />
+                android:background="@color/color_f1f1f1" />
 
             <LinearLayout
                 android:layout_width="match_parent"

@@ -10,13 +10,13 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/cus_title"
-        app:title="直播详情"
+        app:title="@string/live_detail"
         app:isShowBack="true"/>
 
     <RelativeLayout
         android:id="@+id/rlyt_player"
         android:layout_width="wrap_content"
-        android:layout_height="200dp"
+        android:layout_height="@dimen/py606"
         android:background="#ff000000">
 
         <com.tencent.rtmp.ui.TXCloudVideoView
@@ -30,16 +30,17 @@
             android:layout_height="wrap_content"
             android:layout_alignBottom="@+id/video_tx"
             android:layout_alignParentRight="true"
-            android:background="@mipmap/live_enlarge" />
+            android:background="@mipmap/live_zoom"
+            android:padding="@dimen/px10"
+            android:layout_marginRight="@dimen/px51"
+            android:layout_marginBottom="@dimen/px39"/>
 
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="8dp"
-            android:paddingLeft="4dp"
-            android:paddingRight="4dp"
-            android:paddingTop="2dp"
-            android:paddingBottom="2dp"
+            android:layout_marginTop="@dimen/py24"
+            android:layout_marginLeft="@dimen/py36"
+            android:padding="@dimen/px6"
             android:layout_alignTop="@+id/video_tx"
             android:layout_alignParentLeft="true"
             android:src="@mipmap/back"
@@ -54,7 +55,7 @@
             android:layout_alignParentRight="true"
             android:padding="15dp"
             android:text="高清"
-            android:textColor="#ff5500"
+            android:textColor="@color/color_f58585"
             android:visibility="gone"/>
 
     </RelativeLayout>
@@ -69,11 +70,10 @@
         <android.support.design.widget.TabLayout
             android:id="@+id/tlyt_tab"
             android:layout_width="match_parent"
-            android:layout_height="35dp"
-            app:tabIndicatorColor="#ff5500"
-            app:tabSelectedTextColor="#ff5500"
-            app:tabIndicatorHeight="3dp"
-            app:tabTextColor="#3a3a3a" />
+            android:layout_height="@dimen/py135"
+            app:tabIndicatorColor="@color/color_f58585"
+            app:tabIndicatorHeight="@dimen/py10"
+            app:tabTextColor="@color/color_333333" />
 
 
         <android.support.v4.view.ViewPager
@@ -84,20 +84,55 @@
 
     </LinearLayout>
 
-    <EditText
-        android:id="@+id/et_reply"
+    <View
         android:layout_width="match_parent"
-        android:layout_height="30dp"
-        android:layout_centerInParent="true"
-        android:layout_marginBottom="10dp"
-        android:layout_marginLeft="15dp"
-        android:layout_marginRight="15dp"
-        android:layout_marginTop="10dp"
-        android:background="@drawable/rectangle_gray_small_item_bg"
-        android:paddingLeft="4dp"
-        android:gravity="center_vertical"
-        android:hint="说点什么互动一下..."
-        android:textColor="#3a3a3a" />
+        android:layout_height="@dimen/py1"
+        android:background="@color/color_999999"/>
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/py138"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/iv_flower"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@mipmap/live_flower"
+            android:layout_marginLeft="@dimen/px30"/>
+
+        <TextView
+            android:id="@+id/tv_reply"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="@dimen/px30"
+            android:layout_marginRight="@dimen/px30"
+            android:background="@drawable/rectangle_gray_small_item_bg"
+            android:layout_marginTop="@dimen/py15"
+            android:layout_marginBottom="@dimen/py15"
+            android:text="@string/live_reply"
+            android:gravity="center_vertical"
+            android:textColor="@color/color_999999"
+            android:paddingLeft="@dimen/px30"/>
+
+        <TextView
+            android:id="@+id/tv_give"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="@dimen/px30"
+            android:drawableTop="@mipmap/live_gift"
+            android:text="@string/live_give"
+            android:textColor="@color/color_999999"
+            android:textSize="12sp"/>
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/py1"
+        android:background="@color/color_999999"
+        android:layout_marginBottom="@dimen/py30"/>
 
 </LinearLayout>

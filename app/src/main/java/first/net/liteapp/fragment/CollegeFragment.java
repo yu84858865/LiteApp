@@ -17,6 +17,7 @@ import java.util.Random;
 
 import first.net.liteapp.R;
 import first.net.liteapp.activity.DataCollegeActivity;
+import first.net.liteapp.activity.LawCollegeActivity;
 import first.net.liteapp.activity.LiteCollegeActivity;
 import first.net.liteapp.activity.NewCollegeActivity;
 import first.net.liteapp.adapter.TabRvAdapter;
@@ -180,6 +181,7 @@ public class CollegeFragment extends BaseFragment implements View.OnClickListene
                 startActivity(new Intent(mContext, DataCollegeActivity.class));
                 break;
             case R.id.tv_law:
+                startActivity(new Intent(mContext, LawCollegeActivity.class));
                 break;
         }
     }

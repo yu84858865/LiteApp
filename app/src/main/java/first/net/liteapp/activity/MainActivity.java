@@ -1,25 +1,16 @@
 package first.net.liteapp.activity;
 
-import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
-import android.util.Log;
 import android.widget.FrameLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
-
-import com.tencent.open.utils.HttpUtils;
-
 import java.util.ArrayList;
 import java.util.List;
-
 import first.net.liteapp.R;
-import first.net.liteapp.constant.DataRequestResult;
 import first.net.liteapp.fragment.BaseFragment;
 import first.net.liteapp.fragment.CollegeFragment;
 import first.net.liteapp.fragment.HomeFragment;
-import first.net.liteapp.utils.DataRequestUtils;
-import first.net.liteapp.utils.ToastUtil;
 
 /**
  * Created by yuqiubo on 2018/2/22.

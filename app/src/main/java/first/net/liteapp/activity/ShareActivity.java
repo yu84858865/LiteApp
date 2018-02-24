@@ -8,6 +8,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
@@ -63,6 +64,7 @@ public class ShareActivity extends BaseActivity implements View.OnClickListener,
     private ShareDialog mShareDialog;
     private WbShareHandler shareHandler;
     private BitmapDrawable bitmapDrawable;
+    private TextView tv_cancel;
     /**
      * 第三方登录AppID
      */
@@ -101,6 +103,7 @@ public class ShareActivity extends BaseActivity implements View.OnClickListener,
         iv_facebook = findViewById(R.id.iv_facebook);
         iv_twitter = findViewById(R.id.iv_twitter);
         iv_linkedin = findViewById(R.id.iv_linkedin);
+        tv_cancel = findViewById(R.id.tv_cancel);
         mLoadingDialog = new LoadingDialog(ShareActivity.this);
     }
 
@@ -113,6 +116,7 @@ public class ShareActivity extends BaseActivity implements View.OnClickListener,
         iv_facebook.setOnClickListener(this);
         iv_twitter.setOnClickListener(this);
         iv_linkedin.setOnClickListener(this);
+        tv_cancel.setOnClickListener(this);
     }
 
     @Override
@@ -143,6 +147,9 @@ public class ShareActivity extends BaseActivity implements View.OnClickListener,
                 break;
             case R.id.iv_linkedin:
                 linkedinShare(mTitle, mContent);
+                break;
+            case R.id.tv_cancel:
+                ShareActivity.this.finish();
                 break;
         }
     }

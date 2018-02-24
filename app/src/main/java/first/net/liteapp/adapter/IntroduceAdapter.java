@@ -12,6 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import first.net.liteapp.R;
+import first.net.liteapp.activity.IntroduceWebActivity;
 import first.net.liteapp.activity.LiveDetailActivity;
 import first.net.liteapp.bean.CourseLiveBean;
 import first.net.liteapp.bean.IntroduceBean;
@@ -68,7 +69,8 @@ public class IntroduceAdapter extends RecyclerView.Adapter<IntroduceAdapter.View
 
         @Override
         public void onClick(View view) {
-
+            String title = tv_name.getText().toString();
+            IntroduceWebActivity.startActivity(mContext,title);
         }
     }
 }

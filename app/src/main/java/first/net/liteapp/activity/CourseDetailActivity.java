@@ -17,6 +17,7 @@ import first.net.liteapp.view.TitleView;
 
 /**
  * Created by 10960 on 2018/2/24.
+ * 课程详情和活动详情
  */
 
 public class CourseDetailActivity extends BaseActivity implements View.OnClickListener{
@@ -124,6 +125,7 @@ public class CourseDetailActivity extends BaseActivity implements View.OnClickLi
                 ShareActivity.ShareLive(this,"","","","",true);
                 break;
             case R.id.tv_attend:
+                ConfirmOrderActivity.startActivity(this,"");
                 break;
         }
     }

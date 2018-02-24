@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <first.net.liteapp.view.TitleView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:text="@string/pay_order"
+        app:isShowBack="true"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/py1"
+        android:background="@color/color_f1f1f1"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="@dimen/py40">
+
+        <ImageView
+            android:id="@+id/iv_photo"
+            android:layout_width="@dimen/py300"
+            android:layout_height="@dimen/py240"
+            android:scaleType="centerCrop" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:layout_marginLeft="@dimen/py20">
+
+            <TextView
+                android:id="@+id/tv_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/color_333333"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:maxLines="1"
+                android:ellipsize="end"/>
+
+            <TextView
+                android:id="@+id/tv_location"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/color_333333"
+                android:textSize="14sp"
+                android:layout_marginTop="@dimen/py20"/>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/py20">
+
+                <TextView
+                    android:id="@+id/tv_time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/color_999999"
+                    android:textSize="14sp"
+                    android:layout_alignParentLeft="true"/>
+
+                <TextView
+                    android:id="@+id/tv_price"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/color_f58585"
+                    android:textSize="14sp"
+                    android:layout_alignParentRight="true"/>
+
+            </RelativeLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/py1"
+        android:background="@color/color_f1f1f1"/>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:paddingTop="@dimen/py70"
+        android:paddingBottom="@dimen/py70">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@mipmap/pay_money"/>
+
+        <TextView
+            android:id="@+id/tv_pay_money"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/py45"
+            android:textSize="22sp"
+            android:textColor="@color/color_f58585"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/py45"
+            android:textColor="@color/color_f58585"
+            android:textSize="18sp"
+            android:text="@string/HKD"/>
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/py150"
+        android:text="@string/select_function"
+        android:textColor="@color/color_333333"
+        android:textSize="18sp"
+        android:paddingLeft="@dimen/py30"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/py1"
+        android:background="@color/color_f1f1f1"/>
+
+    <RadioGroup
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/py200"
+            android:paddingLeft="@dimen/py30"
+            android:paddingRight="@dimen/py30">
+
+            <ImageView
+                android:id="@+id/iv_wechat"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@mipmap/pay_wechat"
+                android:layout_centerVertical="true"
+                android:layout_alignParentLeft="true"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/iv_wechat"
+                android:layout_marginLeft="@dimen/py30"
+                android:layout_centerVertical="true"
+                android:text="@string/wechat"
+                android:textColor="@color/color_333333"
+                android:textSize="18sp"/>
+
+            <RadioButton
+                android:id="@+id/rb_wechat"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="true"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"/>
+
+        </RelativeLayout>
+
+
+
+
+
+
+
+    </RadioGroup>
+
+
+
+
+</LinearLayout>

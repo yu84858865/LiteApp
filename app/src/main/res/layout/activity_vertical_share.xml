@@ -10,17 +10,18 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:background="@color/real_transparent" />
+        android:background="#10000000" />
 
     <View
         android:layout_width="match_parent"
-        android:layout_height="1dp" />
+        android:layout_height="@dimen/py1" 
+        android:background="@color/color_f1f1f1"/>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:background="#ffffff">
+        android:background="@color/color_ffffff">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -211,13 +212,22 @@
                     android:textColor="#9d9a9a" />
 
             </LinearLayout>
-
         </LinearLayout>
-
-
-
     </LinearLayout>
 
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/py1"
+        android:background="@color/color_f1f1f1"/>
+    
+    <TextView
+        android:id="@+id/tv_cancel"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/py150"
+        android:gravity="center"
+        android:text="@string/cancel"
+        android:textSize="20sp"
+        android:textColor="@color/color_333333"/>
 
 
 </LinearLayout>

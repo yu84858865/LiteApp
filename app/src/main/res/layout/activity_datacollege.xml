@@ -18,7 +18,7 @@
     <View
         android:layout_width="match_parent"
         android:layout_height="@dimen/py1"
-        android:background="@color/color_999999"/>
+        android:background="@color/color_line"/>
 
     <android.support.v4.view.ViewPager
         android:layout_width="match_parent"

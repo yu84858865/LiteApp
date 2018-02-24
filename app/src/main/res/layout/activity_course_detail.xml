@@ -44,7 +44,7 @@
             <View
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/py1"
-                android:background="@color/color_999999" />
+                android:background="@color/color_line" />
 
             <TextView
                 android:id="@+id/tv_price"
@@ -76,7 +76,7 @@
             <View
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/py1"
-                android:background="@color/color_999999" />
+                android:background="@color/color_line" />
 
             <TextView
                 android:id="@+id/tv_person"
@@ -93,7 +93,7 @@
             <View
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/py1"
-                android:background="@color/color_999999" />
+                android:background="@color/color_line" />
 
             <TextView
                 android:id="@+id/tv_time"
@@ -110,7 +110,7 @@
             <View
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/py1"
-                android:background="@color/color_999999" />
+                android:background="@color/color_line" />
 
             <TextView
                 android:id="@+id/tv_location"

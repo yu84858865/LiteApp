@@ -157,14 +157,6 @@ public class LiveDetailActivity extends BaseActivity implements View.OnClickList
             @Override
             public void onPlayEvent(int event, Bundle param) {
                 try {
-                    Log.e(LiveDetailActivity.class.getSimpleName(), event + "");
-                    String msg1 = null;
-                    if (param != null) {
-                        byte[] b = param.getByteArray(TXLiveConstants.EVT_GET_MSG);
-                        if (b != null)
-                            msg1 = new String(b, "UTF-8");
-                    }
-                    Log.e(LiveDetailActivity.class.getSimpleName(), msg1 == null ? "null" : msg1);
                     if (event == TXLiveConstants.PLAY_ERR_NET_DISCONNECT) {
 
                     } else if (event == TXLiveConstants.PLAY_EVT_GET_MESSAGE) {

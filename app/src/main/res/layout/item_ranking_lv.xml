@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_width="match_parent" android:layout_height="wrap_content"
     android:orientation="vertical">
 
     <RelativeLayout
@@ -41,7 +40,7 @@
         </LinearLayout>
 
         <TextView
-            android:id="@+id/tv_like"
+            android:id="@+id/tv_rank"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
@@ -60,18 +59,5 @@
         android:layout_width="match_parent"
         android:layout_height="@dimen/py1"
         android:background="@color/color_line"/>
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginLeft="@dimen/px60"
-        android:layout_marginRight="@dimen/px60"
-        android:layout_marginTop="@dimen/py39"
-        android:layout_marginBottom="@dimen/py39"
-        android:textColor="@color/color_333333"
-        android:textSize="14sp"
-        android:id="@+id/tv_intro"/>
-
-
 
 </LinearLayout>

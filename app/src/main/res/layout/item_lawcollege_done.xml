@@ -18,7 +18,7 @@
     <View
         android:layout_width="match_parent"
         android:layout_height="@dimen/py1"
-        android:background="@color/color_999999"/>
+        android:background="@color/color_line"/>
     
     <TextView
         android:layout_width="match_parent"
@@ -32,7 +32,7 @@
     <View
         android:layout_width="match_parent"
         android:layout_height="@dimen/py1"
-        android:background="@color/color_999999"
+        android:background="@color/color_line"
         android:layout_marginLeft="@dimen/px60"
         android:layout_marginRight="@dimen/px60"/>
 
@@ -87,6 +87,6 @@
     <View
         android:layout_width="match_parent"
         android:layout_height="@dimen/py30"
-        android:background="@color/color_f1f1f1"/>
+        android:background="@color/color_line"/>
 
 </LinearLayout>

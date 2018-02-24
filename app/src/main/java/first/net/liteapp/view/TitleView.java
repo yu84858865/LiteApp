@@ -21,9 +21,9 @@ import first.net.liteapp.activity.LivePublishActivity;
 
 public class TitleView extends RelativeLayout {
     private Context mContext;
-    private ImageView iv_back;
-    private TextView tv_title;
-    private ImageView iv_search;
+    private ImageView iv_cus_back;
+    private TextView tv_cus_title;
+    private ImageView iv_cus_search;
     private String mTitle;
     private boolean mIsShowback;
     private boolean mIsShowSearch;
@@ -49,31 +49,31 @@ public class TitleView extends RelativeLayout {
 
     private void init() {
         View view = View.inflate(mContext, R.layout.item_titleview, this);
-        iv_back = view.findViewById(R.id.iv_back);
-        tv_title = view.findViewById(R.id.tv_title);
-        iv_search = findViewById(R.id.iv_search);
-        iv_back.setOnClickListener(new OnClickListener() {
+        iv_cus_back = view.findViewById(R.id.iv_cus_back);
+        tv_cus_title = view.findViewById(R.id.tv_cus_title);
+        iv_cus_search = findViewById(R.id.iv_cus_search);
+        iv_cus_back.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
                 ((Activity) mContext).finish();
             }
         });
 
-        tv_title.setText(mTitle);
-        iv_back.setVisibility(mIsShowback ? VISIBLE : GONE);
-        iv_search.setVisibility(mIsShowSearch ? VISIBLE : GONE);
+        tv_cus_title.setText(mTitle);
+        iv_cus_back.setVisibility(mIsShowback ? VISIBLE : GONE);
+        iv_cus_search.setVisibility(mIsShowSearch ? VISIBLE : GONE);
     }
 
     public void setTitle(String title) {
-        tv_title.setText(title);
+        tv_cus_title.setText(title);
     }
 
     public void setSearchVisibility(int visibility) {
-        iv_back.setVisibility(visibility);
+        iv_cus_back.setVisibility(visibility);
     }
 
     public void setBackVisibility(int visibility) {
-        iv_search.setVisibility(visibility);
+        iv_cus_search.setVisibility(visibility);
     }
 
     public void setBackground(int color) {

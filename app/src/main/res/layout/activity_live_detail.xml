@@ -3,15 +3,15 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#f2f7f8"
+    android:background="@color/color_ffffff"
     android:orientation="vertical">
 
     <first.net.liteapp.view.TitleView
+        android:id="@+id/cus_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/cus_title"
-        app:title="@string/live_detail"
-        app:isShowBack="true"/>
+        app:isShowBack="true"
+        app:title="@string/live_detail" />
 
     <RelativeLayout
         android:id="@+id/rlyt_player"
@@ -30,22 +30,22 @@
             android:layout_height="wrap_content"
             android:layout_alignBottom="@+id/video_tx"
             android:layout_alignParentRight="true"
-            android:background="@mipmap/live_zoom"
-            android:padding="@dimen/px10"
+            android:layout_marginBottom="@dimen/px39"
             android:layout_marginRight="@dimen/px51"
-            android:layout_marginBottom="@dimen/px39"/>
+            android:background="@mipmap/live_zoom"
+            android:padding="@dimen/px10" />
 
         <ImageView
+            android:id="@+id/iv_videoback"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/py24"
-            android:layout_marginLeft="@dimen/py36"
-            android:padding="@dimen/px6"
-            android:layout_alignTop="@+id/video_tx"
             android:layout_alignParentLeft="true"
+            android:layout_alignTop="@+id/video_tx"
+            android:layout_marginLeft="@dimen/py36"
+            android:layout_marginTop="@dimen/py24"
+            android:padding="@dimen/px6"
             android:src="@mipmap/back"
-            android:id="@+id/iv_videoback"
-            android:visibility="gone"/>
+            android:visibility="gone" />
 
         <TextView
             android:id="@+id/tv_catagory"
@@ -56,7 +56,7 @@
             android:padding="15dp"
             android:text="高清"
             android:textColor="@color/color_f58585"
-            android:visibility="gone"/>
+            android:visibility="gone" />
 
     </RelativeLayout>
 
@@ -75,6 +75,10 @@
             app:tabIndicatorHeight="@dimen/py10"
             app:tabTextColor="@color/color_333333" />
 
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/py1"
+            android:background="@color/color_line" />
 
         <android.support.v4.view.ViewPager
             android:id="@+id/vp_tab"
@@ -87,7 +91,7 @@
     <View
         android:layout_width="match_parent"
         android:layout_height="@dimen/py1"
-        android:background="@color/color_999999"/>
+        android:background="@color/color_line" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -99,23 +103,23 @@
             android:id="@+id/iv_flower"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@mipmap/live_flower"
-            android:layout_marginLeft="@dimen/px30"/>
+            android:layout_marginLeft="@dimen/px30"
+            android:background="@mipmap/live_flower" />
 
         <TextView
             android:id="@+id/tv_reply"
             android:layout_width="0dp"
-            android:layout_weight="1"
             android:layout_height="match_parent"
+            android:layout_marginBottom="@dimen/py15"
             android:layout_marginLeft="@dimen/px30"
             android:layout_marginRight="@dimen/px30"
-            android:background="@drawable/rectangle_gray_small_item_bg"
             android:layout_marginTop="@dimen/py15"
-            android:layout_marginBottom="@dimen/py15"
-            android:text="@string/live_reply"
+            android:layout_weight="1"
+            android:background="@drawable/rectangle_gray_small_item_bg"
             android:gravity="center_vertical"
-            android:textColor="@color/color_999999"
-            android:paddingLeft="@dimen/px30"/>
+            android:paddingLeft="@dimen/px30"
+            android:text="@string/live_reply"
+            android:textColor="@color/color_999999" />
 
         <TextView
             android:id="@+id/tv_give"
@@ -125,14 +129,14 @@
             android:drawableTop="@mipmap/live_gift"
             android:text="@string/live_give"
             android:textColor="@color/color_999999"
-            android:textSize="12sp"/>
+            android:textSize="12sp" />
 
     </LinearLayout>
 
     <View
         android:layout_width="match_parent"
         android:layout_height="@dimen/py1"
-        android:background="@color/color_999999"
-        android:layout_marginBottom="@dimen/py30"/>
+        android:layout_marginBottom="@dimen/py30"
+        android:background="@color/color_line" />
 
 </LinearLayout>

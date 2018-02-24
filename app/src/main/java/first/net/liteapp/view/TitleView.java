@@ -27,19 +27,20 @@ public class TitleView extends RelativeLayout {
     private String mTitle;
     private boolean mIsShowback;
     private boolean mIsShowSearch;
+
     public TitleView(Context context) {
-        this(context,null);
+        this(context, null);
     }
 
     public TitleView(Context context, @Nullable AttributeSet attrs) {
-        this(context, attrs,-1);
+        this(context, attrs, -1);
     }
 
     public TitleView(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         TypedArray ta = getContext().obtainStyledAttributes(attrs, R.styleable.TitleView);
-        mIsShowback = ta.getBoolean(R.styleable.TitleView_isShowBack,false);
-        mIsShowSearch = ta.getBoolean(R.styleable.TitleView_isShowSearch,false);
+        mIsShowback = ta.getBoolean(R.styleable.TitleView_isShowBack, false);
+        mIsShowSearch = ta.getBoolean(R.styleable.TitleView_isShowSearch, false);
         mTitle = ta.getString(R.styleable.TitleView_title);
         ta.recycle();
         mContext = context;
@@ -47,7 +48,7 @@ public class TitleView extends RelativeLayout {
     }
 
     private void init() {
-        View view = View.inflate(mContext, R.layout.item_titleview,this);
+        View view = View.inflate(mContext, R.layout.item_titleview, this);
         iv_back = view.findViewById(R.id.iv_back);
         tv_title = view.findViewById(R.id.tv_title);
         iv_search = findViewById(R.id.iv_search);
@@ -59,11 +60,23 @@ public class TitleView extends RelativeLayout {
         });
 
         tv_title.setText(mTitle);
-        iv_back.setVisibility(mIsShowback?VISIBLE:GONE);
-        iv_search.setVisibility(mIsShowSearch?VISIBLE:GONE);
+        iv_back.setVisibility(mIsShowback ? VISIBLE : GONE);
+        iv_search.setVisibility(mIsShowSearch ? VISIBLE : GONE);
     }
 
-    public void setBackground(int color){
+    public void setTitle(String title) {
+        tv_title.setText(title);
+    }
+
+    public void setSearchVisibility(int visibility) {
+        iv_back.setVisibility(visibility);
+    }
+
+    public void setBackVisibility(int visibility) {
+        iv_search.setVisibility(visibility);
+    }
+
+    public void setBackground(int color) {
         findViewById(R.id.rlyt_root).setBackgroundColor(color);
     }
 }

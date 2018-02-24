@@ -9,9 +9,25 @@ public class HotInfoBean {
     private int id;
     private String title;
     private String imageUrl;
-    private String lookCount;
-    private String replyCount;
+    private String skimCount;
+    private String commentCount;
     private String praiseCount;
+
+    public String getSkimCount() {
+        return skimCount;
+    }
+
+    public void setSkimCount(String skimCount) {
+        this.skimCount = skimCount;
+    }
+
+    public String getCommentCount() {
+        return commentCount;
+    }
+
+    public void setCommentCount(String commentCount) {
+        this.commentCount = commentCount;
+    }
 
     public int getId() {
         return id;
@@ -37,21 +53,6 @@ public class HotInfoBean {
         this.imageUrl = imageUrl;
     }
 
-    public String getLookCount() {
-        return lookCount;
-    }
-
-    public void setLookCount(String lookCount) {
-        this.lookCount = lookCount;
-    }
-
-    public String getReplyCount() {
-        return replyCount;
-    }
-
-    public void setReplyCount(String replyCount) {
-        this.replyCount = replyCount;
-    }
 
     public String getPraiseCount() {
         return praiseCount;

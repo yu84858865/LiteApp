@@ -57,8 +57,8 @@ public class InfoActivity extends BaseActivity {
         info_tab.addTab(info_tab.newTab());
         info_tab.addTab(info_tab.newTab());
         info_tab.setupWithViewPager(info_vp);
-        info_tab.getTabAt(0).setText("热点资讯");
-        info_tab.getTabAt(1).setText("行业动态");
+        info_tab.getTabAt(0).setText(getResources().getString(R.string.hotinformation));
+        info_tab.getTabAt(1).setText(getResources().getString(R.string.industry));
         info_tab.setTabMode(TabLayout.MODE_FIXED);
     }
 

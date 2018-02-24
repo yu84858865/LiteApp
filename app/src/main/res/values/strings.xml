@@ -20,4 +20,11 @@
     <string name="more">更多</string>
     <string name="new_info">最新资讯</string>
     <string name="introduce">介绍</string>
+    <string name="activity">活动</string>
+    <string name="information">资讯</string>
+    <string name="hotinformation">热点资讯</string>
+    <string name="lifecode">生命密码</string>
+    <string name="medicallecture">医疗讲座</string>
+    <string name="medame">医美讲座</string>
+    <string name="industry">行业动态</string>
 </resources>

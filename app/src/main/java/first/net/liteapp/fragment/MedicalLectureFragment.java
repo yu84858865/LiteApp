@@ -18,6 +18,7 @@ import first.net.liteapp.bean.ActiveInfoBean;
 
 /**
  * Created by 10960 on 2018/2/23.
+ * 医疗讲座
  */
 
 public class MedicalLectureFragment extends BaseFragment {

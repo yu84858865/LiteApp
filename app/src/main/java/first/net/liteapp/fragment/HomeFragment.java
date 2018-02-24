@@ -86,9 +86,9 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener{
         ll_info_more = view.findViewById(R.id.ll_info_more);
         info_listview = view.findViewById(R.id.info_listview);
         rv_introduce = view.findViewById(R.id.rv_introduce);
-        imgList.add("http://testimg.ibaking.com.cn/ad/699a8b70c98741a8b00b59d92f03f4ed.jpg");
-        imgList.add("http://testimg.ibaking.com.cn/ad/5c2e9fac47734420bad2f423ca63a66b.jpg");
-        imgList.add("http://testimg.ibaking.com.cn/ad/4d1c5d9fea1b49c5bddd98add0d0884a.jpg");
+        imgList.add("http://img.hb.aicdn.com/7d523da2b02206a2469e6d9efa714e0e993b8380a2759-vNzAdE_fw658");
+        imgList.add("http://img.hb.aicdn.com/304be7e36ac024383bba16f3f32e01f7408f644e7bf9a-d5k7ZW_fw658");
+        imgList.add("http://img.hb.aicdn.com/7e7c9d2b1a20238cdf6c3b49659c683c189548d1b0805-kHQpwM_fw658");
         setListener();
         initCycleView();
 //        getCycleView();

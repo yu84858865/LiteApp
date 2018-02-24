@@ -53,13 +53,14 @@ public class HotInfoAdapter extends BaseAdapter {
     public View getView(int position, View view, ViewGroup viewGroup) {
         ViewHolder holder;
         if(view == null){
-            view = LayoutInflater.from(mContext).inflate(R.layout.item_lifecode,null);
+            view = LayoutInflater.from(mContext).inflate(R.layout.item_hot_info,null);
             holder = new ViewHolder();
             holder.iv_photo = view.findViewById(R.id.iv_photo);
-            holder.tv_content = view.findViewById(R.id.tv_content);
-            holder.tv_time = view.findViewById(R.id.tv_time);
+            holder.tv_skim = view.findViewById(R.id.tv_skim);
+            holder.tv_praise_count = view.findViewById(R.id.tv_praise_count);
             holder.tv_title = view.findViewById(R.id.tv_title);
-            holder.tv_price = view.findViewById(R.id.tv_price);
+            holder.tv_comment = view.findViewById(R.id.tv_comment);
+            holder.iv_praise = view.findViewById(R.id.iv_praise);
             view.setTag(holder);
         }else{
             holder = (ViewHolder) view.getTag();
@@ -69,7 +70,9 @@ public class HotInfoAdapter extends BaseAdapter {
         if(bean != null){
             GlideUtils.displayNormalImgByOther(mContext,bean.getImageUrl(),holder.iv_photo);
             holder.tv_title.setText(bean.getTitle());
-
+            holder.tv_comment.setText(bean.getCommentCount());
+            holder.tv_praise_count.setText(bean.getPraiseCount());
+            holder.tv_skim.setText(bean.getSkimCount());
         }
         view.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -82,8 +85,8 @@ public class HotInfoAdapter extends BaseAdapter {
 
 
     private class ViewHolder{
-        private TextView tv_title, tv_content, tv_price, tv_time;
-        private ImageView iv_photo;
+        private TextView tv_title, tv_skim, tv_praise_count, tv_comment;
+        private ImageView iv_photo, iv_praise;
     }
 
 }

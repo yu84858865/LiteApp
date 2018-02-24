@@ -64,9 +64,9 @@ public class PopularActActivity extends BaseActivity {
         popular_tab.addTab(popular_tab.newTab());
         popular_tab.addTab(popular_tab.newTab());
         popular_tab.setupWithViewPager(popular_vp);
-        popular_tab.getTabAt(0).setText("生命密码");
-        popular_tab.getTabAt(1).setText("医疗讲座");
-        popular_tab.getTabAt(2).setText("医美讲座");
+        popular_tab.getTabAt(0).setText(getResources().getString(R.string.lifecode));
+        popular_tab.getTabAt(1).setText(getResources().getString(R.string.medicallecture));
+        popular_tab.getTabAt(2).setText(getResources().getString(R.string.medame));
         popular_tab.setTabMode(TabLayout.MODE_FIXED);
     }
 

@@ -18,6 +18,7 @@ import first.net.liteapp.bean.ActiveInfoBean;
 
 /**
  * Created by 10960 on 2018/2/23.
+ * 生命密码
  */
 
 public class LifeCodeFragment extends BaseFragment {

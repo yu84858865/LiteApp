@@ -30,13 +30,13 @@ public class ChatFragment extends BaseFragment{
         lv_chat.setDivider(null);
         mChatList = new ArrayList<>();
         lv_chat.setAdapter(mChatAdapter = new ChatAdapter(mContext));
-        mChatList.add("欢迎 177756745来到本直播间");
-        mChatList.add("Guess高: 学习了，这样就能预防疾病");
-        mChatList.add("Jack离: 教授讲的太好了");
-        mChatList.add("追梦: 666666");
-        mChatList.add("放飞自我: 受教了");
-        mChatList.add("Guess高: lallalalla~~");
+        mChatList.add("欢迎 Mr.Jack来到本直播间");
         mChatAdapter.setData(mChatList);
         return lv_chat;
+    }
+
+    public void sendMessage(String msg){
+        mChatList.add("Mr.Jack: "+msg);
+        mChatAdapter.setData(mChatList);
     }
 }

@@ -12,7 +12,9 @@ import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.ViewTreeObserver;
 import android.view.WindowManager;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -48,6 +50,9 @@ import first.net.liteapp.view.TitleView;
  */
 
 public class LiveDetailActivity extends BaseActivity implements View.OnClickListener {
+    private LinearLayout llyt_root;
+    private LinearLayout llyt_reply;
+    private EditText et_reply;
     private TXCloudVideoView video_tx;
     private TXLivePlayer mTxLivePlayer;
     private ImageView iv_fullscreen;
@@ -57,9 +62,11 @@ public class LiveDetailActivity extends BaseActivity implements View.OnClickList
     private TitleView cus_title;
     private TabLayout tlyt_tab;
     private ViewPager vp_tab;
+    private LinearLayout llyt_chat;
     private ImageView iv_flower;
     private TextView tv_reply;
     private TextView tv_give;
+    private TextView tv_send;
     private List<Fragment> mFragmentList = new ArrayList<>();
     private ImageView iv_videoback;
     private TextView tv_catagory;
@@ -95,15 +102,20 @@ public class LiveDetailActivity extends BaseActivity implements View.OnClickList
 
     @Override
     protected void initView() {
+        llyt_root = findViewById(R.id.llyt_root);
+        llyt_reply = findViewById(R.id.llyt_reply);
+        et_reply = findViewById(R.id.et_reply);
         cus_title = findViewById(R.id.cus_title);
         video_tx = findViewById(R.id.video_tx);
         iv_fullscreen = findViewById(R.id.iv_fullscreen);
         rlyt_player = findViewById(R.id.rlyt_player);
         tlyt_tab = findViewById(R.id.tlyt_tab);
         vp_tab = findViewById(R.id.vp_tab);
+        llyt_chat = findViewById(R.id.llyt_chat);
         iv_flower = findViewById(R.id.iv_flower);
         tv_reply = findViewById(R.id.tv_reply);
         tv_give = findViewById(R.id.tv_give);
+        tv_send = findViewById(R.id.tv_send);
         tv_catagory = findViewById(R.id.tv_catagory);
         iv_videoback = findViewById(R.id.iv_videoback);
         llyt_bottom = findViewById(R.id.llyt_bottom);
@@ -114,9 +126,25 @@ public class LiveDetailActivity extends BaseActivity implements View.OnClickList
         iv_flower.setOnClickListener(this);
         tv_reply.setOnClickListener(this);
         tv_give.setOnClickListener(this);
+        tv_send.setOnClickListener(this);
         tv_catagory.setOnClickListener(this);
         iv_videoback.setOnClickListener(this);
         video_tx.setOnClickListener(this);
+        llyt_root.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
+            @Override
+            public void onGlobalLayout() {
+                int heightDiff = llyt_root.getRootView().getHeight() - llyt_root.getHeight();
+                if (heightDiff > 100) { // 如果高度差超过100像素，就很有可能是有软键盘...
+                    llyt_reply.layout(0, DataTools.getScreenHight(LiveDetailActivity.this) - heightDiff - ((int) getResources().getDimension(R.dimen.py180)),
+                            DataTools.getScreenWith(LiveDetailActivity.this), DataTools.getScreenHight(LiveDetailActivity.this) - heightDiff);
+                    llyt_reply.setVisibility(View.VISIBLE);
+                    et_reply.setFocusable(true);
+                    et_reply.requestFocus();
+                } else {
+                    llyt_reply.setVisibility(View.GONE);
+                }
+            }
+        });
     }
 
     @Override
@@ -138,14 +166,14 @@ public class LiveDetailActivity extends BaseActivity implements View.OnClickList
         mPlayConfig = new TXLivePlayConfig();
 
         //自动模式
-        mPlayConfig.setAutoAdjustCacheTime(true);
-        mPlayConfig.setMinAutoAdjustCacheTime(1);
-        mPlayConfig.setMaxAutoAdjustCacheTime(5);
-
-//        //极速模式
 //        mPlayConfig.setAutoAdjustCacheTime(true);
 //        mPlayConfig.setMinAutoAdjustCacheTime(1);
-//        mPlayConfig.setMaxAutoAdjustCacheTime(1);
+//        mPlayConfig.setMaxAutoAdjustCacheTime(5);
+
+//        //极速模式
+        mPlayConfig.setAutoAdjustCacheTime(true);
+        mPlayConfig.setMinAutoAdjustCacheTime(1);
+        mPlayConfig.setMaxAutoAdjustCacheTime(1);
 //
         //流畅模式
 //        mPlayConfig.setAutoAdjustCacheTime(false);
@@ -202,11 +230,18 @@ public class LiveDetailActivity extends BaseActivity implements View.OnClickList
         tlyt_tab.setupWithViewPager(vp_tab);
         int tabCount = tlyt_tab.getTabCount();//获取TabLayout的个数
         for (int i = 0; i < tabCount; i++) {
+            final int pos =i;
             View view = View.inflate(this, R.layout.item_tab, null);
             TextView tv_tab = view.findViewById(R.id.tv_tab);
-            tv_tab.setText(mTabNames[i]);
-            TabLayout.Tab tab = tlyt_tab.getTabAt(i);////获取TabLayout的子元素Tab
+            tv_tab.setText(mTabNames[pos]);
+            TabLayout.Tab tab = tlyt_tab.getTabAt(pos);////获取TabLayout的子元素Tab
             tab.setCustomView(tv_tab);//设置TabLayout的子元素Tab的布局View
+            ((View) tab.getCustomView().getParent()).setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    llyt_chat.setVisibility(pos==0?View.VISIBLE:View.GONE);
+                }
+            });
         }
 
     }
@@ -255,7 +290,7 @@ public class LiveDetailActivity extends BaseActivity implements View.OnClickList
             cus_title.setVisibility(View.GONE);
             iv_fullscreen.setVisibility(View.GONE);
             iv_videoback.setVisibility(View.VISIBLE);
-            tv_catagory.setVisibility(View.VISIBLE);
+//            tv_catagory.setVisibility(View.VISIBLE);
             llyt_bottom.setVisibility(View.GONE);
 
             ViewGroup.LayoutParams params = rlyt_player.getLayoutParams();
@@ -325,13 +360,25 @@ public class LiveDetailActivity extends BaseActivity implements View.OnClickList
                 if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE && Build.VERSION.SDK_INT >= 19) {
                     if (iv_videoback.getVisibility() == View.GONE) {
                         iv_videoback.setVisibility(View.VISIBLE);
-                        tv_catagory.setVisibility(View.VISIBLE);
+//                        tv_catagory.setVisibility(View.VISIBLE);
                     } else {
                         iv_videoback.setVisibility(View.GONE);
-                        tv_catagory.setVisibility(View.GONE);
+//                        tv_catagory.setVisibility(View.GONE);
                     }
                     break;
                 }
+            case R.id.tv_reply:
+                ScreenUtils.openKeyboard(tv_reply);
+                break;
+            case R.id.tv_send:
+                String msg = et_reply.getText().toString().trim();
+                if (!TextUtils.isEmpty(msg)){
+                    ScreenUtils.closeKeyboard(this);
+                    et_reply.setText("");
+                    ChatFragment chatFragment = (ChatFragment) mFragmentList.get(0);
+                    chatFragment.sendMessage(msg);
+                }
+                break;
         }
     }
 

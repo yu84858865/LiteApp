@@ -21,7 +21,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
             android:layout_weight="1"
-            android:background="@color/color_50999999"
+            android:background="@color/color_999999"
             android:hint="@string/write_comment"
             android:maxLength="100"
             android:paddingBottom="10dp"

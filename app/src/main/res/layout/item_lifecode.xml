@@ -74,7 +74,7 @@
             android:drawableLeft="@mipmap/college_time"
             android:drawablePadding="@dimen/py20"
             android:text="2018/1/1至2018/2/1"
-            android:textColor="@color/color_50999999"
+            android:textColor="@color/color_999999"
             android:textSize="12sp"
             android:layout_alignParentRight="true"/>
 

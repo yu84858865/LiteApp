@@ -35,15 +35,13 @@
         <activity android:name=".activity.LawCollegeActivity"/>
         <activity android:name=".activity.LiveDetailActivity"
             android:launchMode="singleTask"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
+            android:windowSoftInputMode="adjustResize"
             android:configChanges="orientation|screenSize|smallestScreenSize|keyboard|keyboardHidden|navigation"/>
         <activity android:name=".activity.LivePublishActivity"
             android:launchMode="singleTask"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
             android:configChanges="keyboardHidden|orientation|screenSize"/>
         <activity android:name=".activity.ShareActivity"
             android:launchMode="singleTask"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
             android:configChanges="keyboardHidden|orientation|screenSize" />
         <activity android:name=".wxapi.WXEntryActivity"
             android:label="@string/app_name"
@@ -65,8 +63,7 @@
         </activity>
         <activity
             android:name="com.tencent.connect.common.AssistActivity"
-            android:screenOrientation="portrait"
-            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+            android:screenOrientation="portrait" />
 
         <!--facebook分享-->
         <meta-data android:name="com.facebook.sdk.ApplicationId" android:value="@string/facebook_app_id" />

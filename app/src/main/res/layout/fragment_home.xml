@@ -296,7 +296,7 @@
                     android:id="@+id/info_listview"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:divider="@color/color_50999999"
+                    android:divider="@color/color_line"
                     android:dividerHeight="@dimen/py1"
                     android:scrollbars="none" />
 

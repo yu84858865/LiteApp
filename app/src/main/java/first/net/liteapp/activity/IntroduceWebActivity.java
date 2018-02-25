@@ -3,6 +3,7 @@ package first.net.liteapp.activity;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.webkit.WebChromeClient;
 import android.webkit.WebResourceRequest;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
@@ -45,11 +46,14 @@ public class IntroduceWebActivity extends BaseActivity {
             tv_titleview.setTitle(title);
         }
 
-        final String webUrl = "www.baidu.com";
-        WebSettings settings = webView.getSettings();
-        settings.setSupportZoom(true);
-        settings.setJavaScriptEnabled(true);
-        webView.loadUrl(webUrl);
+        final String webUrl = "http://www.sina.com.cn/";
+        WebSettings webSettings = webView.getSettings();
+        webView.setWebChromeClient(new WebChromeClient());
+        webSettings.setJavaScriptEnabled(true);
+        webSettings.setSupportZoom(true);
+        webSettings.setBuiltInZoomControls(true);
+        webSettings.setUseWideViewPort(true);
+        webSettings.setLoadWithOverviewMode(true);
         webView.setWebViewClient(new WebViewClient(){
             @Override
             public void onPageStarted(WebView view, String url, Bitmap favicon) {
@@ -67,6 +71,7 @@ public class IntroduceWebActivity extends BaseActivity {
                 return true;
             }
         });
+        webView.loadUrl(webUrl);
 
     }
 

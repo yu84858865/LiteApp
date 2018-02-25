@@ -6,24 +6,16 @@
     android:orientation="vertical">
 
     <first.net.liteapp.view.TitleView
-        android:id="@+id/tv_titleview"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:title=""
+        app:title="@string/select_coupon"
         app:isShowBack="true"/>
 
-    <RelativeLayout
+    <ListView
+        android:id="@+id/lv_listview"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1">
-
-        <WebView
-            android:id="@+id/webView"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
-
-    </RelativeLayout>
-
-
+        android:layout_height="wrap_content"
+        android:divider="@color/color_f1f1f1"
+        android:dividerHeight="@dimen/py1"/>
 
 </LinearLayout>

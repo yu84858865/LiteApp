@@ -6,4 +6,8 @@
         <attr name="isShowSearch" format="boolean"/>
     </declare-styleable>
 
+    <declare-styleable name="circular_imageview">
+        <attr name="rect_radius" format="reference|string" />
+    </declare-styleable>
+
 </resources>

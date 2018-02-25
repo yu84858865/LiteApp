@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <first.net.liteapp.view.TitleView
+        android:id="@+id/tv_titleview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:isShowBack="true" />
+
+    <ListView
+        android:id="@+id/lv_listview"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:divider="@color/color_line"
+        android:dividerHeight="@dimen/py1"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/py1"
+        android:background="@color/color_line"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/py150"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tv_comment"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/py120"
+            android:layout_marginLeft="@dimen/py40"
+            android:layout_marginRight="@dimen/py40"
+            android:background="@drawable/shape_comment"
+            android:hint="@string/write_comment"
+            android:textColorHint="@color/color_333333"
+            android:gravity="center_vertical"/>
+        
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/py1"
+            android:background="@color/color_line"/>
+    </LinearLayout>
+
+</LinearLayout>

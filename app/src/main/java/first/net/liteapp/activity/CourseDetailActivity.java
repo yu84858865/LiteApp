@@ -120,6 +120,7 @@ public class CourseDetailActivity extends BaseActivity implements View.OnClickLi
             case R.id.iv_interested:
                 break;
             case R.id.iv_comment:
+                CourseCommentActivity.startActivity(this,"",isFromCourse);
                 break;
             case R.id.iv_share:
                 ShareActivity.ShareLive(this,"","","","",true);

@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -20,6 +21,7 @@ public class ConfirmOrderActivity extends BaseActivity implements View.OnClickLi
     private TextView  tv_coupon_count, tv_commit_order, tv_title, tv_location, tv_time, tv_price;
     private ImageView iv_right_arrow, iv_photo;
     private RelativeLayout rl_coupon;
+    private LinearLayout ll_right_arrow;
 
     @Override
     public int getContentView() {
@@ -37,11 +39,12 @@ public class ConfirmOrderActivity extends BaseActivity implements View.OnClickLi
         iv_right_arrow = findViewById(R.id.iv_right_arrow);
         iv_photo = findViewById(R.id.iv_photo);
         rl_coupon = findViewById(R.id.rl_coupon);
+        ll_right_arrow = findViewById(R.id.ll_right_arrow);
     }
 
     @Override
     protected void setListener() {
-        iv_right_arrow.setOnClickListener(this);
+        ll_right_arrow.setOnClickListener(this);
         tv_commit_order.setOnClickListener(this);
     }
 
@@ -65,7 +68,7 @@ public class ConfirmOrderActivity extends BaseActivity implements View.OnClickLi
     @Override
     public void onClick(View view) {
         switch (view.getId()){
-            case R.id.iv_right_arrow:
+            case R.id.ll_right_arrow:
                 SelectCouponActivity.startActivity(this,"");
                 break;
             case R.id.tv_commit_order:

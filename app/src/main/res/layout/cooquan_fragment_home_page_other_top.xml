@@ -6,6 +6,7 @@
         android:id="@+id/iv_cycleview"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@mipmap/home_page_recipe_banner"
         android:scaleType="centerCrop" />
 
 </RelativeLayout>

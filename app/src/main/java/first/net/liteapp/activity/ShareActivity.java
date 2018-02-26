@@ -65,6 +65,7 @@ public class ShareActivity extends BaseActivity implements View.OnClickListener,
     private WbShareHandler shareHandler;
     private BitmapDrawable bitmapDrawable;
     private TextView tv_cancel;
+    private View mView;
     /**
      * 第三方登录AppID
      */
@@ -104,6 +105,7 @@ public class ShareActivity extends BaseActivity implements View.OnClickListener,
         iv_twitter = findViewById(R.id.iv_twitter);
         iv_linkedin = findViewById(R.id.iv_linkedin);
         tv_cancel = findViewById(R.id.tv_cancel);
+        mView = findViewById(R.id.mView);
         mLoadingDialog = new LoadingDialog(ShareActivity.this);
     }
 
@@ -117,6 +119,7 @@ public class ShareActivity extends BaseActivity implements View.OnClickListener,
         iv_twitter.setOnClickListener(this);
         iv_linkedin.setOnClickListener(this);
         tv_cancel.setOnClickListener(this);
+        mView.setOnClickListener(this);
     }
 
     @Override
@@ -150,6 +153,9 @@ public class ShareActivity extends BaseActivity implements View.OnClickListener,
                 break;
             case R.id.tv_cancel:
                 ShareActivity.this.finish();
+                break;
+            case R.id.mView:
+                tv_cancel.performClick();
                 break;
         }
     }

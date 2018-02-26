@@ -6,11 +6,11 @@
     android:orientation="vertical">
 
     <View
-        android:id="@+id/background"
+        android:id="@+id/mView"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:background="#10000000" />
+        android:background="#00ffffff" />
 
     <View
         android:layout_width="match_parent"
@@ -223,11 +223,12 @@
     <TextView
         android:id="@+id/tv_cancel"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/py150"
+        android:layout_height="@dimen/py140"
         android:gravity="center"
         android:text="@string/cancel"
-        android:textSize="20sp"
-        android:textColor="@color/color_333333"/>
+        android:textSize="18sp"
+        android:textColor="@color/color_333333"
+        android:background="@color/color_ffffff"/>
 
 
 </LinearLayout>

@@ -20,6 +20,8 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:paddingTop="@dimen/py10"
+        android:paddingBottom="@dimen/py20"
         android:orientation="vertical"
         android:background="@color/color_ffffff">
 

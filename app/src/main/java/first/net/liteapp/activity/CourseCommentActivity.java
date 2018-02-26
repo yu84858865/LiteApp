@@ -24,6 +24,7 @@ import first.net.liteapp.view.TitleView;
 
 public class CourseCommentActivity extends BaseActivity implements CommentDialog.CommentSubmitListener{
 
+    private static final String TAG="CourseCommentActivity";
     private TitleView tv_titleview;
     private ListView lv_listview;
     private TextView tv_comment;
@@ -69,7 +70,7 @@ public class CourseCommentActivity extends BaseActivity implements CommentDialog
             tv_titleview.setTitle(getResources().getString(R.string.activity_comment));
         }
         lv_listview.setAdapter(adapter);
-        for(int i=0;i<8;i++){
+        for(int i=0;i<2;i++){
             CommentBean bean = new CommentBean();
             bean.setHeadImg("http://img.hb.aicdn.com/e2eee499941b05e6c3d8971c3465f673bdeec45c35b2b-U1nU8R_fw658");
             bean.setName("流年似水");
@@ -87,8 +88,15 @@ public class CourseCommentActivity extends BaseActivity implements CommentDialog
     }
 
     @Override
-    public void onSubmit(String commment) {
-        Log.e("HTTP_","comment = "+commment);
+    public void onSubmit(String comment) {
+        Log.e(TAG,"comment = "+comment);
+        CommentBean bean = new CommentBean();
+        bean.setHeadImg("http://img.hb.aicdn.com/e2eee499941b05e6c3d8971c3465f673bdeec45c35b2b-U1nU8R_fw658");
+        bean.setName("提莫队长");
+        bean.setPraiseCount("30");
+        bean.setComment(comment);
+        beanList.add(bean);
+        adapter.setData(beanList);
     }
 
     @Override

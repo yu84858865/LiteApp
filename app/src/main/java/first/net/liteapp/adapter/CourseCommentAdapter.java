@@ -33,6 +33,7 @@ public class CourseCommentAdapter extends BaseAdapter {
 
     public void setData(List<CommentBean> list){
         if(list != null){
+            beanList.clear();
             beanList.addAll(list);
             notifyDataSetChanged();
         }

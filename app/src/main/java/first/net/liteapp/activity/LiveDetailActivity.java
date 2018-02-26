@@ -134,9 +134,13 @@ public class LiveDetailActivity extends BaseActivity implements View.OnClickList
             @Override
             public void onGlobalLayout() {
                 int heightDiff = llyt_root.getRootView().getHeight() - llyt_root.getHeight();
-                if (heightDiff > 100) { // 如果高度差超过100像素，就很有可能是有软键盘...
-                    llyt_reply.layout(0, DataTools.getScreenHight(LiveDetailActivity.this) - heightDiff - ((int) getResources().getDimension(R.dimen.py180)),
-                            DataTools.getScreenWith(LiveDetailActivity.this), DataTools.getScreenHight(LiveDetailActivity.this) - heightDiff);
+                Log.e(LiveDetailActivity.class.getSimpleName(), "" + heightDiff);
+                int screenHeight = DataTools.getScreenHight(LiveDetailActivity.this);
+                int virtualKeyHeight = DataTools.getHasVirtualKey(LiveDetailActivity.this);
+                if (heightDiff > virtualKeyHeight - screenHeight + 100) { // 如果高度差超过100像素，就很有可能是有软键盘...
+                    int vittualScreenHeight = DataTools.getHasVirtualKey(LiveDetailActivity.this);
+                    llyt_reply.layout(0, vittualScreenHeight - heightDiff - ((int) getResources().getDimension(R.dimen.py180)),
+                            DataTools.getScreenWith(LiveDetailActivity.this), vittualScreenHeight - heightDiff);
                     llyt_reply.setVisibility(View.VISIBLE);
                     et_reply.setFocusable(true);
                     et_reply.requestFocus();
@@ -205,14 +209,7 @@ public class LiveDetailActivity extends BaseActivity implements View.OnClickList
         if (checkPlayUrl(mAddress)) {
 //            mTxLivePlayer.startPlay(mAddress, mPlayType);
 
-            iv_fullscreen.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT) {
-                        transformSize();
-                    }
-                }
-            });
+            iv_fullscreen.setOnClickListener(this);
         }
 
     }
@@ -230,7 +227,7 @@ public class LiveDetailActivity extends BaseActivity implements View.OnClickList
         tlyt_tab.setupWithViewPager(vp_tab);
         int tabCount = tlyt_tab.getTabCount();//获取TabLayout的个数
         for (int i = 0; i < tabCount; i++) {
-            final int pos =i;
+            final int pos = i;
             View view = View.inflate(this, R.layout.item_tab, null);
             TextView tv_tab = view.findViewById(R.id.tv_tab);
             tv_tab.setText(mTabNames[pos]);
@@ -239,7 +236,8 @@ public class LiveDetailActivity extends BaseActivity implements View.OnClickList
             ((View) tab.getCustomView().getParent()).setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    llyt_chat.setVisibility(pos==0?View.VISIBLE:View.GONE);
+                    ScreenUtils.closeKeyboard(LiveDetailActivity.this);
+                    llyt_chat.setVisibility(pos == 0 ? View.VISIBLE : View.GONE);
                 }
             });
         }
@@ -324,7 +322,13 @@ public class LiveDetailActivity extends BaseActivity implements View.OnClickList
 
     @Override
     public void onClick(View view) {
+        ScreenUtils.closeKeyboard(this);
         switch (view.getId()) {
+            case R.id.iv_fullscreen:
+                if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT) {
+                    transformSize();
+                }
+                break;
             case R.id.tv_catagory:
                 if ("自动".equalsIgnoreCase(tv_catagory.getText().toString())) {
                     tv_catagory.setText("高清");
@@ -372,7 +376,7 @@ public class LiveDetailActivity extends BaseActivity implements View.OnClickList
                 break;
             case R.id.tv_send:
                 String msg = et_reply.getText().toString().trim();
-                if (!TextUtils.isEmpty(msg)){
+                if (!TextUtils.isEmpty(msg)) {
                     ScreenUtils.closeKeyboard(this);
                     et_reply.setText("");
                     ChatFragment chatFragment = (ChatFragment) mFragmentList.get(0);

@@ -1,12 +1,15 @@
 package first.net.liteapp.utils;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.telephony.TelephonyManager;
 import android.util.DisplayMetrics;
+import android.view.Display;
 import android.view.WindowManager;
 
+import java.lang.reflect.Method;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -39,6 +42,29 @@ public class DataTools {
 		WindowManager wm = (WindowManager) mCxt.getSystemService(Context.WINDOW_SERVICE);
 		wm.getDefaultDisplay().getMetrics(metric);
 		return  metric.heightPixels;
+	}
+
+	/**
+	 * 通过反射，获取包含虚拟键的整体屏幕高度
+	 *
+	 * @return
+	 */
+	public static int getHasVirtualKey(Activity mCxt) {
+		int dpi = 0;
+		Display display = mCxt.getWindowManager().getDefaultDisplay();
+		DisplayMetrics dm = new DisplayMetrics();
+		@SuppressWarnings("rawtypes")
+		Class c;
+		try {
+			c = Class.forName("android.view.Display");
+			@SuppressWarnings("unchecked")
+			Method method = c.getMethod("getRealMetrics", DisplayMetrics.class);
+			method.invoke(display, dm);
+			dpi = dm.heightPixels;
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return dpi;
 	}
 
 }

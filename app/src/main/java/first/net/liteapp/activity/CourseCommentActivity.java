@@ -50,7 +50,7 @@ public class CourseCommentActivity extends BaseActivity implements CommentDialog
         tv_comment.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
-                CommentDialog commentDialog = new CommentDialog(CourseCommentActivity.this);
+                CommentDialog commentDialog = new CommentDialog(CourseCommentActivity.this,true);
                 commentDialog.registCommentListener(CourseCommentActivity.this);
                 commentDialog.show();
             }

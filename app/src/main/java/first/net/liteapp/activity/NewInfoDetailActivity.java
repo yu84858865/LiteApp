@@ -17,10 +17,10 @@ import first.net.liteapp.view.TitleView;
 
 /**
  * Created by 10960 on 2018/2/24.
- * 介绍
+ * 资讯详情
  */
 
-public class IntroduceWebActivity extends BaseActivity {
+public class NewInfoDetailActivity extends BaseActivity {
 
     private TitleView tv_titleview;
     private WebView webView;
@@ -28,7 +28,7 @@ public class IntroduceWebActivity extends BaseActivity {
 
     @Override
     public int getContentView() {
-        return R.layout.activity_introduce_web;
+        return R.layout.activity_new_info_detail;
     }
 
     @Override
@@ -45,12 +45,6 @@ public class IntroduceWebActivity extends BaseActivity {
 
     @Override
     protected void setData() {
-        Intent intent = getIntent();
-        if(intent != null){
-            String title = intent.getStringExtra("title");
-            tv_titleview.setTitle(title);
-        }
-
         final String webUrl = "https://www.baidu.com/";
         WebSettings webSettings = webView.getSettings();
         webView.setWebChromeClient(new WebChromeClient());
@@ -87,8 +81,7 @@ public class IntroduceWebActivity extends BaseActivity {
     }
 
     public static void startActivity(Context context, String title){
-        Intent intent = new Intent(context,IntroduceWebActivity.class);
-        intent.putExtra("title",title);
+        Intent intent = new Intent(context,NewInfoDetailActivity.class);
         context.startActivity(intent);
     }
 

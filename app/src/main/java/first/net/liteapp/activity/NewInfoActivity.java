@@ -19,8 +19,7 @@ import first.net.liteapp.fragment.IndustryFragment;
  * 最新资讯
  */
 
-public class InfoActivity extends BaseActivity {
-
+public class NewInfoActivity extends BaseActivity {
 
     private TabLayout info_tab;
     private ViewPager info_vp;
@@ -63,7 +62,7 @@ public class InfoActivity extends BaseActivity {
     }
 
     public static void startActivity(Context context, String address) {
-        Intent intent = new Intent(context, InfoActivity.class);
+        Intent intent = new Intent(context, NewInfoActivity.class);
         intent.putExtra("address", address);
         context.startActivity(intent);
     }

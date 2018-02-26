@@ -60,4 +60,6 @@
     <string name="activity_comment">活动评论</string>
     <string name="write_comment">写评论</string>
     <string name="send">发送</string>
+    <string name="loading">正在努力加载中.....</string>
+    <string name="new_info_detail">资讯详情</string>
 </resources>

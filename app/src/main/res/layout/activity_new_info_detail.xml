@@ -9,7 +9,7 @@
         android:id="@+id/tv_titleview"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:title=""
+        app:title="@string/new_info_detail"
         app:isShowBack="true"/>
 
     <RelativeLayout
@@ -27,6 +27,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
+            android:gravity="center"
             android:textColor="@color/color_333333"
             android:visibility="gone"
             android:text="@string/loading" />

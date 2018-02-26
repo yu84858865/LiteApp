@@ -12,6 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import first.net.liteapp.R;
+import first.net.liteapp.activity.NewInfoDetailActivity;
 import first.net.liteapp.bean.ActiveInfoBean;
 import first.net.liteapp.bean.HotInfoBean;
 import first.net.liteapp.utils.GlideUtils;
@@ -77,7 +78,7 @@ public class HotInfoAdapter extends BaseAdapter {
         view.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
-
+                NewInfoDetailActivity.startActivity(mContext,"");
             }
         });
         return view;

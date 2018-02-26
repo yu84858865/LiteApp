@@ -3,6 +3,7 @@ package first.net.liteapp.activity;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.os.Build;
 import android.view.View;
 import android.webkit.WebResourceRequest;
 import android.webkit.WebSettings;
@@ -88,7 +89,10 @@ public class CourseDetailActivity extends BaseActivity implements View.OnClickLi
         WebSettings settings = webView.getSettings();
         settings.setJavaScriptEnabled(true);
         settings.setSupportZoom(true);
-        final String url = "http://www.baidu.com";
+//        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP){
+//            settings.setMixedContentMode(WebSettings.MIXED_CONTENT_ALWAYS_ALLOW);
+//        }
+        final String url = "https://www.baidu.com";
         webView.loadUrl(url);
         webView.setWebViewClient(new WebViewClient(){
             @Override

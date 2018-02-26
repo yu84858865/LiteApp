@@ -100,13 +100,14 @@
 
 
         <activity android:name=".activity.PopularActActivity"/>
-        <activity android:name=".activity.InfoActivity"/>
+        <activity android:name=".activity.NewInfoActivity"/>
         <activity android:name=".activity.CourseDetailActivity"/>
         <activity android:name=".activity.ConfirmOrderActivity"/>
         <activity android:name=".activity.IntroduceWebActivity"/>
         <activity android:name=".activity.PayOrderActivity"/>
         <activity android:name=".activity.SelectCouponActivity"/>
         <activity android:name=".activity.CourseCommentActivity"/>
+        <activity android:name=".activity.NewInfoDetailActivity"/>
 
     </application>
 

@@ -2,7 +2,8 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/color_ffffff">
 
     <first.net.liteapp.view.TitleView
         android:layout_width="match_parent"
@@ -10,9 +11,14 @@
         app:title="@string/college_data"
         app:isShowBack="true"/>
 
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/py1"
+        android:background="@color/color_line"/>
+
     <android.support.design.widget.TabLayout
         android:layout_width="match_parent"
-        android:layout_height="@dimen/py120"
+        android:layout_height="@dimen/py141"
         android:id="@+id/tlyt_data"/>
 
     <View

@@ -7,7 +7,7 @@
     <TextView
         android:id="@+id/tv_question"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/py150"
+        android:layout_height="@dimen/py171"
         android:paddingLeft="@dimen/px60"
         android:layout_marginRight="@dimen/px60"
         android:maxLines="1"
@@ -22,7 +22,7 @@
     
     <TextView
         android:layout_width="match_parent"
-        android:layout_height="@dimen/py120"
+        android:layout_height="@dimen/py141"
         android:paddingLeft="@dimen/px60"
         android:textColor="@color/color_b3db5d"
         android:textSize="14sp"
@@ -43,16 +43,16 @@
         android:layout_marginRight="@dimen/px60">
 
         <ImageView
-            android:layout_width="@dimen/px135"
-            android:layout_height="@dimen/py135"
+            android:layout_width="@dimen/px141"
+            android:layout_height="@dimen/py141"
             android:id="@+id/iv_icon"
-            android:layout_marginTop="@dimen/py30"/>
+            android:layout_marginTop="@dimen/py39"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/px30"
-            android:layout_marginTop="@dimen/py30"
+            android:layout_marginTop="@dimen/py42"
             android:textSize="14sp"
             android:textStyle="bold"
             android:id="@+id/tv_name"
@@ -82,7 +82,7 @@
         android:layout_marginBottom="@dimen/py60"
         android:layout_marginTop="@dimen/px30"
         android:textColor="@color/color_333333"
-        android:padding="@dimen/py18"/>
+        android:padding="@dimen/py21"/>
 
     <View
         android:layout_width="match_parent"

@@ -2,15 +2,23 @@ package first.net.liteapp.activity;
 
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.util.Log;
 import android.widget.FrameLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+
+import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.List;
+
 import first.net.liteapp.R;
+import first.net.liteapp.constant.DataRequestResult;
+import first.net.liteapp.constant.IConfig;
 import first.net.liteapp.fragment.BaseFragment;
 import first.net.liteapp.fragment.CollegeFragment;
 import first.net.liteapp.fragment.HomeFragment;
+import first.net.liteapp.utils.DESUtils;
+import first.net.liteapp.utils.DataRequestUtils;
 
 /**
  * Created by yuqiubo on 2018/2/22.
@@ -52,6 +60,24 @@ public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedCh
         }
         fragmentTransaction.show(mFragmentList.get(0));
         fragmentTransaction.commit();
+
+        String str = "{\"mobilephone\":\"14714310997\",\"password\":\"happy2017\"}";
+
+        Log.e(MainActivity.class.getSimpleName(), DESUtils.encrypt(str, IConfig.DESKEY));//加密
+        Log.e(MainActivity.class.getSimpleName(), DESUtils.decrypt("e9joStgjapqYrIY1UNwRkrdqBaAvxmIlEywVT8eKtP753VIPuH3ZEttMIjLQuUQ81Oks+YUAPQ8=", IConfig.DESKEY));//加密
+
+
+        DataRequestUtils.post("http://www.hengxutech.com/Mobile/User/loginUserByMobilephone", DESUtils.encrypt(str, IConfig.DESKEY), new DataRequestResult() {
+            @Override
+            public void onSuccess(String result) {
+                System.out.println(result);
+            }
+
+            @Override
+            public void onFailed() {
+                System.out.println("error");
+            }
+        });
     }
 
     @Override

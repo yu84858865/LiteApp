@@ -32,6 +32,7 @@ public class ChatFragment extends BaseFragment{
         lv_chat.setAdapter(mChatAdapter = new ChatAdapter(mContext));
         mChatList.add("欢迎 Mr.Jack来到本直播间");
         mChatAdapter.setData(mChatList);
+        lv_chat.setBackgroundColor(mContext.getResources().getColor(R.color.color_f1f1f1));
         return lv_chat;
     }
 

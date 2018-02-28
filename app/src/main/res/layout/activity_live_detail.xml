@@ -21,7 +21,7 @@
         <RelativeLayout
             android:id="@+id/rlyt_player"
             android:layout_width="wrap_content"
-            android:layout_height="@dimen/py606"
+            android:layout_height="@dimen/py600"
             android:background="#ff000000">
 
             <com.tencent.rtmp.ui.TXCloudVideoView
@@ -75,7 +75,7 @@
             <android.support.design.widget.TabLayout
                 android:id="@+id/tlyt_tab"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/py135"
+                android:layout_height="@dimen/py120"
                 app:tabIndicatorColor="@color/color_f58585"
                 app:tabIndicatorHeight="@dimen/py10"
                 app:tabTextColor="@color/color_333333" />

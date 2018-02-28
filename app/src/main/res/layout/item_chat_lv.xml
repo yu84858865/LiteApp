@@ -7,10 +7,10 @@
         android:id="@+id/tv_chat"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="@dimen/px45"
-        android:layout_marginRight="@dimen/px45"
-        android:layout_marginTop="@dimen/py9"
-        android:layout_marginBottom="@dimen/py9"
+        android:layout_marginLeft="@dimen/px42"
+        android:layout_marginRight="@dimen/px42"
+        android:layout_marginTop="@dimen/py30"
+        android:layout_marginBottom="@dimen/py30"
         android:textSize="14sp"
         android:textColor="@color/color_333333" />
 

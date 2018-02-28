@@ -6,7 +6,7 @@
 
     <ImageView
         android:layout_width="match_parent"
-        android:layout_height="@dimen/py432"
+        android:layout_height="@dimen/py480"
         android:id="@+id/iv_img"
         android:background="@mipmap/tab_bg"/>
 
@@ -16,14 +16,15 @@
         android:textSize="15sp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/py30"
+        android:layout_marginTop="@dimen/py27"
         android:layout_marginLeft="@dimen/px30"/>
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/py30"
-        android:layout_marginLeft="@dimen/px30">
+        android:layout_marginTop="@dimen/py21"
+        android:layout_marginLeft="@dimen/px30"
+        android:layout_marginBottom="@dimen/py18">
 
         <TextView
             android:id="@+id/tv_time"
@@ -43,7 +44,7 @@
             android:drawableLeft="@mipmap/college_area"
             android:drawablePadding="@dimen/px10"
             android:textColor="@color/color_999999"
-            android:layout_marginLeft="@dimen/px80"/>
+            android:layout_marginLeft="@dimen/px81"/>
 
         <TextView
             android:id="@+id/tv_course_detail"

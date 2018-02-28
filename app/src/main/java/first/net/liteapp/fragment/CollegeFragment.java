@@ -68,8 +68,8 @@ public class CollegeFragment extends BaseFragment implements View.OnClickListene
     }
 
     private void initData(){
-        int center = (int) getResources().getDimension(R.dimen.px6);
-        int left = (int) getResources().getDimension(R.dimen.px27);
+        int center = (int) getResources().getDimension(R.dimen.px9);
+        int left = (int) getResources().getDimension(R.dimen.px30);
         initOnLite(center,left);
         initPreLite(center,left);
         initBefLite(center,left);

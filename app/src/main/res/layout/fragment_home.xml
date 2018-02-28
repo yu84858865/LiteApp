@@ -12,344 +12,349 @@
         app:isShowSearch="true"
         app:title="@string/header_home" />
 
-    <ScrollView
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:id="@+id/srl_refresh"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:scrollbars="none">
+        android:layout_height="wrap_content">
 
-        <LinearLayout
+        <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
-
-            <FrameLayout
-                android:id="@+id/fl_cycleViewPager"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+            android:layout_height="match_parent">
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/py75"
-                android:layout_marginBottom="@dimen/py10"
-                android:layout_marginTop="@dimen/py10"
-                android:gravity="center_vertical"
-                android:orientation="horizontal"
-                android:paddingLeft="@dimen/py30">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/shape_home_recom"
-                    android:text="@string/home_page_recomment"
-                    android:textColor="@color/color_f58585"
-                    android:textSize="14sp" />
-
-                <first.net.liteapp.view.VerticalTextView
-                    android:id="@+id/tv_vertical"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/py25"
-                    android:layout_weight="1" />
-
-            </LinearLayout>
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/py1"
-                android:background="@color/color_line" />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center_vertical"
-                android:orientation="horizontal"
-                android:paddingBottom="@dimen/py30"
-                android:paddingLeft="@dimen/py40"
-                android:paddingRight="@dimen/py40"
-                android:paddingTop="@dimen/py30">
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:orientation="vertical">
-
-                    <ImageView
-                        android:id="@+id/iv_popular"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:background="@mipmap/popular_activity" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/py10"
-                        android:text="热门活动"
-                        android:textColor="@color/color_333333"
-                        android:textSize="15sp" />
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:orientation="vertical">
-
-                    <ImageView
-                        android:id="@+id/iv_information"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:background="@mipmap/information" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/py10"
-                        android:text="最新资讯"
-                        android:textColor="@color/color_333333"
-                        android:textSize="15sp" />
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:orientation="vertical">
-
-                    <ImageView
-                        android:id="@+id/iv_shop_mall"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:background="@mipmap/shopping_mall" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/py10"
-                        android:text="尊尚商城"
-                        android:textColor="@color/color_333333"
-                        android:textSize="15sp" />
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:orientation="vertical">
-
-                    <ImageView
-                        android:id="@+id/iv_guess"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:background="@mipmap/guess" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/py10"
-                        android:text="猜你喜欢"
-                        android:textColor="@color/color_333333"
-                        android:textSize="15sp" />
-
-                </LinearLayout>
-
-            </LinearLayout>
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/py20"
-                android:background="@color/color_line" />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:orientation="vertical">
 
-                <RelativeLayout
+                <FrameLayout
+                    android:id="@+id/fl_cycleViewPager"
                     android:layout_width="match_parent"
-                    android:layout_height="@dimen/py120"
-                    android:gravity="center_vertical"
-                    android:paddingLeft="@dimen/py30"
-                    android:paddingRight="@dimen/py30">
+                    android:layout_height="wrap_content" />
 
-                    <View
-                        android:id="@+id/view_green01"
-                        android:layout_width="@dimen/py10"
-                        android:layout_height="@dimen/py40"
-                        android:layout_centerVertical="true"
-                        android:background="@color/color_b3db5d" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/py75"
+                    android:layout_marginBottom="@dimen/py10"
+                    android:layout_marginTop="@dimen/py10"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingLeft="@dimen/py30">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_centerVertical="true"
-                        android:layout_marginLeft="@dimen/py10"
-                        android:layout_toRightOf="@+id/view_green01"
-                        android:text="@string/course_live"
-                        android:textColor="@color/color_333333"
-                        android:textSize="15sp"
-                        android:textStyle="bold" />
+                        android:background="@drawable/shape_home_recom"
+                        android:text="@string/home_page_recomment"
+                        android:textColor="@color/color_f58585"
+                        android:textSize="14sp" />
+
+                    <first.net.liteapp.view.VerticalTextView
+                        android:id="@+id/tv_vertical"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/py25"
+                        android:layout_weight="1" />
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/py1"
+                    android:background="@color/color_line" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingBottom="@dimen/py30"
+                    android:paddingLeft="@dimen/py40"
+                    android:paddingRight="@dimen/py40"
+                    android:paddingTop="@dimen/py30">
 
                     <LinearLayout
-                        android:id="@+id/ll_live_more"
-                        android:layout_width="wrap_content"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_alignParentRight="true"
-                        android:layout_centerVertical="true"
+                        android:layout_weight="1"
                         android:gravity="center"
-                        android:orientation="horizontal">
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:id="@+id/iv_popular"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="@mipmap/popular_activity" />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="@string/more"
-                            android:textColor="@color/color_999999"
+                            android:layout_marginTop="@dimen/py10"
+                            android:text="@string/hot_act"
+                            android:textColor="@color/color_333333"
                             android:textSize="15sp" />
 
-                        <ImageView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:background="@mipmap/right_arrow" />
-
                     </LinearLayout>
-                </RelativeLayout>
-
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/py1"
-                    android:background="@color/color_line" />
-
-                <android.support.v7.widget.RecyclerView
-                    android:id="@+id/rv_course_live"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
-
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/py120"
-                    android:gravity="center_vertical"
-                    android:paddingLeft="@dimen/py30"
-                    android:paddingRight="@dimen/py30">
-
-                    <View
-                        android:id="@+id/view_green02"
-                        android:layout_width="@dimen/py10"
-                        android:layout_height="@dimen/py40"
-                        android:layout_centerVertical="true"
-                        android:background="@color/color_b3db5d" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_centerVertical="true"
-                        android:layout_marginLeft="@dimen/py10"
-                        android:layout_toRightOf="@+id/view_green02"
-                        android:text="@string/new_info"
-                        android:textColor="@color/color_333333"
-                        android:textSize="15sp"
-                        android:textStyle="bold" />
 
                     <LinearLayout
-                        android:id="@+id/ll_info_more"
-                        android:layout_width="wrap_content"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_alignParentRight="true"
-                        android:layout_centerVertical="true"
+                        android:layout_weight="1"
                         android:gravity="center"
-                        android:orientation="horizontal">
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:id="@+id/iv_information"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="@mipmap/information" />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="@string/more"
-                            android:textColor="@color/color_999999"
+                            android:layout_marginTop="@dimen/py10"
+                            android:text="@string/new_information"
+                            android:textColor="@color/color_333333"
                             android:textSize="15sp" />
 
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
                         <ImageView
+                            android:id="@+id/iv_shop_mall"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:background="@mipmap/right_arrow" />
+                            android:background="@mipmap/shopping_mall" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/py10"
+                            android:text="@string/shop"
+                            android:textColor="@color/color_333333"
+                            android:textSize="15sp" />
 
                     </LinearLayout>
-                </RelativeLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:id="@+id/iv_guess"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="@mipmap/guess" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/py10"
+                            android:text="@string/guess_interest"
+                            android:textColor="@color/color_333333"
+                            android:textSize="15sp" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
 
                 <View
                     android:layout_width="match_parent"
-                    android:layout_height="@dimen/py1"
+                    android:layout_height="@dimen/py20"
                     android:background="@color/color_line" />
 
-                <ListView
-                    android:id="@+id/info_listview"
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:divider="@color/color_line"
-                    android:dividerHeight="@dimen/py1"
-                    android:scrollbars="none" />
+                    android:orientation="vertical">
 
-            </LinearLayout>
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/py120"
+                        android:gravity="center_vertical"
+                        android:paddingLeft="@dimen/py30"
+                        android:paddingRight="@dimen/py30">
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/py20"
-                android:background="@color/color_f1f1f1" />
+                        <View
+                            android:id="@+id/view_green01"
+                            android:layout_width="@dimen/py10"
+                            android:layout_height="@dimen/py40"
+                            android:layout_centerVertical="true"
+                            android:background="@color/color_b3db5d" />
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_marginLeft="@dimen/py10"
+                            android:layout_toRightOf="@+id/view_green01"
+                            android:text="@string/course_live"
+                            android:textColor="@color/color_333333"
+                            android:textSize="15sp"
+                            android:textStyle="bold" />
 
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/py120"
-                    android:gravity="center_vertical"
-                    android:paddingLeft="@dimen/py30"
-                    android:paddingRight="@dimen/py30">
+                        <LinearLayout
+                            android:id="@+id/ll_live_more"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true"
+                            android:layout_centerVertical="true"
+                            android:gravity="center"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/more"
+                                android:textColor="@color/color_999999"
+                                android:textSize="15sp" />
+
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:background="@mipmap/right_arrow" />
+
+                        </LinearLayout>
+                    </RelativeLayout>
 
                     <View
-                        android:id="@+id/view_green03"
-                        android:layout_width="@dimen/py10"
-                        android:layout_height="@dimen/py40"
-                        android:layout_centerVertical="true"
-                        android:background="@color/color_b3db5d" />
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/py1"
+                        android:background="@color/color_line" />
 
-                    <TextView
-                        android:layout_width="wrap_content"
+                    <android.support.v7.widget.RecyclerView
+                        android:id="@+id/rv_course_live"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/py120"
+                        android:gravity="center_vertical"
+                        android:paddingLeft="@dimen/py30"
+                        android:paddingRight="@dimen/py30">
+
+                        <View
+                            android:id="@+id/view_green02"
+                            android:layout_width="@dimen/py10"
+                            android:layout_height="@dimen/py40"
+                            android:layout_centerVertical="true"
+                            android:background="@color/color_b3db5d" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_marginLeft="@dimen/py10"
+                            android:layout_toRightOf="@+id/view_green02"
+                            android:text="@string/new_info"
+                            android:textColor="@color/color_333333"
+                            android:textSize="15sp"
+                            android:textStyle="bold" />
+
+                        <LinearLayout
+                            android:id="@+id/ll_info_more"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true"
+                            android:layout_centerVertical="true"
+                            android:gravity="center"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/more"
+                                android:textColor="@color/color_999999"
+                                android:textSize="15sp" />
+
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:background="@mipmap/right_arrow" />
+
+                        </LinearLayout>
+                    </RelativeLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/py1"
+                        android:background="@color/color_line" />
+
+                    <ListView
+                        android:id="@+id/info_listview"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_centerVertical="true"
-                        android:layout_marginLeft="@dimen/py10"
-                        android:layout_toRightOf="@+id/view_green03"
-                        android:text="@string/introduce"
-                        android:textColor="@color/color_333333"
-                        android:textSize="15sp"
-                        android:textStyle="bold" />
+                        android:divider="@color/color_line"
+                        android:dividerHeight="@dimen/py1"
+                        android:scrollbars="none" />
 
-                </RelativeLayout>
+                </LinearLayout>
 
                 <View
                     android:layout_width="match_parent"
-                    android:layout_height="@dimen/py1"
-                    android:background="@color/color_line" />
+                    android:layout_height="@dimen/py20"
+                    android:background="@color/color_f1f1f1" />
 
-                <android.support.v7.widget.RecyclerView
-                    android:id="@+id/rv_introduce"
+                <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
 
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/py120"
+                        android:gravity="center_vertical"
+                        android:paddingLeft="@dimen/py30"
+                        android:paddingRight="@dimen/py30">
+
+                        <View
+                            android:id="@+id/view_green03"
+                            android:layout_width="@dimen/py10"
+                            android:layout_height="@dimen/py40"
+                            android:layout_centerVertical="true"
+                            android:background="@color/color_b3db5d" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_marginLeft="@dimen/py10"
+                            android:layout_toRightOf="@+id/view_green03"
+                            android:text="@string/introduce"
+                            android:textColor="@color/color_333333"
+                            android:textSize="15sp"
+                            android:textStyle="bold" />
+
+                    </RelativeLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/py1"
+                        android:background="@color/color_line" />
+
+                    <android.support.v7.widget.RecyclerView
+                        android:id="@+id/rv_introduce"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+
+                </LinearLayout>
             </LinearLayout>
-        </LinearLayout>
-    </ScrollView>
+        </ScrollView>
+    </android.support.v4.widget.SwipeRefreshLayout>
 </LinearLayout>

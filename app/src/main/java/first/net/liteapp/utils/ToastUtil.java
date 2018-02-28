@@ -79,7 +79,7 @@ public class ToastUtil {
         Toast toast;
         toast = new Toast(LiteApplication.mContext);
         View v = mInflater.inflate(R.layout.district_include_toast, null);
-        TextView tv = (TextView) v.findViewById(R.id.toast_tv_content);
+        TextView tv =  v.findViewById(R.id.toast_tv_content);
         toast.setView(v);
         toast.setDuration(Toast.LENGTH_SHORT);
         tv.setText(msg);

@@ -5,10 +5,12 @@ import android.graphics.Color;
 import android.graphics.Rect;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.Looper;
 import android.support.annotation.Nullable;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -55,7 +57,7 @@ import first.net.liteapp.view.VerticalTextView;
  * Created by yuqiubo on 2018/2/22.
  */
 
-public class HomeFragment extends BaseFragment implements View.OnClickListener{
+public class HomeFragment extends BaseFragment implements View.OnClickListener, SwipeRefreshLayout.OnRefreshListener{
 
     private CycleViewPager cycleViewPager;
     private List<View> views;
@@ -70,11 +72,14 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener{
     private ListView info_listview;
     private IntroduceAdapter introduceAdapter;
     private NewInfoAdapter newInfoAdapter;
+    private SwipeRefreshLayout srl_refresh;
+    private Handler mHandler;
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_home,container,false);
+        srl_refresh = view.findViewById(R.id.srl_refresh);
         fl_cycleViewPager = view.findViewById(R.id.fl_cycleViewPager);
         tv_vertical = view.findViewById(R.id.tv_vertical);
         iv_popular = view.findViewById(R.id.iv_popular);
@@ -104,6 +109,8 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener{
         iv_guess.setOnClickListener(this);
         ll_live_more.setOnClickListener(this);
         ll_info_more.setOnClickListener(this);
+        mHandler = new Handler();
+        srl_refresh.setOnRefreshListener(this);
     }
 
     public void initCycleView(){
@@ -328,5 +335,17 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener{
     public void onDestroyView() {
         super.onDestroyView();
         tv_vertical.stopAutoScroll();
+    }
+
+    @Override
+    public void onRefresh() {
+        srl_refresh.setRefreshing(true);
+        mHandler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                ToastUtil.showToastOnFinish("刷新完成");
+                srl_refresh.setRefreshing(false);
+            }
+        },2000);
     }
 }

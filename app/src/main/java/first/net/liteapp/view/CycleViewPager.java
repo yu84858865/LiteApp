@@ -7,6 +7,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
@@ -390,7 +391,7 @@ public class CycleViewPager extends Fragment implements OnPageChangeListener, Vi
         if (event.getAction() == MotionEvent.ACTION_DOWN) {
             isScrollingOrPressed = true;
             handler.removeCallbacks(runnable);
-        } else if (event.getAction() == MotionEvent.ACTION_UP) {
+        } else if (event.getAction() == MotionEvent.ACTION_UP || event.getAction() == MotionEvent.ACTION_CANCEL) {
             isScrollingOrPressed = false;
             handler.postDelayed(runnable, time);
         }

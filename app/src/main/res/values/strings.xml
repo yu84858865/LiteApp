@@ -62,4 +62,8 @@
     <string name="send">发送</string>
     <string name="loading">正在努力加载中.....</string>
     <string name="new_info_detail">资讯详情</string>
+    <string name="hot_act">热门活动</string>
+    <string name="new_information">最新资讯</string>
+    <string name="shop">尊尚商城</string>
+    <string name="guess_interest">猜你喜欢</string>
 </resources>

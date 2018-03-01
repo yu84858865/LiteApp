@@ -4,10 +4,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="horizontal"
-    android:paddingLeft="@dimen/py100"
-    android:paddingRight="@dimen/py100"
-    android:paddingTop="@dimen/py75"
-    android:paddingBottom="@dimen/py75">
+    android:paddingLeft="@dimen/py90"
+    android:paddingRight="@dimen/py90"
+    android:paddingTop="@dimen/py70"
+    android:paddingBottom="@dimen/py70">
 
     <RelativeLayout
         android:layout_width="match_parent"

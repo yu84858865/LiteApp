@@ -26,7 +26,7 @@
             <ImageView
                 android:id="@+id/iv_photo"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/py550"
+                android:layout_height="@dimen/py540"
                 android:scaleType="centerCrop" />
 
             <TextView
@@ -49,7 +49,7 @@
             <TextView
                 android:id="@+id/tv_price"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/py150"
+                android:layout_height="@dimen/py140"
                 android:paddingLeft="@dimen/py30"
                 android:paddingRight="@dimen/py30"
                 android:textColor="@color/color_f58585"
@@ -64,7 +64,7 @@
             <TextView
                 android:id="@+id/tv_author"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/py150"
+                android:layout_height="@dimen/py140"
                 android:drawableLeft="@mipmap/campaign_author"
                 android:drawablePadding="@dimen/py20"
                 android:paddingLeft="@dimen/py30"
@@ -81,7 +81,7 @@
             <TextView
                 android:id="@+id/tv_person"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/py150"
+                android:layout_height="@dimen/py140"
                 android:drawableLeft="@mipmap/campaign_person"
                 android:drawablePadding="@dimen/py20"
                 android:paddingLeft="@dimen/py30"
@@ -98,7 +98,7 @@
             <TextView
                 android:id="@+id/tv_time"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/py150"
+                android:layout_height="@dimen/py140"
                 android:drawableLeft="@mipmap/college_time"
                 android:drawablePadding="@dimen/py20"
                 android:paddingLeft="@dimen/py30"
@@ -115,7 +115,7 @@
             <TextView
                 android:id="@+id/tv_location"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/py150"
+                android:layout_height="@dimen/py140"
                 android:drawableLeft="@mipmap/campaign_location"
                 android:drawablePadding="@dimen/py20"
                 android:paddingLeft="@dimen/py30"
@@ -131,7 +131,7 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/py110"
+                android:layout_height="@dimen/py160"
                 android:orientation="horizontal"
                 android:paddingLeft="@dimen/py30"
                 android:paddingRight="@dimen/py30"
@@ -154,11 +154,17 @@
 
             </LinearLayout>
 
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/py1"
+                android:background="@color/color_line" />
+
             <WebView
                 android:id="@+id/webView"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                tools:ignore="WebViewLayout" />
+                tools:ignore="WebViewLayout"
+                android:paddingTop="@dimen/py30"/>
 
         </LinearLayout>
     </ScrollView>
@@ -170,53 +176,73 @@
         android:layout_alignParentBottom="true">
 
         <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:background="@color/color_f7af30"
-            android:gravity="center_vertical"
-            android:orientation="horizontal"
-            android:paddingLeft="@dimen/py40"
-            android:paddingRight="@dimen/py40">
-
-            <ImageView
-                android:id="@+id/iv_interested"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@mipmap/be_interested" />
-
-            <View
-                android:layout_width="@dimen/py5"
-                android:layout_height="@dimen/py20"
-                android:layout_marginLeft="@dimen/py40"
-                android:background="@color/color_ffffff" />
-
-            <ImageView
-                android:id="@+id/iv_comment"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/py40"
-                android:background="@mipmap/comment" />
-
-            <View
-                android:layout_width="@dimen/py5"
-                android:layout_height="@dimen/py20"
-                android:layout_marginLeft="@dimen/py40"
-                android:background="@color/color_ffffff" />
-
-            <ImageView
-                android:id="@+id/iv_share"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/py40"
-                android:background="@mipmap/share" />
-        </LinearLayout>
-
-        <LinearLayout
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:background="@color/color_f58585">
+            android:background="@color/color_f7af30"
+            android:orientation="horizontal">
 
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="horizontal"
+                android:gravity="center">
+
+                <ImageView
+                    android:id="@+id/iv_interested"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@mipmap/be_interested" />
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="@dimen/py5"
+                android:layout_height="@dimen/py40"
+                android:background="@color/color_ffffff"
+                android:layout_gravity="center_vertical"/>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="horizontal"
+                android:gravity="center">
+
+                <ImageView
+                    android:id="@+id/iv_comment"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@mipmap/comment" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="@dimen/py5"
+                android:layout_height="@dimen/py40"
+                android:background="@color/color_ffffff"
+                android:layout_gravity="center_vertical"/>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="horizontal"
+                android:gravity="center">
+
+                <ImageView
+                    android:id="@+id/iv_share"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@mipmap/share" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="@dimen/py396"
+            android:layout_height="match_parent"
+            android:background="@color/color_f58585">
             <TextView
                 android:id="@+id/tv_attend"
                 android:layout_width="match_parent"
@@ -225,7 +251,6 @@
                 android:textColor="@color/color_ffffff"
                 android:textSize="19sp"
                 android:textStyle="bold" />
-
         </LinearLayout>
     </LinearLayout>
 </RelativeLayout>

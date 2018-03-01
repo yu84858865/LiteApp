@@ -9,8 +9,8 @@
 
     <first.net.liteapp.view.CircularImage
         android:id="@+id/ci_img"
-        android:layout_width="@dimen/py120"
-        android:layout_height="@dimen/py120"
+        android:layout_width="@dimen/py110"
+        android:layout_height="@dimen/py110"
         android:scaleType="centerCrop"
         img:rect_radius="100"
         android:layout_gravity="left"/>

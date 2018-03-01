@@ -21,10 +21,11 @@
             android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true"
             android:text=""
-            android:textColor="@color/color_ffffff"
-            android:textSize="14sp" />
-
+            android:textColor="@color/color_333333"
+            android:textSize="14sp"
+            android:paddingBottom="@dimen/py40"
+            android:maxLines="1"
+            android:ellipsize="end"/>
     </RelativeLayout>
-
 
 </LinearLayout>

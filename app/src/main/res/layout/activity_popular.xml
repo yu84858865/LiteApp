@@ -16,13 +16,13 @@
     <ImageView
         android:id="@+id/iv_bg"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/py500"
+        android:layout_height="@dimen/py488"
         android:scaleType="centerCrop"/>
 
     <android.support.design.widget.TabLayout
         android:id="@+id/popular_tab"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/py140"
+        android:layout_height="@dimen/py124"
         app:tabIndicatorColor="@color/color_f58585"
         app:tabSelectedTextColor="@color/color_f58585"
         app:tabIndicatorHeight="@dimen/py6"

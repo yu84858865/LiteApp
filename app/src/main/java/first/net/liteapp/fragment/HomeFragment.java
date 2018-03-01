@@ -57,7 +57,7 @@ import first.net.liteapp.view.VerticalTextView;
  * Created by yuqiubo on 2018/2/22.
  */
 
-public class HomeFragment extends BaseFragment implements View.OnClickListener, SwipeRefreshLayout.OnRefreshListener{
+public class HomeFragment extends BaseFragment implements View.OnClickListener{
 
     private CycleViewPager cycleViewPager;
     private List<View> views;
@@ -72,14 +72,12 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener, 
     private ListView info_listview;
     private IntroduceAdapter introduceAdapter;
     private NewInfoAdapter newInfoAdapter;
-    private SwipeRefreshLayout srl_refresh;
     private Handler mHandler;
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_home,container,false);
-        srl_refresh = view.findViewById(R.id.srl_refresh);
         fl_cycleViewPager = view.findViewById(R.id.fl_cycleViewPager);
         tv_vertical = view.findViewById(R.id.tv_vertical);
         iv_popular = view.findViewById(R.id.iv_popular);
@@ -110,7 +108,6 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener, 
         ll_live_more.setOnClickListener(this);
         ll_info_more.setOnClickListener(this);
         mHandler = new Handler();
-        srl_refresh.setOnRefreshListener(this);
     }
 
     public void initCycleView(){
@@ -155,7 +152,7 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener, 
         mTitleList.add("我被留在这里");
         tv_vertical.setVisibility(View.VISIBLE);
         tv_vertical.setTextList(mTitleList);
-        tv_vertical.setText(14, 0, R.color.color_999999);//设置属性
+        tv_vertical.setText(14, 0, R.color.color_333333);//设置属性
         tv_vertical.setTextStillTime(2000);//设置停留时长间隔
         tv_vertical.setAnimTime(300);//设置进入和退出的时间间隔
         tv_vertical.setOnItemClickListener(new VerticalTextView.OnItemClickListener() {
@@ -168,8 +165,8 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener, 
     }
 
     private void initData(){
-        int center = (int) getResources().getDimension(R.dimen.px6);
-        int left = (int) getResources().getDimension(R.dimen.px27);
+        int center = (int) getResources().getDimension(R.dimen.px10);
+        int left = (int) getResources().getDimension(R.dimen.px30);
         initCourseLive(center,left);
         initInfo();
         initIntroduce(center,left);
@@ -239,12 +236,12 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener, 
         info_listview.setAdapter(newInfoAdapter = new NewInfoAdapter(mContext));
         for(int i=0; i<3; i++){
             NewInfoBean bean = new NewInfoBean();
-            bean.setImg("http://testimg.ibaking.com.cn/ad/5c2e9fac47734420bad2f423ca63a66b.jpg");
+            bean.setImg("http://img.hb.aicdn.com/7e7c9d2b1a20238cdf6c3b49659c683c189548d1b0805-kHQpwM_fw658");
             bean.setId(i);
             Random random = new Random();
-            int count = random.nextInt();
+            int count = random.nextInt(1000);
             bean.setCount(count);
-            bean.setTitle("只要大家轻轻一按，就和失眠说拜拜");
+            bean.setTitle("只要大家轻轻一按，就和失眠说拜拜，等你来战！");
             beanList.add(bean);
         }
         newInfoAdapter.setData(beanList);
@@ -337,15 +334,4 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener, 
         tv_vertical.stopAutoScroll();
     }
 
-    @Override
-    public void onRefresh() {
-        srl_refresh.setRefreshing(true);
-        mHandler.postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                ToastUtil.showToastOnFinish("刷新完成");
-                srl_refresh.setRefreshing(false);
-            }
-        },2000);
-    }
 }

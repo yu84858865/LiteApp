@@ -58,7 +58,7 @@
     <string name="select">选择</string>
     <string name="course_comment">课程评论</string>
     <string name="activity_comment">活动评论</string>
-    <string name="write_comment">写评论</string>
+    <string name="write_comment">写评论...</string>
     <string name="send">发送</string>
     <string name="loading">正在努力加载中.....</string>
     <string name="new_info_detail">资讯详情</string>
@@ -66,4 +66,12 @@
     <string name="new_information">最新资讯</string>
     <string name="shop">尊尚商城</string>
     <string name="guess_interest">猜你喜欢</string>
+    <string name="share_wechat_frient">微信好友</string>
+    <string name="share_wechat_zone">微信朋友圈</string>
+    <string name="share_qqzone">QQ空间</string>
+    <string name="share_sina">新浪微博</string>
+    <string name="share_facebook">Facebook</string>
+    <string name="share_twitter">Twitter</string>
+    <string name="share_linkedin">Linked in</string>
+    <string name="share_qr">活动二维码</string>
 </resources>

@@ -14,7 +14,7 @@
     <View
         android:layout_width="match_parent"
         android:layout_height="@dimen/py1"
-        android:background="@color/color_f1f1f1"/>
+        android:background="@color/color_line"/>
 
     <ScrollView
         android:layout_width="match_parent"
@@ -34,8 +34,8 @@
 
                 <ImageView
                     android:id="@+id/iv_photo"
-                    android:layout_width="@dimen/py300"
-                    android:layout_height="@dimen/py240"
+                    android:layout_width="@dimen/py310"
+                    android:layout_height="@dimen/py220"
                     android:scaleType="centerCrop" />
 
                 <LinearLayout
@@ -43,7 +43,7 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:orientation="vertical"
-                    android:layout_marginLeft="@dimen/py20">
+                    android:layout_marginLeft="@dimen/py30">
 
                     <TextView
                         android:id="@+id/tv_title"
@@ -91,7 +91,7 @@
             <View
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/py1"
-                android:background="@color/color_f1f1f1"/>
+                android:background="@color/color_line"/>
 
 
             <LinearLayout
@@ -120,18 +120,18 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="@dimen/py45"
                     android:textColor="@color/color_f58585"
-                    android:textSize="18sp"
+                    android:textSize="16sp"
                     android:text="@string/HKD"/>
             </LinearLayout>
 
             <View
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/py1"
-                android:background="@color/color_f1f1f1"/>
+                android:layout_height="@dimen/py20"
+                android:background="@color/color_50f1f1f1"/>
 
             <TextView
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/py130"
+                android:layout_height="@dimen/py140"
                 android:text="@string/select_function"
                 android:gravity="center_vertical"
                 android:textColor="@color/color_333333"
@@ -141,7 +141,7 @@
             <View
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/py1"
-                android:background="@color/color_f1f1f1"/>
+                android:background="@color/color_line"/>
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -287,7 +287,7 @@
 
             <TextView
                 android:id="@+id/tv_pay_order"
-                android:layout_width="@dimen/py500"
+                android:layout_width="@dimen/py640"
                 android:layout_height="@dimen/py140"
                 android:layout_marginTop="@dimen/py100"
                 android:text="@string/payment"

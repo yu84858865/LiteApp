@@ -15,20 +15,21 @@
     <View
         android:layout_width="match_parent"
         android:layout_height="@dimen/py1" 
-        android:background="@color/color_f1f1f1"/>
+        android:background="@color/color_line"/>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingTop="@dimen/py10"
-        android:paddingBottom="@dimen/py20"
+        android:paddingTop="@dimen/py60"
+        android:paddingBottom="@dimen/py60"
         android:orientation="vertical"
         android:background="@color/color_ffffff">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:paddingBottom="@dimen/py30">
 
             <LinearLayout
                 android:layout_width="0dp"
@@ -47,7 +48,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="微信好友"
+                    android:text="@string/share_wechat_frient"
                     android:textColor="#9d9a9a" />
 
             </LinearLayout>
@@ -69,7 +70,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="微信朋友圈"
+                    android:text="@string/share_wechat_zone"
                     android:textColor="#9d9a9a" />
 
             </LinearLayout>
@@ -91,7 +92,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="QQ空间"
+                    android:text="@string/share_qqzone"
                     android:textColor="#9d9a9a" />
 
             </LinearLayout>
@@ -114,7 +115,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
-                    android:text="新浪微博"
+                    android:text="@string/share_sina"
                     android:textColor="#9d9a9a" />
 
             </LinearLayout>
@@ -124,7 +125,8 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:paddingTop="@dimen/py30">
 
             <LinearLayout
                 android:layout_width="0dp"
@@ -143,7 +145,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Facebook"
+                    android:text="@string/share_facebook"
                     android:textColor="#9d9a9a" />
 
             </LinearLayout>
@@ -165,7 +167,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Twitter"
+                    android:text="@string/share_twitter"
                     android:textColor="#9d9a9a" />
 
             </LinearLayout>
@@ -187,7 +189,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Linked in"
+                    android:text="@string/share_linkedin"
                     android:textColor="#9d9a9a" />
 
             </LinearLayout>
@@ -197,20 +199,20 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
                 android:gravity="center"
-                android:layout_weight="1"
-                android:visibility="invisible">
+                android:layout_weight="1">
 
                 <ImageView
+                    android:id="@+id/iv_qr"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:padding="10dp"
-                    android:src="@mipmap/share_wechat" />
+                    android:src="@mipmap/share_qr" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
-                    android:text=""
+                    android:text="@string/share_qr"
                     android:textColor="#9d9a9a" />
 
             </LinearLayout>

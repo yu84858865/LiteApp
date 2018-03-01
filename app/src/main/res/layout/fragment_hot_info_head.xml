@@ -12,13 +12,13 @@
         <ImageView
             android:id="@+id/iv_photo"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/py550"
+            android:layout_height="@dimen/py540"
             android:scaleType="centerCrop" />
 
         <TextView
             android:id="@+id/tv_bg_title"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/py68"
+            android:layout_height="@dimen/py96"
             android:paddingLeft="@dimen/py40"
             android:paddingRight="@dimen/py40"
             android:maxLines="1"

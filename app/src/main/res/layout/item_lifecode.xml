@@ -3,15 +3,15 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:paddingLeft="@dimen/py30"
-    android:paddingRight="@dimen/py30"
-    android:paddingBottom="@dimen/py35">
+    android:paddingLeft="@dimen/py40"
+    android:paddingRight="@dimen/py40"
+    android:paddingTop="@dimen/py30"
+    android:paddingBottom="@dimen/py40">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:paddingTop="@dimen/py25">
+        android:orientation="horizontal">
 
         <LinearLayout
             android:layout_width="0dp"
@@ -52,7 +52,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/py20"
+        android:layout_marginTop="@dimen/py30"
         android:layout_gravity="bottom">
 
         <TextView

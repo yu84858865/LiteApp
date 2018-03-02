@@ -43,7 +43,7 @@ public class DataRequestUtils {
 
 
     public static void get(String reqUrl, final DataRequestResult dataRequestResult) {
-//        final OkHttpClient mOkHttpClient=new OkHttpClient();
+        Log.i(TAG, "http_requestUrl = " + reqUrl);
         Request.Builder requestBuilder = new Request.Builder().url(reqUrl).get()
                 .addHeader("Accept","application/json")
                 .addHeader("Content-Type","application/json")
@@ -53,6 +53,7 @@ public class DataRequestUtils {
         mcall.enqueue(new Callback() {
             @Override
             public void onFailure(Call call, IOException e) {
+                Log.i(TAG, "http_failed  ");
                 dataRequestResult.onFailed();
             }
 
@@ -60,13 +61,11 @@ public class DataRequestUtils {
             public void onResponse(Call call, Response response) throws IOException {
                 if (null != response.cacheResponse()) {
                     String str = response.cacheResponse().toString();
-                    Log.i(TAG, "cache---" + str);
                 } else {
-                    response.body().string();
                     String str = response.networkResponse().toString();
-                    Log.i(TAG, "network---" + str);
                     final String result = response.body().string();
-                    Log.i(TAG, "result---" + result);
+                    Log.i(TAG, "network---" + str);
+                    Log.i(TAG, "http_result = " + result);
                     mHandler.post(new Runnable() {
                         @Override
                         public void run() {
@@ -74,13 +73,13 @@ public class DataRequestUtils {
                         }
                     });
                 }
-
             }
         });
     }
 
     public static void post(String reqUrl, String params, final DataRequestResult dataRequestResult) {
-//        OkHttpClient mOkHttpClient=new OkHttpClient();
+        Log.i(TAG, "http_reqUrl = " + reqUrl);
+        Log.i(TAG, "http_params = " + params);
         MediaType type = MediaType.parse("application/json; charset=utf-8");
         RequestBody formBody = RequestBody.create(type,params);
         Request request = new Request.Builder()
@@ -104,6 +103,7 @@ public class DataRequestUtils {
                 mHandler.post(new Runnable() {
                     @Override
                     public void run() {
+                        Log.i(TAG, "http_result = " + result);
                         dataRequestResult.onSuccess(result);
                     }
                 });

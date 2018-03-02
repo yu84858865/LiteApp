@@ -50,4 +50,5 @@ dependencies {
     compile 'com.twitter.sdk.android:twitter:3.0.0'
     compile 'com.twitter.sdk.android:tweet-composer:3.0.0'
     compile 'com.sina.weibo.sdk:core:4.1.0:openDefaultRelease@aar'
+    compile project(path: ':linkedin')
 }

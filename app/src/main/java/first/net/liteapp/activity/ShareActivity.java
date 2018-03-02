@@ -6,6 +6,7 @@ import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -16,6 +17,10 @@ import com.facebook.FacebookException;
 import com.facebook.share.Sharer;
 import com.facebook.share.model.ShareLinkContent;
 import com.facebook.share.widget.ShareDialog;
+import com.linkedin.platform.APIHelper;
+import com.linkedin.platform.errors.LIApiError;
+import com.linkedin.platform.listeners.ApiListener;
+import com.linkedin.platform.listeners.ApiResponse;
 import com.sina.weibo.sdk.WbSdk;
 import com.sina.weibo.sdk.api.ImageObject;
 import com.sina.weibo.sdk.api.TextObject;
@@ -56,7 +61,7 @@ public class ShareActivity extends BaseActivity implements View.OnClickListener,
 
     private IWXAPI api;
     private Tencent mTencent;
-    private ImageView iv_wechatfriend, iv_wechatcircle, iv_qqzone, iv_sina, iv_facebook, iv_twitter, iv_linkedin;
+    private ImageView iv_wechatfriend, iv_wechatcircle, iv_qqzone, iv_sina, iv_facebook, iv_twitter, iv_linkedin, iv_qr;
     private String mTitle, mImgUrl, mContent, mTargetUrl;
     private boolean isPortrait;
     private LoadingDialog mLoadingDialog;
@@ -84,8 +89,13 @@ public class ShareActivity extends BaseActivity implements View.OnClickListener,
         mImgUrl = intent.getStringExtra("imgUrl");
         mTargetUrl = intent.getStringExtra("mTargetUrl");
         isPortrait = intent.getBooleanExtra("isPortrait", true);
+        mTitle = "这是分享的标题";
+        mContent = "这是分享的内容";
+        mImgUrl = "http://img.hb.aicdn.com/304be7e36ac024383bba16f3f32e01f7408f644e7bf9a-d5k7ZW_fw658";
+        mTargetUrl = "https://www.baidu.com/";
         Bitmap bitmap = ImageUtil.decodeSampledBitmapFromResource(mImgUrl, 768);
         bitmapDrawable = new BitmapDrawable(null, bitmap);
+
     }
 
     @Override
@@ -105,6 +115,7 @@ public class ShareActivity extends BaseActivity implements View.OnClickListener,
         iv_twitter = findViewById(R.id.iv_twitter);
         iv_linkedin = findViewById(R.id.iv_linkedin);
         tv_cancel = findViewById(R.id.tv_cancel);
+        iv_qr = findViewById(R.id.iv_qr);
         mView = findViewById(R.id.mView);
         mLoadingDialog = new LoadingDialog(ShareActivity.this);
     }
@@ -120,6 +131,7 @@ public class ShareActivity extends BaseActivity implements View.OnClickListener,
         iv_linkedin.setOnClickListener(this);
         tv_cancel.setOnClickListener(this);
         mView.setOnClickListener(this);
+        iv_qr.setOnClickListener(this);
     }
 
     @Override
@@ -131,25 +143,28 @@ public class ShareActivity extends BaseActivity implements View.OnClickListener,
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.iv_wechatfriend:
-                wechatShare(0, mTitle, mContent);
+                wechatShare(0);
                 break;
             case R.id.iv_wechatcircle:
-                wechatShare(1, mTitle, mContent);
+                wechatShare(1);
                 break;
             case R.id.iv_qqzone:
-                qqzoneShare(mTitle, mContent);
+                qqzoneShare();
                 break;
             case R.id.iv_sina:
-                sinaShare(mTitle, mContent);
+                sinaShare();
                 break;
             case R.id.iv_facebook:
-                facebookShare(mTitle, mContent);
+                facebookShare();
                 break;
             case R.id.iv_twitter:
-                twitterShare(mTitle, mContent);
+                twitterShare();
                 break;
             case R.id.iv_linkedin:
-                linkedinShare(mTitle, mContent);
+                linkedinShare();
+                break;
+            case R.id.iv_qr:
+                qrShare();
                 break;
             case R.id.tv_cancel:
                 ShareActivity.this.finish();
@@ -160,15 +175,15 @@ public class ShareActivity extends BaseActivity implements View.OnClickListener,
         }
     }
 
-    private void wechatShare(int flag, String title, String content) {
+    private void wechatShare(int flag) {
 //        WXTextObject wxTextObject = new WXTextObject();
 //        wxTextObject.text = title;
         WXImageObject wxImageObject = new WXImageObject();
         wxImageObject.imagePath = mImgUrl;
         WXMediaMessage message = new WXMediaMessage();
         message.mediaObject = wxImageObject;
-        message.title = flag == 0 ? title : String.format("%s\n%s", title, content);
-        message.description = flag == 0 ? content : "";
+        message.title = flag == 0 ? mTitle : String.format("%s\n%s", mTitle, mContent);
+        message.description = flag == 0 ? mContent : "";
         message.thumbData = BitmapUtils.bmpToByteArray(ImageUtil.decodeSampledBitmapFromResource(mImgUrl, 64), false);
         SendMessageToWX.Req req = new SendMessageToWX.Req();
         req.transaction = String.valueOf(System.currentTimeMillis());
@@ -177,12 +192,12 @@ public class ShareActivity extends BaseActivity implements View.OnClickListener,
         api.sendReq(req);
     }
 
-    private void qqzoneShare(String title, String content) {
+    private void qqzoneShare() {
         final Bundle params = new Bundle();
         Tencent mTencent = Tencent.createInstance(APP_ID_QQ, this.getApplicationContext());
         params.putInt(QzoneShare.SHARE_TO_QZONE_KEY_TYPE, QzoneShare.SHARE_TO_QZONE_TYPE_IMAGE_TEXT);
-        params.putString(QzoneShare.SHARE_TO_QQ_TITLE, title);
-        params.putString(QzoneShare.SHARE_TO_QQ_SUMMARY, content);
+        params.putString(QzoneShare.SHARE_TO_QQ_TITLE, mTitle);
+        params.putString(QzoneShare.SHARE_TO_QQ_SUMMARY, mContent);
         params.putString(QzoneShare.SHARE_TO_QQ_TARGET_URL, mTargetUrl);
         params.putString(QzoneShare.SHARE_TO_QQ_IMAGE_LOCAL_URL, mImgUrl);
         params.putInt(QzoneShare.SHARE_TO_QQ_EXT_INT, QQShare.SHARE_TO_QQ_FLAG_QZONE_AUTO_OPEN);
@@ -190,7 +205,7 @@ public class ShareActivity extends BaseActivity implements View.OnClickListener,
         closeSharePage();
     }
 
-    private void sinaShare(String title, String content) {
+    private void sinaShare() {
         try {
             WeiboMultiMessage weiboMessage = new WeiboMultiMessage();
             weiboMessage.textObject = getTextObj();
@@ -201,28 +216,57 @@ public class ShareActivity extends BaseActivity implements View.OnClickListener,
         }
     }
 
-    private void facebookShare(String title, String content) {
+    private void facebookShare() {
         //这里分享一个链接，更多分享配置参考官方介绍：https://developers.facebook.com/docs/sharing/android
         if (ShareDialog.canShow(ShareLinkContent.class)) {
-            ShareLinkContent linkContent = new ShareLinkContent.Builder()
-                    .setContentUrl(Uri.parse("https://developers.facebook.com"))
-                    .build();
+            ShareLinkContent.Builder builder = new ShareLinkContent.Builder()
+                    .setContentUrl(Uri.parse("https://developers.facebook.com"));
+            builder.setContentTitle(mTitle);
+            builder.setContentDescription(mContent);
+            builder.setImageUrl(Uri.parse(mImgUrl));
+            ShareLinkContent linkContent = builder.build();
             mShareDialog.show(linkContent);
         }
     }
 
-    private void twitterShare(String title, String content) {
+    private void twitterShare() {
         //这里分享一个链接，更多分享配置参考官方介绍：https://dev.twitter.com/twitterkit/android/compose-tweets
         try {
             TweetComposer.Builder builder = new TweetComposer.Builder(ShareActivity.this)
                     .url(new URL("https://www.google.com/"));
+            builder.text(mTitle);
+            builder.image(Uri.parse(mImgUrl));
             builder.show();
         } catch (MalformedURLException e) {
             e.printStackTrace();
         }
     }
 
-    private void linkedinShare(String title, String content) {
+    private void linkedinShare() {
+        String url = "https://api.linkedin.com/v1/people/~/shares";
+        String payload = "{" +
+                "\"comment\":\"Check out developer.linkedin.com! " +
+                "http://linkd.in/1FC2PyG\"," +
+                "\"visibility\":{" +
+                "    \"code\":\"anyone\"}" +
+                "}";
+        APIHelper apiHelper = APIHelper.getInstance(getApplicationContext());
+        apiHelper.postRequest(this, url, payload, new ApiListener() {
+            @Override
+            public void onApiSuccess(ApiResponse apiResponse) {
+                // Success!
+                Log.e("http_","onApiSuccess----");
+            }
+
+            @Override
+            public void onApiError(LIApiError liApiError) {
+                // Error making POST request!
+                Log.e("http_","onApiError----");
+            }
+        });
+    }
+
+    private void qrShare(){
 
     }
 
@@ -369,6 +413,9 @@ public class ShareActivity extends BaseActivity implements View.OnClickListener,
         intent.putExtra("isPortrait", isPortrait);
         context.startActivity(intent);
     }
+
+
+
 
 
 }

@@ -53,8 +53,13 @@ public class DataRequestUtils {
         mcall.enqueue(new Callback() {
             @Override
             public void onFailure(Call call, IOException e) {
-                Log.i(TAG, "http_failed  ");
-                dataRequestResult.onFailed();
+                mHandler.post(new Runnable() {
+                    @Override
+                    public void run() {
+                        Log.i(TAG, "http_failed  ");
+                        dataRequestResult.onFailed();
+                    }
+                });
             }
 
             @Override
@@ -93,7 +98,13 @@ public class DataRequestUtils {
         call.enqueue(new Callback() {
             @Override
             public void onFailure(Call call, IOException e) {
-                dataRequestResult.onFailed();
+                mHandler.post(new Runnable() {
+                    @Override
+                    public void run() {
+                        Log.i(TAG, "http_failed  ");
+                        dataRequestResult.onFailed();
+                    }
+                });
             }
 
             @Override

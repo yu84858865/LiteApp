@@ -18,9 +18,13 @@ import com.facebook.share.Sharer;
 import com.facebook.share.model.ShareLinkContent;
 import com.facebook.share.widget.ShareDialog;
 import com.linkedin.platform.APIHelper;
+import com.linkedin.platform.LISessionManager;
 import com.linkedin.platform.errors.LIApiError;
+import com.linkedin.platform.errors.LIAuthError;
 import com.linkedin.platform.listeners.ApiListener;
 import com.linkedin.platform.listeners.ApiResponse;
+import com.linkedin.platform.listeners.AuthListener;
+import com.linkedin.platform.utils.Scope;
 import com.sina.weibo.sdk.WbSdk;
 import com.sina.weibo.sdk.api.ImageObject;
 import com.sina.weibo.sdk.api.TextObject;
@@ -83,6 +87,18 @@ public class ShareActivity extends BaseActivity implements View.OnClickListener,
         api.registerApp(Constant.WECHAT_APP_ID);
         mTencent = Tencent.createInstance(APP_ID_QQ, this.getApplicationContext());
         WbSdk.install(this,new AuthInfo(this, Constant.WB_APP_KEY, Constant.WB_REDIRECT_URL, Constant.WB_SCOPE));
+//        LISessionManager liSessionManager = LISessionManager.getInstance(this);
+//        liSessionManager.init(this, Scope.build(Scope.R_BASICPROFILE, Scope.W_SHARE), new AuthListener() {
+//            @Override
+//            public void onAuthSuccess() {
+//                Log.e("http_","onAuthSuccess----");
+//            }
+//
+//            @Override
+//            public void onAuthError(LIAuthError error) {
+//                Log.e("http_","onAuthError----");
+//            }
+//        },false);
         Intent intent = getIntent();
         mTitle = intent.getStringExtra("title");
         mContent = intent.getStringExtra("content");
@@ -402,6 +418,7 @@ public class ShareActivity extends BaseActivity implements View.OnClickListener,
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         mCallbackManager.onActivityResult(requestCode, resultCode, data);
+        LISessionManager.getInstance(getApplicationContext()).onActivityResult(this, requestCode, resultCode, data);
     }
 
     public static void ShareLive(Context context, String title, String content, String imgUrl, String targetUrl, boolean isPortrait) {
